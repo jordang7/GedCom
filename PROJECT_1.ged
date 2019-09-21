@@ -1,0 +1,148 @@
+0 NOTE Jordan Greenberg
+0 @I1@ INDI
+1 NAME Jordan /Greenberg/
+2 GIVN Jordan
+2 SURN Greenberg
+2 _MARNM Greenberg
+1 SEX M
+1 BIRT
+2 DATE 24 DEC 1998
+1 FAMC @F1@
+0 @I2@ INDI
+1 NAME Jack /Greenberg/
+2 GIVN Jack
+2 SURN Greenberg
+2 _MARNM Greenberg
+1 SEX M
+1 BIRT
+2 DATE 10 NOV 1964
+1 DEAT Y
+2 DATE 3 JUN 2000
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I3@ INDI
+1 NAME Jean /Goldstein/
+2 GIVN Jean
+2 SURN Goldstein
+2 _MARNM Greenberg
+1 SEX F
+1 BIRT
+2 DATE 2 MAY 1960
+1 FAMS @F1@
+1 FAMS @F3@
+1 FAMC @F4@
+0 @I4@ INDI
+1 NAME Parker /Smith/
+2 GIVN Parker
+2 SURN Smith
+2 _MARNM Smith
+1 SEX M
+1 BIRT
+2 DATE 8 FEB 1960
+1 FAMS @F3@
+1 FAMC @F5@
+0 @I5@ INDI
+1 NAME Hudson /Greenberg/
+2 GIVN Hudson
+2 SURN Greenberg
+2 _MARNM Greenberg
+1 SEX M
+1 BIRT
+2 DATE 27 JAN 2004
+1 FAMC @F3@
+0 @I6@ INDI
+1 NAME Em /Greenberg/
+2 GIVN Em
+2 SURN Greenberg
+2 _MARNM Greenberg
+1 SEX F
+1 BIRT
+2 DATE 15 AUG 1999
+1 FAMC @F1@
+0 @I7@ INDI
+1 NAME Steve /Smith/
+2 GIVN Steve
+2 SURN Smith
+2 _MARNM Smith
+1 SEX M
+1 BIRT
+2 DATE 30 JAN 1930
+1 DEAT Y
+2 DATE 15 JUN 2004
+1 FAMS @F5@
+0 @I8@ INDI
+1 NAME Lola /Brown/
+2 GIVN Lola
+2 SURN Brown
+2 _MARNM Smith
+1 SEX F
+1 BIRT
+2 DATE 2 JUN 1929
+1 FAMS @F5@
+0 @I9@ INDI
+1 NAME Jake /Greenberg/
+2 GIVN Jake
+2 SURN Greenberg
+2 _MARNM Greenberg
+1 SEX M
+1 BIRT
+2 DATE 16 FEB 1928
+1 FAMS @F2@
+0 @I10@ INDI
+1 NAME Jill /Miller/
+2 GIVN Jill
+2 SURN Miller
+2 _MARNM Greenberg
+1 SEX F
+1 BIRT
+2 DATE 3 OCT 1931
+1 DEAT Y
+2 DATE 8 JUL 2010
+1 FAMS @F2@
+0 @I11@ INDI
+1 NAME Chad /Goldstein/
+2 GIVN Chad
+2 SURN Goldstein
+2 _MARNM Goldstein
+1 SEX M
+1 BIRT
+2 DATE 25 MAR 1931
+1 FAMS @F4@
+0 @I12@ INDI
+1 NAME Lisa /Goldbloom/
+2 GIVN Lisa
+2 SURN Goldbloom
+2 _MARNM Goldstein
+1 SEX F
+1 BIRT
+2 DATE 3 MAR 1930
+1 DEAT Y
+2 DATE 10 MAR 2010
+1 FAMS @F4@
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 CHIL @I1@
+1 CHIL @I6@
+1 _CURRENT N
+0 @F2@ FAM
+1 HUSB @I9@
+1 WIFE @I10@
+1 CHIL @I2@
+1 _CURRENT Y
+0 @F3@ FAM
+1 HUSB @I4@
+1 WIFE @I3@
+1 CHIL @I5@
+1 _CURRENT Y
+0 @F4@ FAM
+1 HUSB @I11@
+1 WIFE @I12@
+1 CHIL @I3@
+1 _CURRENT Y
+0 @F5@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+1 CHIL @I4@
+1 _CURRENT Y
+0 TRLR
