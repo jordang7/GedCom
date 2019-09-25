@@ -71,7 +71,7 @@ public class readGedCom {
         boolean indiStarted = false;
         boolean familyStarted = false;
         ArrayList<String> IndiDetails = new ArrayList<String>();
-        ArrayList<Individual> individualArrayList = new ArrayList<Individual>();
+        ArrayList<Individual> IndiArrayList = new ArrayList<Individual>();
         ArrayList<Family> familyArrayList = new ArrayList<Family>();
         Individual indi = null;
         Family family = null;
@@ -147,7 +147,7 @@ public class readGedCom {
                                     Date date = new Date();
 //                				- new SimpleDateFormat("dd/MM/yyyy").parse(indi.birthDay));
 
-//                				indi.age =
+//                				indi.age =  
                                 }
 
                                 if(isDeathDay == true)
@@ -176,7 +176,7 @@ public class readGedCom {
                                 {
                                     indi.spouse = splitted[2];
                                 }
-                                individualArrayList.add(indi);
+                                IndiArrayList.add(indi);
                                 indiStarted = false;
                             }
                         }
@@ -248,16 +248,16 @@ public class readGedCom {
 
             for(int i=0; i<familyArrayList.size(); i++)
             {
-                for(int j=0; j<individualArrayList.size(); j++)
+                for(int j=0; j<IndiArrayList.size(); j++)
                 {
-                    if(familyArrayList.get(i).husbandId.equals(individualArrayList.get(j).id))
+                    if(familyArrayList.get(i).husbandId.equals(IndiArrayList.get(j).id))
                     {
-                        familyArrayList.get(i).husbandName = individualArrayList.get(j).name;
+                        familyArrayList.get(i).husbandName = IndiArrayList.get(j).name;
                     }
 
-                    if(familyArrayList.get(i).wifeId.equals(individualArrayList.get(j).id))
+                    if(familyArrayList.get(i).wifeId.equals(IndiArrayList.get(j).id))
                     {
-                        familyArrayList.get(i).wifeName = individualArrayList.get(j).name;
+                        familyArrayList.get(i).wifeName = IndiArrayList.get(j).name;
                     }
                 }
 
@@ -268,18 +268,6 @@ public class readGedCom {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        printIndividuals( individualArrayList );
-    }
-
-    public static void printIndividuals(  ArrayList<Individual> individualArrayList ) {
-
-        System.out.println("+---------+--------------------------------------+---------");
-
-        for( Individual indi : individualArrayList ) {
-            System.out.println( "%5s %30s %10s %10s %5d %7s %7s %7s %5s %5s", indi.id, indi.name, indi.gender, indi.birthDay, indi.age, indi.alive, indi.death, indi.child, indi.spouse );
-        }
-
     }
 
 }
