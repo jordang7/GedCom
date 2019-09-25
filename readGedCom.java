@@ -1,5 +1,8 @@
+import javax.swing.*;
 import java.io.File;
 
+
+import java.util.Calendar;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import java.time.LocalDate;
+import java.util.concurrent.TimeUnit;
+
 
 class Family
 {
@@ -39,6 +46,7 @@ class Individual
     public String name;
     public String gender;
     public String birthDay;
+    public Date bdate;
     public String age;
     public String alive;
     public String death;
@@ -71,7 +79,7 @@ public class readGedCom {
         boolean indiStarted = false;
         boolean familyStarted = false;
         ArrayList<String> IndiDetails = new ArrayList<String>();
-        ArrayList<Individual> IndiArrayList = new ArrayList<Individual>();
+        ArrayList<Individual> individualArrayList = new ArrayList<Individual>();
         ArrayList<Family> familyArrayList = new ArrayList<Family>();
         Individual indi = null;
         Family family = null;
@@ -145,11 +153,16 @@ public class readGedCom {
                                     isBirthDay = false;
 
                                     Date date = new Date();
-//                				- new SimpleDateFormat("dd/MM/yyyy").parse(indi.birthDay));
 
-//                				indi.age =  
+                                    Date date1=new SimpleDateFormat(" dd MMM yyyy").parse(indi.birthDay);
+                                    java.util.Date date2=new java.util.Date();
+
+                                    long time =getDateDiff(date1,date2,TimeUnit.MINUTES);
+                                    Calendar c = Calendar.getInstance();
+                                    c.setTimeInMillis(time);
+                                    int mYear = c.get(Calendar.YEAR)-1970;
+                                    indi.age=Integer.toString(mYear); ;
                                 }
-
                                 if(isDeathDay == true)
                                 {
                                     for(int j=2; j<splitted.length; j++)
@@ -176,7 +189,7 @@ public class readGedCom {
                                 {
                                     indi.spouse = splitted[2];
                                 }
-                                IndiArrayList.add(indi);
+                                individualArrayList.add(indi);
                                 indiStarted = false;
                             }
                         }
@@ -226,6 +239,7 @@ public class readGedCom {
                                 familyStarted = false;
 
                             }
+
                         }
                     }
                 }
@@ -248,26 +262,77 @@ public class readGedCom {
 
             for(int i=0; i<familyArrayList.size(); i++)
             {
-                for(int j=0; j<IndiArrayList.size(); j++)
+                for(int j=0; j<individualArrayList.size(); j++)
                 {
-                    if(familyArrayList.get(i).husbandId.equals(IndiArrayList.get(j).id))
+                    if(familyArrayList.get(i).husbandId.equals(individualArrayList.get(j).id))
                     {
-                        familyArrayList.get(i).husbandName = IndiArrayList.get(j).name;
+                        familyArrayList.get(i).husbandName = individualArrayList.get(j).name;
                     }
 
-                    if(familyArrayList.get(i).wifeId.equals(IndiArrayList.get(j).id))
+                    if(familyArrayList.get(i).wifeId.equals(individualArrayList.get(j).id))
                     {
-                        familyArrayList.get(i).wifeName = IndiArrayList.get(j).name;
+                        familyArrayList.get(i).wifeName = individualArrayList.get(j).name;
                     }
                 }
 
-                System.out.println(familyArrayList.get(i).wifeName);
+                // System.out.println(familyArrayList.get(i).wifeName);
 
             }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        printIndividuals( individualArrayList );
+        printFamily( familyArrayList );
+
+    }
+
+
+
+
+    public static void printFamily( ArrayList<Family> familyArrayList ){
+        System.out.println("FAMILY INFORMATION");
+        System.out.println();
+        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+");
+        System.out.println("|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |");
+        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+");
+
+        for( Family family : familyArrayList ){
+            System.out.format( " %5s       %30s   %10s               %10s           %5s        %7s       %7s           %7s      ",
+                    family.id, family.married, family.divorced, family.husbandId, family.husbandName, family.wifeId, family.wifeName, family.children );
+            System.out.println();
+        }
+        System.out.println("+---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+");
+
+    }
+    public static void printIndividuals(  ArrayList<Individual> individualArrayList ) {
+        System.out.println("INDIVIDUAL INFORMATION");
+        System.out.println();
+        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
+                "+-------------------+");
+        System.out.println("|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |");
+        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
+                "+-------------------+");
+
+        for( Individual indi : individualArrayList ) {
+           /* String child = indi.Child;
+            if(indi.Child.equals(""))
+                child = "N/A";*/
+            System.out.format( "   %5s   %30s %10s          %10s     %5s %7s %7s                     %7s                                    %5s",
+                    indi.id, indi.name, indi.gender, indi.birthDay, indi.age, indi.alive, indi.death, indi.Child, indi.spouse );
+            System.out.println();
+        }
+        System.out.println("+---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+---------------------+");
+
+    }
+    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        //return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
+        return diffInMillies;
     }
 
 }

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="197e66bd-9dff-4aca-8584-8c13f0834727" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PROJECT_1.ged" afterPath="$PROJECT_DIR$/PROJECT_1.ged" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readGedCom.java" afterPath="$PROJECT_DIR$/readGedCom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,12 +21,12 @@
       <file leaf-file-name="readGedCom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readGedCom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4429">
-              <caret line="272" column="1" lean-forward="false" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
+            <state relative-caret-position="516">
+              <caret line="337" column="1" lean-forward="false" selection-start-line="337" selection-start-column="1" selection-end-line="337" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1833#1845#0" expanded="true" />
-                <element signature="e#1906#1914#0" expanded="true" />
+                <element signature="e#1980#1992#0" expanded="true" />
+                <element signature="e#2053#2061#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -441,7 +439,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -496,8 +494,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1833#1845#0" expanded="true" />
-            <element signature="e#1906#1914#0" expanded="true" />
+            <element signature="e#1980#1992#0" expanded="true" />
+            <element signature="e#2053#2061#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -515,8 +513,8 @@
           <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1833#1845#0" expanded="true" />
-            <element signature="e#1906#1914#0" expanded="true" />
+            <element signature="e#1980#1992#0" expanded="true" />
+            <element signature="e#2053#2061#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -555,8 +553,8 @@
           <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1833#1845#0" expanded="true" />
-            <element signature="e#1906#1914#0" expanded="true" />
+            <element signature="e#1980#1992#0" expanded="true" />
+            <element signature="e#2053#2061#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -640,12 +638,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readGedCom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4429">
-          <caret line="272" column="1" lean-forward="false" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
+        <state relative-caret-position="516">
+          <caret line="337" column="1" lean-forward="false" selection-start-line="337" selection-start-column="1" selection-end-line="337" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1833#1845#0" expanded="true" />
-            <element signature="e#1906#1914#0" expanded="true" />
+            <element signature="e#1980#1992#0" expanded="true" />
+            <element signature="e#2053#2061#0" expanded="true" />
           </folding>
         </state>
       </provider>
