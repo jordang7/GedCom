@@ -8,12 +8,32 @@ import java.util.List;
 public class IndiFamilyResponse {
     List<Family> familyList;
 
-    public IndiFamilyResponse(List<Family> familyList, List<Individual> individualList) {
-        this.familyList = familyList;
-        this.individualList = individualList;
+    List<Individual> individualList;
+
+    List<Family> ambiguosFamilyMarrDeathList;
+
+    List<Family> ambiguousFamilyMarrDivList;
+
+    public List<Family> getAmbiguousFamilyMarrDivList() {
+        return ambiguousFamilyMarrDivList;
     }
 
-    List<Individual> individualList;
+    public void setAmbiguousFamilyMarrDivList(List<Family> ambiguousFamilyMarrDivList) {
+        this.ambiguousFamilyMarrDivList = ambiguousFamilyMarrDivList;
+    }
+
+
+    public IndiFamilyResponse() {
+
+    }
+
+    public List<Family> getAmbiguosFamilyMarrDeathList() {
+        return ambiguosFamilyMarrDeathList;
+    }
+
+    public void setAmbiguosFamilyMarrDeathList(List<Family> ambiguosFamilyMarrDeathList) {
+        this.ambiguosFamilyMarrDeathList = ambiguosFamilyMarrDeathList;
+    }
 
     public List<Family> getFamilyList() {
         return familyList;

@@ -25,11 +25,9 @@ public class Application {
         gdp.printIndividuals(indiFamilyResponse.getIndividualList());
         gdp.printFamily(indiFamilyResponse.getFamilyList());
 
-
-
-
-
-
+        System.out.println("Printing Ambiguos Family List");
+        gdp.printFamily(indiFamilyResponse.getAmbiguosFamilyMarrDeathList());
+        gdp.printFamily(indiFamilyResponse.getAmbiguousFamilyMarrDivList());
 
     }
 }
