@@ -19,7 +19,6 @@ public class GedcomFileReader {
 
             while ((sCurrentLine = br.readLine()) != null) {
                 gedcomeLines.add( sCurrentLine);
-
             }
         } catch (IOException e) {
             e.printStackTrace();
