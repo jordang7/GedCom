@@ -12,7 +12,8 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         GedcomFileReader gfr = new GedcomFileReader();
-        List<String> gedcomLines = gfr.gedcomReader("./PROJECT_1.ged");
+        List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+//        List<String> gedcomLines = gfr.gedcomReader("./PROJECT_1.ged");
         HashSet<String> tagSet = new HashSet<String>();
         List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
 

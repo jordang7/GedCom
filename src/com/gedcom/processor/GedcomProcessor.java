@@ -20,7 +20,7 @@ public class GedcomProcessor {
         List<String> resultList = new ArrayList<>();
         List<String> errorList = new ArrayList<>();
         for (String gedcomLine : gedcomLines) {
-            System.out.println("-->" + gedcomLine);
+//            System.out.println("-->" + gedcomLine);
             String parsedLine;
             String errorLine;
             String gedComSplit[] = gedcomLine.split(" ");
@@ -55,7 +55,7 @@ public class GedcomProcessor {
                 errorList.add(gedcomLine);
             }
 
-            System.out.println("<--" + parsedLine);
+//            System.out.println("<--" + parsedLine);
 
         }
         return new GedcomResponse(resultList, errorList);
@@ -180,15 +180,17 @@ public class GedcomProcessor {
                     // String[] splitted = gedcomLine.split(" ");
 
 
-                    if (splitted[2].contentEquals("FAM")) {
+                    if (splitted[2].contentEquals("FAM") && !familyStarted)  {
                         family = new Family(splitted[1]);
 
 
                         familyStarted = true;
                     } else {
+//                    	System.out.println(familyStarted);
                         if (familyStarted == true) {
                             if (splitted[1].contentEquals("HUSB")) {
                                 family.setHusbandId(splitted[2]);
+//                                System.out.println(family.getId() + "husb");
                             }
 
 
@@ -199,6 +201,7 @@ public class GedcomProcessor {
                                     }
                                     isMarried = false;
                                 }
+//                                System.out.println(family.getId() + "Date1");
                             }
                             if (splitted[1].contentEquals("DATE")) {
                                 if (isDivorced == true) {
@@ -207,26 +210,44 @@ public class GedcomProcessor {
                                     }
                                     isDivorced = false;
                                 }
+//                                System.out.println(family.getId() + "date2");
                             }
                             if (splitted[1].contentEquals("WIFE")) {
                                 family.setWifeId(splitted[2]);
+//                                System.out.println(family.getId() + "wife");
                             }
 
                             if (splitted[1].contentEquals("CHIL")) {
                                 family.setChildren((family.getChildren().equals("") ? family.getChildren() : family.getChildren() + ",") + splitted[2]);
+//                                System.out.println(family.getId() + "chil");
                             }
 
 
-                            if (splitted[1].contentEquals("_CURRENT")) {
-                                if (splitted[2] == "N") {
-                                    family.setDivorced("YES");
-                                }
-
-                                if (splitted[2] == "Y") {
-                                    family.setDivorced("NA");
-                                }
+                            if (splitted[0].contentEquals("0") && familyStarted) {
+//                                if (splitted[2] == "N") {
+//                                    family.setDivorced("YES");
+//                                }
+//
+//                                if (splitted[2] == "Y") {
+//                                    family.setDivorced("NA");
+//                                }
+//                                System.out.println(family.getId() + "end");
                                 familyArrayList.add(family);
-                                familyStarted = false;
+                                
+                                if(splitted.length < 2)
+                                {
+                                	if(!splitted[1].contentEquals("FAM") || !splitted[1].contentEquals("MARR"))
+                                	{
+                                		familyStarted = false;
+//                                		System.out.println(familyStarted);
+//                                		System.out.println(family.getId() + "end1");
+                                	}
+                                }
+                                else
+                                {
+                                	family = new Family(splitted[1]);
+//                                	System.out.println(family.getId() + "new Begins");
+                                }
 
                             }
 
@@ -242,7 +263,18 @@ public class GedcomProcessor {
 
                     if (splitted[1].contentEquals("DEAT") && splitted[2].contentEquals("Y")) {
                         isDeathDay = true;
+                        indi.setAlive("N");
                     }
+                }
+                else
+                {
+                	if(splitted[0].contentEquals("0") && splitted[1].contentEquals("TRLR"))
+                	{
+                		familyArrayList.add(family);
+                		familyStarted = false;
+//                		System.out.println(familyStarted);
+//                		System.out.println(family.getId() + "end1");
+                	}
                 }
 
             }

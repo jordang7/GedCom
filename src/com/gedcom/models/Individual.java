@@ -20,6 +20,7 @@ public class Individual {
 
     public Individual(String id) {
         this.id = id;
+        this.alive = "Y";
 
     }
 
