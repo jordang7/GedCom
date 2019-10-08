@@ -9,6 +9,7 @@ class DateUtilTest {
     protected  String dateAfter;
     protected String format;
     DateUtil dateUtil = new DateUtil();
+
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         dateAfter = "2019-12-31";
