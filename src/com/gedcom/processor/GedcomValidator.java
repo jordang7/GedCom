@@ -3,6 +3,8 @@ package com.gedcom.processor;
 import com.gedcom.models.Family;
 import com.gedcom.models.Individual;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -73,7 +75,6 @@ public class GedcomValidator {
     public List<Family> marriageBeforeDivorce(List<Family> familyList) {
 
         List<Family> ambiguosFamilyMarrDivList = new ArrayList<>();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" d MMM yyyy");
 
         for (Family family : familyList) {
             String marriageDate = family.getMarried();
@@ -93,7 +94,6 @@ public class GedcomValidator {
     //Refactor at some point because this is basically the same as Marriage before Death
     public List<Family> birthBeforeMarriage(List<Individual> individualList, List<Family> familyList) {
         List<Family> ambiguosbirthBeforeMarriageList = new ArrayList<>();
-
         for (Family family : familyList) {
             String husbandId = family.getHusbandId();
             String wifeId = family.getWifeId();

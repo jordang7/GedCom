@@ -15,4 +15,5 @@ class GedComUtilTest {
     @org.junit.jupiter.api.Test
     void checkIfDivorcedBeforeDeath() {
     }
+
 }
