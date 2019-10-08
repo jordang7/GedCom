@@ -16,6 +16,8 @@ public class Individual {
     private String death = "";
     private String child = "";
     private String spouse = "";
+ private String deathDate = "";
+    private String divorceDate = "";
 
 
     public Individual(String id) {
@@ -137,5 +139,20 @@ public class Individual {
         result = 31 * result + (getChild() != null ? getChild().hashCode() : 0);
         result = 31 * result + (getSpouse() != null ? getSpouse().hashCode() : 0);
         return result;
+    }
+      public String getDeathDate() {
+        return deathDate;
+    }
+
+    public void setDeathDate(String deathDate) {
+        this.deathDate = deathDate;
+    }
+
+    public String getDivorceDate() {
+        return divorceDate;
+    }
+
+    public void setDivorceDate(String divorceDate) {
+        this.divorceDate = divorceDate;
     }
 }
