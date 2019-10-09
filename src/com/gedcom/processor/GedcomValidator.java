@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 public class GedcomValidator {
 
-    DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+    public static DateTimeFormatter formatter = new DateTimeFormatterBuilder()
             // case insensitive to parse JAN and FEB
             .parseCaseInsensitive()
             // add pattern
