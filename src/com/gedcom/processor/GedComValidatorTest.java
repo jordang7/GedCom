@@ -70,5 +70,50 @@ class GedComValidatorTest {
         assertEquals( 1, ambiguousFamily1.size());
 
     }
+    @org.junit.jupiter.api.Test
+    void testBirthBeforeMarriage() {
+        List<Family> ambiguousFamily = validator.birthBeforeMarriage(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals( 0, ambiguousFamily.size());
+        Family fam1 = new Family("id1");
+        fam1.setHusbandId("H1");
+        fam1.setWifeId("W1");
+        fam1.setMarried(" 5 MAY 2010");
+
+        List<Family> familyList = new ArrayList<>();
+        familyList.add(fam1);
+        List<Individual> individualList = new ArrayList<>();
+
+        Individual h1 = new Individual("H1");
+        h1.setBirthDay(" 5 OCT 2018");
+        individualList.add(h1);
+
+        Individual w1 = new Individual("W1");
+        w1.setBirthDay(" 4 OCT 2009");
+        individualList.add(w1);
+        List<Family> ambiguousFamily1 = validator.birthBeforeMarriage(individualList,familyList);
+        assertEquals( 1, ambiguousFamily1.size());
+
+    }
+    @org.junit.jupiter.api.Test
+    void testBirthBeforeDeath() {
+        List<Individual> ambiguousINDI = validator.birthBeforeDeath(new ArrayList<Individual>());
+        assertEquals(0,ambiguousINDI.size());
+        List<Individual> individualList = new ArrayList<>();
+
+        Individual h1 = new Individual("H1");
+        h1.setBirthDay(" 5 OCT 2018");
+        h1.setDeath(" 4 OCT 2018");
+        individualList.add(h1);
+
+        Individual w1 = new Individual("W1");
+        w1.setBirthDay(" 5 OCT 2018");
+        w1.setDeath(" 6 OCT 2018");
+        
+        individualList.add(w1);
+        List<Individual> ambiguousFamily1 = validator.birthBeforeDeath(individualList);
+        assertEquals( 1, ambiguousFamily1.size());
+
+    }
+
 
 }
