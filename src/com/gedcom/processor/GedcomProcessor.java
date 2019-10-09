@@ -5,6 +5,7 @@ import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.models.Individual;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -331,6 +332,56 @@ public class GedcomProcessor {
                 "+");
 
     }
+    
+    public void printListOfIndividualsBornBeforeParentsMarriage(List<Family> familyArrayList, List<Individual> individualArrayList) throws ParseException {
+//        System.out.println("Individuals born before Marriage of their parents");
+//        System.out.println();
+//        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+//                "+");
+//        System.out.println("|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |");
+//        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+//                "+");
+
+        for (Family family : familyArrayList) {
+//            System.out.format(" %5s       %30s   %10s               %10s           %5s        %7s       %7s           %7s      ",
+//                    family.getId(), family.getMarried(), family.getDivorced(), family.getHusbandId(), family.getHusbandName(), family.getWifeId(), family.getWifeName(), family.getChildren());
+//            System.out.println();
+        	
+//        	System.out.println(family.getChildren());
+//        	System.out.println(family.getMarried());
+        	
+        	String mDt = family.getMarried().trim();
+        	SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+        	Date marriageDate = sdf.parse(mDt);
+        	
+        	String childrenString = family.getChildren();
+        	
+//        	System.out.println(childrenString);
+        	
+        	for(Individual indi : individualArrayList)
+        	{
+        		if(indi.getBirthDay() != null && indi.getBirthDay() != "" && indi.getId().indexOf(childrenString) > -1) 
+        		{
+        			String bDt = indi.getBirthDay();
+        			SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+        			Date birthDate = sdfBdt.parse(bDt);
+        			
+        			if(marriageDate.compareTo(birthDate) > 0)
+        			{
+        				System.out.println("Individuals born before Marriage of their parents");
+        				ArrayList<Individual> BornBeforeMarriage = new ArrayList<Individual>();
+        				BornBeforeMarriage.add(indi);
+        				printIndividuals(BornBeforeMarriage);
+        				
+        			}
+        			
+        		}
+        	}
+        }
+        System.out.println("+---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+");
+
+    }
 
     public void printIndividuals(List<Individual> individualArrayList) {
         System.out.println("INDIVIDUAL INFORMATION");
@@ -353,6 +404,34 @@ public class GedcomProcessor {
                 "+---------------------+");
 
     }
+    
+    
+    public void printIndividualsWithAgeLessThan150(List<Individual> individualArrayList) {
+        System.out.println("INDIVIDUAL INFORMATION WITH AGE LESS THAN 150");
+        System.out.println();
+        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
+                "+-------------------+");
+        System.out.println("|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |");
+        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
+                "+-------------------+");
+
+        for (Individual indi : individualArrayList) {
+           /* String child = indi.Child;
+            if(indi.Child.equals(""))
+                child = "N/A";*/
+        	if(indi.getAge() != "" && Integer.parseInt(indi.getAge()) < 150)
+        	{
+        	
+            System.out.format("   %5s   %30s %10s          %10s     %5s %7s                     %7s                                             %7s                                 %5s",
+                    indi.getId(), indi.getName(), indi.getGender(), indi.getBirthDay(), indi.getAge(), indi.getAlive(), indi.getDeath(), indi.getChild(), indi.getSpouse());
+            System.out.println();
+        	}
+        }
+        System.out.println("+---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
+                "+---------------------+");
+
+    }
+    
 
     public long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
