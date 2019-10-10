@@ -35,6 +35,8 @@ public class Application {
 
         gdp.printMarriageBeforeDeathError(indiFamilyResponse);
         gdp.printMarriageBeforeDivorceError(indiFamilyResponse);
+        gdp.printBirthBeforeDeathError(indiFamilyResponse);
+        gdp.printBirthBeforeMarriageError(indiFamilyResponse);
     }
 
 }
