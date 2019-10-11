@@ -22,6 +22,8 @@ public class IndiFamilyResponse {
 
     List<Family> ambiguousFamilyMarrBefore14;
 
+  List<Family>  ambiguosFamilyDivorceDeathList;
+  
     public List<Family> getAmbiguousFamilyMarrBefore14() {
         return ambiguousFamilyMarrBefore14;
     }
@@ -81,5 +83,12 @@ public class IndiFamilyResponse {
 
     public void setIndividualList(List<Individual> individualList) {
         this.individualList = individualList;
+    }
+      public List<Family> getAmbiguosFamilyDivorceDeathList() {
+        return ambiguosFamilyDivorceDeathList;
+    }
+
+    public void setAmbiguosFamilyDivorceDeathList(List<Family> ambiguosFamilyDivorceDeathList) {
+        this.ambiguosFamilyDivorceDeathList = ambiguosFamilyDivorceDeathList;
     }
 }
