@@ -39,6 +39,8 @@ public class Application {
         gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
         gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
         gdp.printMarriageBefore14Error(indiFamilyResponse);
+        
+        gdp.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
     }
 
 }
