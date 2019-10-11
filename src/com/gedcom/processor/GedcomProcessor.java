@@ -508,5 +508,53 @@ public class GedcomProcessor {
         //return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
         return diffInMillies;
     }
+    public void printIndividualsWithDivorceBeforeDeath(IndiFamilyResponse indiFamilyResponse) {
+
+        for (Family family : indiFamilyResponse.getAmbiguosFamilyDivorceDeathList()) {
+            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
+            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
+
+            LocalDate wifeDeath = null;
+            if( wife.getDeath() == null || wife.getDeath().equals("")){
+
+            } else {
+                wifeDeath = LocalDate.parse(wife.getDeath(), formatter);
+            }
+
+            LocalDate husbandDeath = null;
+            if( husband.getDeath() == null || husband.getDeath().equals("")){
+
+            } else {
+                husbandDeath = LocalDate.parse(husband.getDeath(), formatter);
+            }
+
+            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getDivorced(), formatter)) ){
+                System.out.println("ERROR: FAMILY: US06:"+family.getId()+" Divorced " + family.getDivorced() + " AFTER WIFE'S DEATH ( "+wife.getId() +")"+ wife.getDeath());
+            }
+            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getDivorced(), formatter)) ){
+                System.out.println("ERROR: FAMILY: US06:"+family.getId()+" Divorced " + family.getDivorced() + " AFTER HUSBANDS'S DEATH (" +husband.getId() +")"+ husband.getDeath());
+            }
+        }
+    }
+    public void printIndividualsWithBirthBeforeCurrentData(List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+
+        for (Individual indi : individualArrayList) {
+            String birth = indi.getBirthDay();
+
+            String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+            SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+            if ((birth != null && !birth.isEmpty()) && (now != null && !now.isEmpty())){
+
+                Date dateToCompare = sdf.parse(birth);
+                Calendar cal_instance = Calendar.getInstance();
+                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+                Date currentDate = sdf.parse(now);
+                if(dateToCompare.before(currentDate))
+                    System.out.println("FOUND: " + "INDIVIDUAL: US01: " +indi.getId() + ": BIRTH DATE IS AFTER CURRENTDATE");
+
+            }
+
+        }
+
     
 }
