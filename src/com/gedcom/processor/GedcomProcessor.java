@@ -654,10 +654,11 @@ public class GedcomProcessor {
             }
         }
     }
-    public void printIndividualsWithBirthBeforeCurrentData(List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+    public void printIndividualsWithBirthBeforeCurrentData(List<Family> individualFamList,List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
 
         for (Individual indi : individualArrayList) {
             String birth = indi.getBirthDay();
+            String death = indi.getDeath();
 
             String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
             SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
@@ -669,6 +670,44 @@ public class GedcomProcessor {
                 Date currentDate = sdf.parse(now);
                 if(currentDate.before(dateToCompare))
                     System.out.println("ERROR: " + "INDIVIDUAL: US01: " +indi.getId() + ": BIRTH DATE IS AFTER CURRENTDATE");
+
+            }
+            if ((death != null && !death.isEmpty()) && (now != null && !now.isEmpty())){
+
+                Date dateToCompare = sdf.parse(death);
+                Calendar cal_instance = Calendar.getInstance();
+                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+                Date currentDate = sdf.parse(now);
+                if(currentDate.before(dateToCompare))
+                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +indi.getId() + ": Death DATE IS AFTER CURRENTDATE");
+
+            }
+
+        }
+        for (Family fam : individualFamList) {
+            String marr = fam.getMarried();
+            String div = fam.getDivorced();
+
+            String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+            SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+            if ((marr != null && !marr.isEmpty()) && (now != null && !now.isEmpty())){
+
+                Date dateToCompare = sdf.parse(marr);
+                Calendar cal_instance = Calendar.getInstance();
+                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+                Date currentDate = sdf.parse(now);
+                if(currentDate.before(dateToCompare))
+                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +fam.getId() + ": Marriage DATE IS AFTER CURRENTDATE");
+
+            }
+            if ((div != null && !div.isEmpty()) && (now != null && !now.isEmpty())){
+
+                Date dateToCompare = sdf.parse(div);
+                Calendar cal_instance = Calendar.getInstance();
+                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
+                Date currentDate = sdf.parse(now);
+                if(currentDate.before(dateToCompare))
+                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +fam.getId() + ": Divorce DATE IS AFTER CURRENTDATE");
 
             }
 
