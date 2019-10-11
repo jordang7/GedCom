@@ -153,10 +153,6 @@ public class GedcomProcessor {
                                     }
 
                                     age = Period.between(LocalDate.parse(indi.getBirthDay(), formatter), LocalDate.now()).getYears();
-                                   /* long time = getDateDiff(date1, date2, TimeUnit.MINUTES);
-                                    Calendar c = Calendar.getInstance();
-                                    c.setTimeInMillis(time);
-                                    int mYear = c.get(Calendar.YEAR) - 1970;*/
                                     indi.setAge(age);
                                 }
                                 if (isDeathDay == true) {
