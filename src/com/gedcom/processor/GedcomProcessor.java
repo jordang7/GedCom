@@ -378,6 +378,118 @@ public class GedcomProcessor {
         }
 
     }
+    
+    
+    public void printListOfIndividualsBornAfterParentsDeath(List<Family> familyArrayList, List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+
+        for (Family family : familyArrayList) {
+
+            String mDt = family.getMarried().trim();
+            
+            
+            String child = family.getChildren();
+            
+            String childArr[] = child.split(",");
+            
+            for(int i=0; i<individualArrayList.size(); i++)
+            {
+            	if(individualArrayList.get(i).getId().equals(family.getHusbandId()))
+            	{
+            		if(individualArrayList.get(i).getAlive().equals("N"))
+            		{
+            			String DDate = individualArrayList.get(i).getDeath();
+            			 SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+            			
+            			 Date DeathDate = sdfBdt.parse(DDate);
+//            			System.out.println(DeathDate);
+            			for(String childId : childArr)
+                        {
+                        	if(childId != null && childId != "")
+                        	{
+                        		for(int k=0; k<individualArrayList.size(); k++)
+                                {
+//                        			System.out.println(individualArrayList.get(k).getId() + " - " + childId);
+                        			if(individualArrayList.get(k).getId().equals(childId))
+                                	{
+                        				String BDate = individualArrayList.get(k).getBirthDay();
+                        				Date BirthDate = sdfBdt.parse(BDate);
+//                        				System.out.println(BirthDate + " Birth Date");
+                        				
+                        				if(BirthDate.compareTo(DeathDate)>0)
+                        				{
+                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
+                        				}
+                                	}
+                                }
+                        		
+                        	}
+                        }
+            		}
+            	}
+            	
+            	
+            	if(individualArrayList.get(i).getId().equals(family.getWifeId()))
+            	{
+            		if(individualArrayList.get(i).getAlive().equals("N"))
+            		{
+            			String DDate = individualArrayList.get(i).getDeath();
+            			 SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+            			
+            			 Date DeathDate = sdfBdt.parse(DDate);
+//            			System.out.println(DeathDate);
+            			for(String childId : childArr)
+                        {
+                        	if(childId != null && childId != "")
+                        	{
+                        		for(int k=0; k<individualArrayList.size(); k++)
+                                {
+//                        			System.out.println(individualArrayList.get(k).getId() + " - " + childId);
+                        			if(individualArrayList.get(k).getId().equals(childId))
+                                	{
+                        				String BDate = individualArrayList.get(k).getBirthDay();
+                        				Date BirthDate = sdfBdt.parse(BDate);
+//                        				System.out.println(BirthDate + " Birth Date");
+                        				
+                        				if(BirthDate.compareTo(DeathDate)>0)
+                        				{
+                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
+                        				}
+                                	}
+                                }
+                        		
+                        	}
+                        }
+            		}
+            	}
+            }
+            
+            	
+            
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.US);
+//            Date marriageDate = sdf.parse(mDt);
+//
+//            String childrenString = family.getChildren();
+//
+//            for(Individual indi : individualArrayList)
+//            {
+//                if(indi.getBirthDay() != null && indi.getBirthDay() != "" && childrenString.contains( indi.getId()))
+//                {
+//                    String bDt = indi.getBirthDay();
+//                    SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+//                    Date birthDate = sdfBdt.parse(bDt);
+//
+//                    if(marriageDate.compareTo(birthDate) > 0)
+//                    {
+//                        System.out.println("ANOMALY: " + "FAMILY : US08: " +family.getId() + ": CHILD "+ indi.getName() +"BORN"  + indi.getId() + "Before MARRIAGE: "+ family.getMarried());
+//
+//
+//                    }
+//
+//                }
+//            }
+        }
+
+    }
 
     public void printIndividualsWithAgeMoreThan150(List<Individual> individualArrayList) {
 
