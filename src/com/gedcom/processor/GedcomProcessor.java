@@ -12,6 +12,8 @@ import java.time.Period;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static com.gedcom.processor.GedcomValidator.formatter;
+
 /**
  * Created by Meghana on 9/12/2019.
  */
@@ -145,8 +147,12 @@ public class GedcomProcessor {
                                     Date date1 = new SimpleDateFormat(" dd MMM yyyy").parse(indi.getBirthDay());
                                     java.util.Date date2 = new java.util.Date();
 
+                                    int age = 0;
+                                    if( indi.getDeath() !=null && indi.getDeath() != ""){
+                                        age = Period.between(LocalDate.parse(indi.getBirthDay(), formatter), LocalDate.parse(indi.getDeath(), formatter)).getYears();
+                                    }
 
-                                    int age = Period.between(LocalDate.parse(indi.getBirthDay(),GedcomValidator.formatter), LocalDate.now()).getYears();
+                                    age = Period.between(LocalDate.parse(indi.getBirthDay(), formatter), LocalDate.now()).getYears();
                                    /* long time = getDateDiff(date1, date2, TimeUnit.MINUTES);
                                     Calendar c = Calendar.getInstance();
                                     c.setTimeInMillis(time);
@@ -421,10 +427,10 @@ public class GedcomProcessor {
             Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
             Individual wife = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
             if (wife.getBirthDay() != null && husband.getBirthDay() != null && !wife.getBirthDay().isEmpty() && !husband.getBirthDay().isEmpty()) {
-                LocalDate wifeBdate = LocalDate.parse(wife.getBirthDay(), GedcomValidator.formatter);
-                LocalDate husbandBdate = LocalDate.parse(husband.getBirthDay(), GedcomValidator.formatter);
+                LocalDate wifeBdate = LocalDate.parse(wife.getBirthDay(), formatter);
+                LocalDate husbandBdate = LocalDate.parse(husband.getBirthDay(), formatter);
 
-                LocalDate familyMarriage = LocalDate.parse(family.getMarried(), GedcomValidator.formatter);
+                LocalDate familyMarriage = LocalDate.parse(family.getMarried(), formatter);
                 Period p = Period.between(wifeBdate, familyMarriage);
                 Period p1 = Period.between(husbandBdate, familyMarriage);
                 if (p.getYears() <= 14)
@@ -443,20 +449,20 @@ public class GedcomProcessor {
             if( wife.getDeath() == null || wife.getDeath().equals("")){
 
             } else {
-                wifeDeath = LocalDate.parse(wife.getDeath(), GedcomValidator.formatter);
+                wifeDeath = LocalDate.parse(wife.getDeath(), formatter);
             }
 
             LocalDate husbandDeath = null;
             if( husband.getDeath() == null || husband.getDeath().equals("")){
 
             } else {
-                husbandDeath = LocalDate.parse(husband.getDeath(), GedcomValidator.formatter);
+                husbandDeath = LocalDate.parse(husband.getDeath(), formatter);
             }
 
-            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getMarried(), formatter)) ){
                 System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER WIFE'S DEATH ( "+wife.getId() +")"+ wife.getDeath());
             }
-            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getMarried(), formatter)) ){
                 System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER HUSBANDS'S DEATH (" +husband.getId() +")"+ husband.getDeath());
             }
         }
@@ -476,7 +482,7 @@ public class GedcomProcessor {
             if( wife.getBirthDay() == null || wife.getBirthDay().equals("")){
 
             } else {
-                wifeBirth = LocalDate.parse(wife.getBirthDay(), GedcomValidator.formatter);
+                wifeBirth = LocalDate.parse(wife.getBirthDay(), formatter);
             }
 
 
@@ -485,13 +491,13 @@ public class GedcomProcessor {
             if( husband.getBirthDay() == null || husband.getBirthDay().equals("")){
 
             } else {
-            	husbandBirth = LocalDate.parse(husband.getBirthDay(), GedcomValidator.formatter);
+            	husbandBirth = LocalDate.parse(husband.getBirthDay(), formatter);
             }
 
-            if( wifeBirth != null && wifeBirth.isAfter(LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+            if( wifeBirth != null && wifeBirth.isAfter(LocalDate.parse(family.getMarried(), formatter)) ){
                 System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH ( "+wife.getId() +")"+ wife.getBirthDay());
             }
-            if ( husbandBirth != null && husbandBirth.isAfter( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+            if ( husbandBirth != null && husbandBirth.isAfter( LocalDate.parse(family.getMarried(), formatter)) ){
                 System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH (" +husband.getId() +")"+ husband.getBirthDay());
             }
         }
