@@ -206,5 +206,51 @@ public class GedcomValidator {
         return ambiguosFamilyMarList;
     }
 
+    public List<Family> divorceBeforeDeath(List<Individual> individualList, List<Family> familyList) {
+        List<Family> ambiguousFamDivBeforeDeath = new ArrayList<>();
+
+        for (Family family : familyList) {
+            String husbandId = family.getHusbandId();
+            String wifeId = family.getWifeId();
+
+            Optional<Individual> husbandOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(husbandId);
+            }).findFirst();
+
+            Optional<Individual> wifeOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(wifeId);
+            }).findFirst();
+            String divorceDate = family.getDivorced();
+            if (husbandOpt.isPresent() && wifeOpt.isPresent() && divorceDate != null && !divorceDate.equals("") ) {
+                Individual husband = husbandOpt.get();
+                Individual wife = wifeOpt.get();
+
+                String husbandDeathDate = husband.getDeath();
+                String wifeDeathDate = wife.getDeath();
+
+
+                LocalDate divDate = LocalDate.parse(divorceDate, formatter);
+
+                if (husbandDeathDate != null && !husbandDeathDate.isEmpty()) {
+                    LocalDate husbandDeath = LocalDate.parse(husbandDeathDate, formatter);
+                    if (husbandDeath.isBefore(divDate)) {
+                        ambiguousFamDivBeforeDeath.add(family);
+
+                    }
+                } else if (wifeDeathDate != null && !wifeDeathDate.isEmpty()) {
+                    LocalDate wifeDeath = LocalDate.parse(wifeDeathDate, formatter);
+                    if (wifeDeath.isBefore(divDate)) {
+                        ambiguousFamDivBeforeDeath.add(family);
+                    }
+
+                }
+            }
+        }
+
+        return ambiguousFamDivBeforeDeath;
+
+    }
+
+
 
 }
