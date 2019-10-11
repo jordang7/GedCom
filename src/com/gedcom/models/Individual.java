@@ -11,7 +11,7 @@ public class Individual {
     private String gender = "";
     private String birthDay = "";
     private LocalDate bdate;
-    private String age = "";
+    private int age = 0;
     private String alive = "";
     private String death = "";
     private String child = "";
@@ -66,11 +66,11 @@ public class Individual {
         this.bdate = bdate;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -106,6 +106,10 @@ public class Individual {
         this.spouse = spouse;
     }
 
+      public String getDeathDate() {
+        return deathDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,35 +117,37 @@ public class Individual {
 
         Individual that = (Individual) o;
 
-        if (!getId().equals(that.getId())) return false;
+        if (getAge() != that.getAge()) return false;
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getGender() != null ? !getGender().equals(that.getGender()) : that.getGender() != null) return false;
         if (getBirthDay() != null ? !getBirthDay().equals(that.getBirthDay()) : that.getBirthDay() != null)
             return false;
         if (getBdate() != null ? !getBdate().equals(that.getBdate()) : that.getBdate() != null) return false;
-        if (getAge() != null ? !getAge().equals(that.getAge()) : that.getAge() != null) return false;
         if (getAlive() != null ? !getAlive().equals(that.getAlive()) : that.getAlive() != null) return false;
         if (getDeath() != null ? !getDeath().equals(that.getDeath()) : that.getDeath() != null) return false;
         if (getChild() != null ? !getChild().equals(that.getChild()) : that.getChild() != null) return false;
-        return getSpouse() != null ? getSpouse().equals(that.getSpouse()) : that.getSpouse() == null;
+        if (getSpouse() != null ? !getSpouse().equals(that.getSpouse()) : that.getSpouse() != null) return false;
+        if (getDeathDate() != null ? !getDeathDate().equals(that.getDeathDate()) : that.getDeathDate() != null)
+            return false;
+        return getDivorceDate() != null ? getDivorceDate().equals(that.getDivorceDate()) : that.getDivorceDate() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
+        int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
         result = 31 * result + (getBirthDay() != null ? getBirthDay().hashCode() : 0);
         result = 31 * result + (getBdate() != null ? getBdate().hashCode() : 0);
-        result = 31 * result + (getAge() != null ? getAge().hashCode() : 0);
+        result = 31 * result + getAge();
         result = 31 * result + (getAlive() != null ? getAlive().hashCode() : 0);
         result = 31 * result + (getDeath() != null ? getDeath().hashCode() : 0);
         result = 31 * result + (getChild() != null ? getChild().hashCode() : 0);
         result = 31 * result + (getSpouse() != null ? getSpouse().hashCode() : 0);
+        result = 31 * result + (getDeathDate() != null ? getDeathDate().hashCode() : 0);
+        result = 31 * result + (getDivorceDate() != null ? getDivorceDate().hashCode() : 0);
         return result;
-    }
-      public String getDeathDate() {
-        return deathDate;
     }
 
     public void setDeathDate(String deathDate) {

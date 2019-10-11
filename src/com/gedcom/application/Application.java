@@ -1,17 +1,12 @@
 package com.gedcom.application;
 
-import com.gedcom.models.Family;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
-import com.gedcom.models.Individual;
 import com.gedcom.processor.GedcomProcessor;
-import com.gedcom.processor.GedcomValidator;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
-import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by Meghana on 9/12/2019.
@@ -30,6 +25,7 @@ public class Application {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+
         gdp.printIndividuals(indiFamilyResponse.getIndividualList());
         gdp.printFamily(indiFamilyResponse.getFamilyList());
 
@@ -40,12 +36,9 @@ public class Application {
 
         gdp.printBirthBeforeDeathError(indiFamilyResponse);
         gdp.printBirthBeforeMarriageError(indiFamilyResponse);
-
-        
-        
-        gdp.printIndividualsWithAgeLessThan150(indiFamilyResponse.getIndividualList()); 
         gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
-
+        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
+        gdp.printMarriageBefore14Error(indiFamilyResponse);
     }
 
 }

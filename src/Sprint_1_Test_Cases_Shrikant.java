@@ -1,9 +1,7 @@
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.HashSet;
 import java.util.List;
-
-import org.junit.Test;
 
 import com.gedcom.file.GedcomFileReader;
 import com.gedcom.models.GedcomResponse;
@@ -13,8 +11,8 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public class Sprint_1_Test_Cases_Shrikant {
 
-	
-	@Test
+
+    @org.junit.jupiter.api.Test
 	public void testprintListOfIndividualsBornBeforeParentsMarriage() {
 		
 		GedcomFileReader gfr = new GedcomFileReader();
@@ -28,12 +26,11 @@ public class Sprint_1_Test_Cases_Shrikant {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
-        
-        gdp.printIndividualsWithAgeLessThan150(indiFamilyResponse.getIndividualList()); 
+        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
 		fail("Not yet implemented");
 	}
-	
-	@Test
+
+    @org.junit.jupiter.api.Test
 	public void testprintIndividualsWithAgeLessThan150() throws ParseException, java.text.ParseException {
 		
 		GedcomFileReader gfr = new GedcomFileReader();
@@ -47,7 +44,6 @@ public class Sprint_1_Test_Cases_Shrikant {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
-        
         gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
 		fail("Not yet implemented");
 	}
