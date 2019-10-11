@@ -1,20 +1,18 @@
-import static org.junit.Assert.fail;
-
 import java.util.HashSet;
 import java.util.List;
-
-import org.junit.Test;
-
 import com.gedcom.file.GedcomFileReader;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.processor.GedcomProcessor;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Sprint_1_Test_Cases_Shrikant {
 
 
-    @Test
+    @org.junit.jupiter.api.Test
 	public void testprintListOfIndividualsBornBeforeParentsMarriage() {
 		
 		GedcomFileReader gfr = new GedcomFileReader();
@@ -32,7 +30,7 @@ public class Sprint_1_Test_Cases_Shrikant {
 		fail("Not yet implemented");
 	}
 
-    @Test
+    @org.junit.jupiter.api.Test
 	public void testprintIndividualsWithAgeLessThan150() throws ParseException, java.text.ParseException {
 		
 		GedcomFileReader gfr = new GedcomFileReader();

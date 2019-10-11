@@ -16,7 +16,7 @@ public class Individual {
     private String death = "";
     private String child = "";
     private String spouse = "";
- private LocalDate deathDate;
+    private LocalDate deathDate;
     private String divorceDate = "";
 
 

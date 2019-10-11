@@ -417,7 +417,7 @@ public class GedcomProcessor {
                         				
                         				if(BirthDate.compareTo(DeathDate)>0)
                         				{
-                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
+                        					System.out.println("ANOMALY: FAMILY: US09 : "+family.getId() + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH");
                         				}
                                 	}
                                 }
@@ -452,7 +452,7 @@ public class GedcomProcessor {
                         				
                         				if(BirthDate.compareTo(DeathDate)>0)
                         				{
-                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
+                        					System.out.println("ANOMALY: FAMILY : US09 "+family.getId() + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH");
                         				}
                                 	}
                                 }
