@@ -14,6 +14,16 @@ public class IndiFamilyResponse {
 
     List<Family> ambiguousFamilyMarrDivList;
 
+    List<Family> ambiguousFamilyMarrBefore14;
+
+    public List<Family> getAmbiguousFamilyMarrBefore14() {
+        return ambiguousFamilyMarrBefore14;
+    }
+
+    public void setAmbiguousFamilyMarrBefore14(List<Family> ambiguousFamilyMarrBefore14) {
+        this.ambiguousFamilyMarrBefore14 = ambiguousFamilyMarrBefore14;
+    }
+
     public List<Family> getAmbiguousFamilyMarrDivList() {
         return ambiguousFamilyMarrDivList;
     }

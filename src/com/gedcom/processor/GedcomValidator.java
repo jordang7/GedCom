@@ -6,6 +6,7 @@ import com.gedcom.models.Individual;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
@@ -156,4 +157,53 @@ public class GedcomValidator {
         }
         return ambiguousIndividuals;
     }
+
+
+    public List<Family> marriageBefore14(List<Individual> individualList, List<Family> familyList) {
+        List<Family> ambiguosFamilyMarList = new ArrayList<>();
+
+        for (Family family : familyList) {
+            String husbandId = family.getHusbandId();
+            String wifeId = family.getWifeId();
+
+            Optional<Individual> husbandOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(husbandId);
+            }).findFirst();
+
+            Optional<Individual> wifeOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(wifeId);
+            }).findFirst();
+            String marriageDate = family.getMarried();
+
+            if (husbandOpt.isPresent() && wifeOpt.isPresent()) {
+
+                String husbandBirthDate = husbandOpt.get().getBirthDay();
+                String wifeBirthDate = wifeOpt.get().getBirthDay();
+
+                LocalDate marrDate = LocalDate.parse(marriageDate, formatter);
+                if (husbandBirthDate != null && !husbandBirthDate.isEmpty()) {
+                    LocalDate husbandBDate = LocalDate.parse(husbandBirthDate, formatter);
+                    Period p = Period.between(husbandBDate, marrDate);
+                    if (p.getYears() <= 14) {
+                        ambiguosFamilyMarList.add(family);
+                        break;
+                    }
+                }
+
+                if (wifeBirthDate != null && !wifeBirthDate.isEmpty()) {
+                    LocalDate wifBdate = LocalDate.parse(husbandBirthDate, formatter);
+                    Period p = Period.between(wifBdate, marrDate);
+                    if (p.getYears() <= 14) {
+                        ambiguosFamilyMarList.add(family);
+                    }
+                }
+            }
+
+
+
+        }
+        return ambiguosFamilyMarList;
+    }
+
+
 }
