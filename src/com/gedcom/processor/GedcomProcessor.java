@@ -4,8 +4,10 @@ import com.gedcom.models.Family;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.models.Individual;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -331,6 +333,54 @@ public class GedcomProcessor {
                 "+");
 
     }
+    
+
+    public void printListOfIndividualsBornBeforeParentsMarriage(List<Family> familyArrayList, List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+
+        for (Family family : familyArrayList) {
+
+        	String mDt = family.getMarried().trim();
+        	SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+        	Date marriageDate = sdf.parse(mDt);
+        	
+        	String childrenString = family.getChildren();
+   
+        	for(Individual indi : individualArrayList)
+        	{
+        		if(indi.getBirthDay() != null && indi.getBirthDay() != "" && indi.getId().indexOf(childrenString) > -1) 
+        		{
+        			String bDt = indi.getBirthDay();
+        			SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
+        			Date birthDate = sdfBdt.parse(bDt);
+        			
+        			if(marriageDate.compareTo(birthDate) > 0)
+        			{
+        				System.out.println("ERROR: " + "INDIVIDUAL: US08: " +indi.getId() + ": WITH BIRTH DATE " + birthDate + " WAS BORN BEFORE PARENTS MARRIAGE, MARRIAGE DATE: " + family.getId() + "----> " + marriageDate);
+        			
+        				
+        			}
+        			
+        		}
+        	}
+        }
+
+    }
+    
+    public void printIndividualsWithAgeLessThan150(List<Individual> individualArrayList) {
+        
+        for (Individual indi : individualArrayList) {
+           /* String child = indi.Child;
+            if(indi.Child.equals(""))
+                child = "N/A";*/
+        	if(indi.getAge() != "" && Integer.parseInt(indi.getAge()) < 150)
+        	{
+        	
+            System.out.println("ERROR: " + "INDIVIDUAL: US07: " +indi.getId() + ": AGE IS LESS THAN 150");
+            
+        	}
+        }
+
+    }
 
     public void printIndividuals(List<Individual> individualArrayList) {
         System.out.println("INDIVIDUAL INFORMATION");
@@ -352,6 +402,42 @@ public class GedcomProcessor {
         System.out.println("+---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
                 "+---------------------+");
 
+    }
+
+    public void printMarriageBeforeDivorceError(IndiFamilyResponse indiFamilyResponse) {
+        for( Family family : indiFamilyResponse.getAmbiguousFamilyMarrDivList()) {
+            System.out.println("ERROR: FAMILY:US04:" +family.getId()+ " DIVORCED " + family.getDivorced()+"BEFORE MARRIAGE" + family.getMarried());
+        }
+    }
+
+    public void printMarriageBeforeDeathError(IndiFamilyResponse indiFamilyResponse) {
+        for (Family family : indiFamilyResponse.getAmbiguosFamilyMarrDeathList()) {
+            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
+            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
+
+            LocalDate wifeDeath = null;
+            if( wife.getDeath() == null || wife.getDeath().equals("")){
+
+            } else {
+                wifeDeath = LocalDate.parse(wife.getDeath(), GedcomValidator.formatter);
+            }
+
+
+            LocalDate husbandDeath = null;
+
+            if( husband.getDeath() == null || husband.getDeath().equals("")){
+
+            } else {
+                husbandDeath = LocalDate.parse(husband.getDeath(), GedcomValidator.formatter);
+            }
+
+            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+                System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER WIFE'S DEATH ( "+wife.getId() +")"+ wife.getDeath());
+            }
+            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+                System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER HUSBANDS'S DEATH (" +husband.getId() +")"+ husband.getDeath());
+            }
+        }
     }
 
     public long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {

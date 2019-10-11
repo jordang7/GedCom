@@ -1,0 +1,36 @@
+SPRINT 1 US04 and US05 (Implemented and tested by Meghana)
+SPRINT 1 US07 and US08 (Implemented and tested by Shrikant)
+
+Output
+INDIVIDUAL INFORMATION
+
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+      I2                    Henry /Smith/          M           2 OCT 1959        60              N                      5 MAR 1960                                      F2
+      I3                   Mary /Poppins/          F                                             Y                                                                      F2
+      I4                     Lexy /Smith/          F           15 JUL 1990        29             Y                                                                      F1
+      I5                    John /Downey/          M           8 JUN 1960        59              Y                                                                      F3
+      I6                   Emily /Downey/          F           12 JAN 2007        12             Y
+      I7                  Joseph /Downey/          M           7 NOV 2009         9              Y
+      I8                      Joe /Smith/          M           24 JUN 2018         1             Y
++---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------+---------------------+
+FAMILY INFORMATION
+
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+    F1                          10 APR 2015                                    I1                                       I4        Lexy /Smith/                I8
+    F2                           8 MAY 1986    8 MAY 1985                       I2            Henry /Smith/             I3        Mary /Poppins/                I1
+    F3                          17 MAY 2005                                    I5            John /Downey/              I3        Mary /Poppins/             I6,I7
++---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+---- GEDCOM ERRORS -----
+ERROR: FAMILY: US05:F2 MARRIED  8 MAY 1986 AFTER HUSBANDS'S DEATH (I2) 5 MAR 1960
+ERROR: FAMILY:US04:F2 DIVORCED  8 MAY 1985BEFORE MARRIAGE 8 MAY 1986
+ERROR: INDIVIDUAL: US07: I2: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US07: I4: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US07: I5: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US07: I6: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US07: I7: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US07: I8: AGE IS LESS THAN 150
+ERROR: INDIVIDUAL: US08: I8: WITH BIRTH DATE Tue Jun 24 00:00:00 EDT 2014 WAS BORN BEFORE PARENTS MARRIAGE, MARRIAGE DATE: F1----> Fri Apr 10 00:00:00 EDT 2015
