@@ -320,6 +320,8 @@ public class GedcomProcessor {
 
             List<Family> ambiguousFamilyMarrBefore14 = gvalidator.marriageBefore14(individualList, familyArrayList);
             response.setAmbiguousFamilyMarrBefore14(ambiguousFamilyMarrBefore14);
+            List<Family> ambiguousFamilyDivBeforeDeath = gvalidator.divorceBeforeDeath(individualList, familyArrayList);
+            response.setAmbiguosFamilyDivorceDeathList(ambiguousFamilyDivBeforeDeath);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -549,12 +551,13 @@ public class GedcomProcessor {
                 Calendar cal_instance = Calendar.getInstance();
                 now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
                 Date currentDate = sdf.parse(now);
-                if(dateToCompare.before(currentDate))
-                    System.out.println("FOUND: " + "INDIVIDUAL: US01: " +indi.getId() + ": BIRTH DATE IS AFTER CURRENTDATE");
+                 if(currentDate.before(dateToCompare))
+                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +indi.getId() + ": BIRTH DATE IS AFTER CURRENTDATE");
 
             }
 
         }
 
-    
+    }
+
 }
