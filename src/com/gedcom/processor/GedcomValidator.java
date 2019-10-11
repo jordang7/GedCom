@@ -124,18 +124,19 @@ public class GedcomValidator {
                         ambiguosbirthBeforeMarriageList.add(family);
 
                     }
-                } else if (wifeBirthDate != null && !wifeBirthDate.isEmpty()) {
+                }
+                if (wifeBirthDate != null && !wifeBirthDate.isEmpty()) {
                     LocalDate wifeBirth = LocalDate.parse(wifeBirthDate, formatter);
-                    if (wifeBirth.isBefore(marrDate)) {
+                    if (wifeBirth.isAfter(marrDate)) {
                         ambiguosbirthBeforeMarriageList.add(family);
                     }
-
                 }
             }
         }
 
         return ambiguosbirthBeforeMarriageList;
     }
+
     //Birth before death
     public List<Individual> birthBeforeDeath(List<Individual> individualList) {
 
@@ -149,7 +150,7 @@ public class GedcomValidator {
                 if (deathDate != null && !deathDate.isEmpty()) {
                 	LocalDate b = LocalDate.parse(birthDate, formatter);
                     LocalDate d = LocalDate.parse(deathDate, formatter);
-                	if(b.compareTo(d) < 0) {
+                	if(b.isAfter(d)) {
                 		ambiguousIndividuals.add(indi);
                 	}
                 }

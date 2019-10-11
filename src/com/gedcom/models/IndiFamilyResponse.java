@@ -7,12 +7,18 @@ import java.util.List;
  */
 public class IndiFamilyResponse {
     List<Family> familyList;
+    
+    List<Individual> ambiguousIndividuals;
 
     List<Individual> individualList;
 
     List<Family> ambiguosFamilyMarrDeathList;
 
     List<Family> ambiguousFamilyMarrDivList;
+    
+    List<Family> ambiguosbirthBeforeMarriageList;
+    
+    
 
     List<Family> ambiguousFamilyMarrBefore14;
 
@@ -44,7 +50,23 @@ public class IndiFamilyResponse {
     public void setAmbiguosFamilyMarrDeathList(List<Family> ambiguosFamilyMarrDeathList) {
         this.ambiguosFamilyMarrDeathList = ambiguosFamilyMarrDeathList;
     }
+    
+    public List<Individual> getAmbiguousIndividuals() {
+        return ambiguousIndividuals;
+    }
 
+    public void setAmbiguousIndividuals(List<Individual> ambiguousIndividuals) {
+        this.ambiguousIndividuals = ambiguousIndividuals;
+    }
+    
+    public List<Family> getAmbiguosbirthBeforeMarriage() {
+        return ambiguosbirthBeforeMarriageList;
+    }
+
+    public void setAmbiguosbirthBeforeMarriage(List<Family> ambiguosbirthBeforeMarriageList) {
+        this.ambiguosbirthBeforeMarriageList = ambiguosbirthBeforeMarriageList;
+    }
+    
     public List<Family> getFamilyList() {
         return familyList;
     }

@@ -34,8 +34,10 @@ public class Application {
         gdp.printMarriageBeforeDeathError(indiFamilyResponse);
         gdp.printMarriageBeforeDivorceError(indiFamilyResponse);
 
-        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
+        gdp.printBirthBeforeDeathError(indiFamilyResponse);
+        gdp.printBirthBeforeMarriageError(indiFamilyResponse);
         gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
         gdp.printMarriageBefore14Error(indiFamilyResponse);
     }
 
