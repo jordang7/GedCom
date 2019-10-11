@@ -42,7 +42,7 @@ public class Application {
         
         gdp.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
         	 gdp.printIndividualsWithDivorceBeforeDeath(indiFamilyResponse);
-       gdp.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getIndividualList());
+       gdp.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList());
     }
 
 }
