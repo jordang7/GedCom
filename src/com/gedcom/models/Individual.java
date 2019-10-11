@@ -16,7 +16,7 @@ public class Individual {
     private String death = "";
     private String child = "";
     private String spouse = "";
- private String deathDate = "";
+ private LocalDate deathDate;
     private String divorceDate = "";
 
 
@@ -106,7 +106,7 @@ public class Individual {
         this.spouse = spouse;
     }
 
-      public String getDeathDate() {
+      public LocalDate getDeathDate() {
         return deathDate;
     }
 
@@ -150,7 +150,7 @@ public class Individual {
         return result;
     }
 
-    public void setDeathDate(String deathDate) {
+    public void setDeathDate(LocalDate deathDate) {
         this.deathDate = deathDate;
     }
 
