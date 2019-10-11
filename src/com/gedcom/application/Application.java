@@ -41,6 +41,8 @@ public class Application {
         gdp.printMarriageBefore14Error(indiFamilyResponse);
         
         gdp.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+        	 gdp.printIndividualsWithDivorceBeforeDeath(indiFamilyResponse);
+       gdp.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getIndividualList());
     }
 
 }
