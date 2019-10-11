@@ -302,6 +302,12 @@ public class GedcomProcessor {
 
             List<Family> ambiguosFamilyMarrDivList = gvalidator.marriageBeforeDivorce(familyArrayList);
             response.setAmbiguousFamilyMarrDivList(ambiguosFamilyMarrDivList);
+            
+            List<Individual> ambiguousIndividuals = gvalidator.birthBeforeDeath(individualList);
+            response.setAmbiguousIndividuals(ambiguousIndividuals);
+            
+            List<Family> ambiguosbirthBeforeMarriageList = gvalidator.birthBeforeMarriage(individualList, familyArrayList);
+            response.setAmbiguosbirthBeforeMarriage(ambiguosbirthBeforeMarriageList);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -439,10 +445,46 @@ public class GedcomProcessor {
             }
         }
     }
+    
+    public void printBirthBeforeDeathError(IndiFamilyResponse indiFamilyResponse) {
+        for( Individual indi : indiFamilyResponse.getAmbiguousIndividuals()) {
+            System.out.println("ERROR: INDIVIDUAL:US03" +indi.getId()+ " BIRTH " + indi.getBirthDay()+"AFTER DEATH" + indi.getDeath());
+        }
+    }
+    public void printBirthBeforeMarriageError(IndiFamilyResponse indiFamilyResponse) {
+        for (Family family : indiFamilyResponse.getAmbiguosbirthBeforeMarriage()) {
+            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
+            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
+
+            LocalDate wifeBirth = null;
+            if( wife.getBirthDay() == null || wife.getBirthDay().equals("")){
+
+            } else {
+                wifeBirth = LocalDate.parse(wife.getBirthDay(), GedcomValidator.formatter);
+            }
+
+
+            LocalDate husbandBirth = null;
+
+            if( husband.getBirthDay() == null || husband.getBirthDay().equals("")){
+
+            } else {
+            	husbandBirth = LocalDate.parse(husband.getBirthDay(), GedcomValidator.formatter);
+            }
+
+            if( wifeBirth != null && wifeBirth.isAfter(LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+                System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH ( "+wife.getId() +")"+ wife.getBirthDay());
+            }
+            if ( husbandBirth != null && husbandBirth.isAfter( LocalDate.parse(family.getMarried(), GedcomValidator.formatter)) ){
+                System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH (" +husband.getId() +")"+ husband.getBirthDay());
+            }
+        }
+    }
 
     public long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
         //return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
         return diffInMillies;
     }
+    
 }

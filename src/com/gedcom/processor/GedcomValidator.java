@@ -148,7 +148,7 @@ public class GedcomValidator {
                 if (deathDate != null && !deathDate.isEmpty()) {
                 	LocalDate b = LocalDate.parse(birthDate, formatter);
                     LocalDate d = LocalDate.parse(deathDate, formatter);
-                	if(b.compareTo(d) < 0) {
+                	if(b.isAfter(d)) {
                 		ambiguousIndividuals.add(indi);
                 	}
                 }
