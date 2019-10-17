@@ -107,6 +107,12 @@ public class Individual {
         this.deathDate = Optional.of(deathDate);
     }
 
+    public String getLastName() {
+        String[] names = getName().split(" ");
+        int index = names.length - 1;
+        return names[index];
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
