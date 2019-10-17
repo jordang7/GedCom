@@ -1,14 +1,17 @@
 package com.gedcom.models;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 public class Family {
     private String id;
-    private String married = "";
+    private Optional<LocalDate> married = Optional.empty();
     private String husbandId = "";
     private String husbandName = "";
     private String wifeId = "";
     private String wifeName = "";
     private String children = "";
-    private String divorced = "";
+    private Optional<LocalDate> divorced = Optional.empty();
 
     public Family(String id) {
         this.id = id;
@@ -23,12 +26,12 @@ public class Family {
         this.id = id;
     }
 
-    public String getMarried() {
+    public Optional<LocalDate> getMarried() {
         return married;
     }
 
-    public void setMarried(String married) {
-        this.married = married;
+    public void setMarried(LocalDate married) {
+        this.married = Optional.of(married);
     }
 
     public String getHusbandId() {
@@ -71,12 +74,12 @@ public class Family {
         this.children = children;
     }
 
-    public String getDivorced() {
+    public Optional<LocalDate> getDivorced() {
         return divorced;
     }
 
-    public void setDivorced(String divorced) {
-        this.divorced = divorced;
+    public void setDivorced(LocalDate divorced) {
+        this.divorced = Optional.of(divorced);
     }
 
     @Override
@@ -86,7 +89,7 @@ public class Family {
 
         Family family = (Family) o;
 
-        if (!getId().equals(family.getId())) return false;
+        if (getId() != null ? !getId().equals(family.getId()) : family.getId() != null) return false;
         if (getMarried() != null ? !getMarried().equals(family.getMarried()) : family.getMarried() != null)
             return false;
         if (getHusbandId() != null ? !getHusbandId().equals(family.getHusbandId()) : family.getHusbandId() != null)
@@ -103,7 +106,7 @@ public class Family {
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
+        int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getMarried() != null ? getMarried().hashCode() : 0);
         result = 31 * result + (getHusbandId() != null ? getHusbandId().hashCode() : 0);
         result = 31 * result + (getHusbandName() != null ? getHusbandName().hashCode() : 0);

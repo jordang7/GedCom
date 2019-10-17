@@ -4,8 +4,10 @@ package com.gedcom.processor;
 import com.gedcom.models.Family;
 import com.gedcom.models.Individual;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,12 +32,12 @@ class GedComValidatorTest {
         assertEquals( 0, ambiguousFamily.size());
 
         Family fam1 = new Family("id1");
-        fam1.setDivorced(" 10 MAY 2018");
-        fam1.setMarried(" 02 MAY 2018");
+        fam1.setDivorced(LocalDate.parse(" 10 MAY 2018", GedcomValidator.formatter));
+        fam1.setMarried(LocalDate.parse(" 02 MAY 2018", GedcomValidator.formatter));
 
         Family fam2 = new Family("id2");
-        fam2.setDivorced(" 10 MAY 2018");
-        fam2.setMarried(" 10 MAY 2019");
+        fam2.setDivorced(LocalDate.parse(" 10 MAY 2018",GedcomValidator.formatter));
+        fam2.setMarried(LocalDate.parse(" 10 MAY 2019",GedcomValidator.formatter));
 
         List<Family> families = new ArrayList<>();
         families.add(fam1);
@@ -53,18 +55,18 @@ class GedComValidatorTest {
         Family fam1 = new Family("id1");
         fam1.setHusbandId("H1");
         fam1.setWifeId("W1");
-        fam1.setMarried(" 5 MAY 2019");
+        fam1.setMarried(LocalDate.parse(" 5 MAY 2019",GedcomValidator.formatter));
 
         List<Family> familyList = new ArrayList<>();
         familyList.add(fam1);
         List<Individual> individualList = new ArrayList<>();
 
         Individual h1 = new Individual("H1");
-        h1.setDeath(" 5 OCT 2018");
+        h1.setDeathDate(LocalDate.parse(" 5 OCT 2018",GedcomValidator.formatter));
         individualList.add(h1);
 
         Individual w1 = new Individual("W1");
-        w1.setDeath(" 4 OCT 2018");
+        w1.setDeathDate(LocalDate.parse(" 4 OCT 2018",GedcomValidator.formatter));
         individualList.add(w1);
         List<Family> ambiguousFamily1 = validator.marriageBeforeDeath(individualList,familyList);
         assertEquals( 1, ambiguousFamily1.size());
@@ -77,18 +79,18 @@ class GedComValidatorTest {
         Family fam1 = new Family("id1");
         fam1.setHusbandId("H1");
         fam1.setWifeId("W1");
-        fam1.setMarried(" 5 MAY 2010");
+        fam1.setMarried( LocalDate.parse(" 5 MAY 2010", GedcomValidator.formatter));
 
         List<Family> familyList = new ArrayList<>();
         familyList.add(fam1);
         List<Individual> individualList = new ArrayList<>();
 
         Individual h1 = new Individual("H1");
-        h1.setBirthDay(" 5 OCT 2018");
+        h1.setBdate(LocalDate.parse(" 5 OCT 2018", GedcomValidator.formatter));
         individualList.add(h1);
 
         Individual w1 = new Individual("W1");
-        w1.setBirthDay(" 4 OCT 2009");
+        w1.setBdate(LocalDate.parse(" 4 OCT 2009", GedcomValidator.formatter));
         individualList.add(w1);
         List<Family> ambiguousFamily1 = validator.birthBeforeMarriage(individualList,familyList);
         assertEquals( 1, ambiguousFamily1.size());
@@ -101,13 +103,13 @@ class GedComValidatorTest {
         List<Individual> individualList = new ArrayList<>();
 
         Individual h1 = new Individual("H1");
-        h1.setBirthDay(" 5 OCT 2018");
-        h1.setDeath(" 4 OCT 2018");
+        h1.setBdate(LocalDate.parse(" 5 OCT 2018", GedcomValidator.formatter));
+        h1.setDeathDate(LocalDate.parse( " 4 OCT 2018", GedcomValidator.formatter));
         individualList.add(h1);
 
         Individual w1 = new Individual("W1");
-        w1.setBirthDay(" 5 OCT 2018");
-        w1.setDeath(" 6 OCT 2018");
+        w1.setBdate(LocalDate.parse(" 5 OCT 2018", GedcomValidator.formatter));
+        w1.setDeathDate(LocalDate.parse(" 6 OCT 2018", GedcomValidator.formatter));
         
         individualList.add(w1);
         List<Individual> ambiguousFamily1 = validator.birthBeforeDeath(individualList);
