@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="197e66bd-9dff-4aca-8584-8c13f0834727" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gedcom/models/FamilyWithChildrenMarriedToEachOther.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gedcom/printer/GedcomPrinter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gedcomfiles/Test.ged" afterPath="$PROJECT_DIR$/gedcomfiles/Test.ged" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sprint_1_Test_Cases_Shrikant.java" afterPath="$PROJECT_DIR$/src/Sprint_1_Test_Cases_Shrikant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/application/Application.java" afterPath="$PROJECT_DIR$/src/com/gedcom/application/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/models/Family.java" afterPath="$PROJECT_DIR$/src/com/gedcom/models/Family.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/models/IndiFamilyResponse.java" afterPath="$PROJECT_DIR$/src/com/gedcom/models/IndiFamilyResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/models/Individual.java" afterPath="$PROJECT_DIR$/src/com/gedcom/models/Individual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomProcessor.java" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SprintEvidence/Sprint2Evidence.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Sprint1TestEvidence" afterPath="$PROJECT_DIR$/SprintEvidence/Sprint1TestEvidence" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GedcomValidator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GedcomValidator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
@@ -73,25 +63,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FamilyWithChildrenMarriedToEachOther.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/gedcom/models/FamilyWithChildrenMarriedToEachOther.java">
+      <file leaf-file-name="Sprint2Evidence.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SprintEvidence/Sprint2Evidence.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-              <folding>
-                <element signature="e#1317#1318#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
-                <element signature="e#1390#1391#0" expanded="true" />
-                <element signature="e#1426#1427#0" expanded="true" />
-                <element signature="e#1464#1465#0" expanded="true" />
-                <element signature="e#1494#1495#0" expanded="true" />
-                <element signature="e#1544#1545#0" expanded="true" />
-                <element signature="e#1582#1583#0" expanded="true" />
-                <element signature="e#1617#1618#0" expanded="true" />
-                <element signature="e#1644#1645#0" expanded="true" />
-                <element signature="e#1688#1689#0" expanded="true" />
-                <element signature="e#1720#1721#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="602">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,6 +78,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sprint1TestEvidence" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SprintEvidence/Sprint1TestEvidence">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -150,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>vali</find>
       <find>childrenString</find>
       <find>1970</find>
       <find>1700</find>
@@ -180,6 +166,7 @@
       <find>setAmb</find>
       <find>Sribha</find>
       <find>US08</find>
+      <find>marriageBeforeDe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/Sprint_1_Test_Cases_Shrikant.java" />
         <option value="$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java" />
         <option value="$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java" />
+        <option value="$PROJECT_DIR$/SprintEvidence/Sprint2Evidence.txt" />
       </list>
     </option>
   </component>
@@ -365,6 +353,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="SprintEvidence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GedCom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GedCom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="gedcomfiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -388,6 +390,9 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.gedcom.util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IntellijWorksplace\GedCom\SprintEvidence" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -896,7 +901,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26304108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -978,63 +983,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/time/LocalDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5015">
-          <caret line="399" column="0" lean-forward="false" selection-start-line="399" selection-start-column="0" selection-end-line="399" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#92274#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#7027#7028#0" expanded="false" />
-            <element signature="e#7080#7081#0" expanded="false" />
-            <element signature="e#7670#7671#0" expanded="false" />
-            <element signature="e#7716#7717#0" expanded="false" />
-            <element signature="e#15963#15964#0" expanded="false" />
-            <element signature="e#16031#16032#0" expanded="false" />
-            <element signature="e#20930#20931#0" expanded="false" />
-            <element signature="e#20993#20994#0" expanded="false" />
-            <element signature="e#22235#22236#0" expanded="false" />
-            <element signature="e#22297#22298#0" expanded="false" />
-            <element signature="e#29235#29236#0" expanded="false" />
-            <element signature="e#29282#29283#0" expanded="false" />
-            <element signature="e#29884#29885#0" expanded="false" />
-            <element signature="e#29929#29930#0" expanded="false" />
-            <element signature="e#30955#30956#0" expanded="false" />
-            <element signature="e#31008#31009#0" expanded="false" />
-            <element signature="e#31376#31377#0" expanded="false" />
-            <element signature="e#31403#31404#0" expanded="false" />
-            <element signature="e#31780#31781#0" expanded="false" />
-            <element signature="e#31808#31809#0" expanded="false" />
-            <element signature="e#32272#32273#0" expanded="false" />
-            <element signature="e#32310#32311#0" expanded="false" />
-            <element signature="e#32541#32542#0" expanded="false" />
-            <element signature="e#32567#32568#0" expanded="false" />
-            <element signature="e#32818#32819#0" expanded="false" />
-            <element signature="e#32890#32891#0" expanded="false" />
-            <element signature="e#34633#34634#0" expanded="false" />
-            <element signature="e#34695#34696#0" expanded="false" />
-            <element signature="e#35573#35574#0" expanded="false" />
-            <element signature="e#35622#35623#0" expanded="false" />
-            <element signature="e#59603#59604#0" expanded="false" />
-            <element signature="e#59669#59670#0" expanded="false" />
-            <element signature="e#70372#70373#0" expanded="false" />
-            <element signature="e#70437#70438#0" expanded="false" />
-            <element signature="e#73879#73880#0" expanded="false" />
-            <element signature="e#73949#73950#0" expanded="false" />
-            <element signature="e#77790#77791#0" expanded="false" />
-            <element signature="e#77841#77842#0" expanded="false" />
-            <element signature="e#78587#78588#0" expanded="false" />
-            <element signature="e#78644#78645#0" expanded="false" />
-            <element signature="e#79467#79468#0" expanded="false" />
-            <element signature="e#79532#79533#0" expanded="false" />
-            <element signature="e#81480#81481#0" expanded="false" />
-            <element signature="e#81545#81546#0" expanded="false" />
-            <element signature="e#91501#91502#0" expanded="false" />
-            <element signature="e#91558#91559#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gedcom/models/Family.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1265,14 +1213,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/gedcom/util/DateUtil.java" />
     <entry file="file://$PROJECT_DIR$/src/com/gedcom/util/GedComUtilTest.java" />
     <entry file="file://$PROJECT_DIR$/src/com/gedcom/util/GedComUtil.java" />
-    <entry file="file://$PROJECT_DIR$/Sprint1TestEvidence">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="69" lean-forward="false" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gedcom/models/GedcomResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1423,6 +1363,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SprintEvidence/Sprint1TestEvidence">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SprintEvidence/Sprint2Evidence.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

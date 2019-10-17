@@ -1,0 +1,71 @@
+SPRINT 1 US04 and US05 (Implemented and tested by Meghana)
+SPRINT 1 US07 and US08 (Implemented and tested by Shrikant)
+SPRINT 1 US10 (Implemented and tested by Meghana) ---- for Parth
+SPRINT 1 US09 (Implemented and tested by Shrikanth) ---- for Parth
+SPRINT 1 US02 and US03 (Implemented and tested by Jordan)
+SPRINT 1 US01 and US06 (Implemented and tested by Jinal)
+
+SPRINT 2 US16 and US18 (Implmented and tested by Meghana)
+
+INDIVIDUAL INFORMATION
+
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+   I2US09                    White /Smith/          F          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09
+   I1US09                    Black /Smith/          M          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09
+   I3US09                     Gray /Smith/          M          2 Oct 2004        15       Y                        -NA-                                              F1US09
+      I2                    Henry /Smith/          M          2 Oct 1959       -19       N                     5 Mar 1940                                                  F2
+      I3                   Mary /Poppins/          F                -NA-         0       Y                        -NA-                                                  F2
+      I4                     Lexy /Smith/          F          15 Jul 1990        29       Y                        -NA-                                                  F1
+      I5                    John /Downey/          M          8 Jun 1960        59       Y                        -NA-                                                  F3
+      I6                   Emily /Downey/          F          12 Jan 2007        12       Y                        -NA-
+      I7                  Joseph /Downey/          M          7 Nov 2009         9       Y                        -NA-
+      I8                      Joe /Smith/          M          24 Jun 2014         5       Y                        -NA-
+   I1US07                    Niles /Smith/          M          10 Feb 1800       219       Y                        -NA-
+   I1US10                     Alex /Smith/          M          10 Feb 1989        30       Y                        -NA-                                              F1US10
+   I1US02                  Frasier /Smith/          M          10 Feb 1800       219       Y                        -NA-
+   I1US01                   Martin /Smith/          M          10 Feb 2022        -2       Y                        -NA-
+   I2US02                    Maris /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US02
+   I2US10                   Lilith /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US10
+   I1US16                        Sri /Mad/          M          10 Feb 1989        30       Y                        -NA-                                              F1US16
+   I2US16                        Meg /Mad/          F          10 Feb 1989        30       Y                        -NA-                                              F1US16
+   I3US16                        Nid /Mad/          M          10 Feb 2015         4       Y                        -NA-
+   I4US16                       Bhar /Dam/          M          10 Feb 2012         7       Y                        -NA-
+   I1US18                   Bharath /Bhat/          M          10 Feb 1953        66       Y                        -NA-                                              F1US18
+   I2US18                  Srinidhi /Bhat/          F          10 Feb 1954        65       Y                        -NA-                                              F1US18
+   I3US18                    Sribha /Bhat/          M          10 Feb 1970        49       Y                        -NA-
+   I4US18                    Bharsri /Dam/          F          10 Feb 1972        47       Y                        -NA-
++---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------+---------------------+
+FAMILY INFORMATION
+
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+    F1                          10 Apr 2015         -NA-                       I1                             I4        Lexy /Smith/                I8
+    F2                           8 May 1986   8 May 1985                       I2            Henry /Smith/             I3        Mary /Poppins/                I1
+    F3                          17 May 2005         -NA-                       I5            John /Downey/             I3        Mary /Poppins/             I6,I7
+ F1US10                          10 Apr 1999         -NA-                   I1US10            Alex /Smith/         I2US10        Lilith /Smith/
+ F1US02                          10 Apr 1988         -NA-                   I1US02            Frasier /Smith/         I2US02        Maris /Smith/
+ F1US09                          10 Apr 1988         -NA-                   I1US09            Black /Smith/         I2US09        White /Smith/            I3US09
+ F1US16                          10 Apr 2010         -NA-                   I1US16            Sri /Mad/         I2US16        Meg /Mad/           I3US16,I4US16
+ F1US18                          10 Apr 1968         -NA-                   I1US18            Bharath /Bhat/         I2US18        Srinidhi /Bhat/           I3US18,I4US18
+ F2US18                          10 Apr 2010         -NA-                   I3US18            Sribha /Bhat/         I4US18        Bharsri /Dam/
++---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+---- GEDCOM ERRORS -----
+ERROR: INDIVIDUAL: US01: I1US01: BIRTH DATE IS AFTER CURRENTDATE
+ERROR: FAMILY: US02:F1US02 MARRIED 10 Apr 1988 BEFORE WIFE'S BIRTH ( I2US02) 10 Feb 1989
+ERROR: INDIVIDUAL:US03 I2 BIRTH 2 Oct 1959 AFTER DEATH 5 Mar 1940
+ERROR: FAMILY:US04:F2 DIVORCED 8 May 1985 BEFORE MARRIAGE8 May 1986
+ERROR: FAMILY: US05:F2 MARRIED 8 May 1986 AFTER HUSBANDS'S DEATH (I2)5 Mar 1940
+ERROR: FAMILY: US06:F2 Divorced 8 May 1985 AFTER HUSBANDS'S DEATH (I2) 5 Mar 1940
+ERROR: INDIVIDUAL : US07 :I1US07: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ERROR: INDIVIDUAL : US07 :I1US02: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ANOMALY: FAMILY : US08: F1: CHILD  Joe /Smith/BORN I8 Before MARRIAGE: 10 Apr 2015
+ANOMALY: FAMILY : US08: F1US16: CHILD  Lexy /Smith/BORN I4 Before MARRIAGE: 10 Apr 2010
+ANOMALY: FAMILY : US09 F1US09I3US09 BORN AFTER PARENT'S I2US09 DEATH
+ANOMALY: FAMILY: US09 : F1US09I3US09 BORN AFTER PARENT'S I1US09 DEATH
+ANOMALY: FAMILY :US10:F1US10 WIFE AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ANOMALY: FAMILY :US10:F1US10 HUSBAND AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ANOMALY: FAMILY: US16 F1US16 MALE /Dam/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Mad/
+ANOMALY : FAMILY : US18 F1US18 SIBLINGS  Sribha /Bhat/,  Bharsri /Dam/ ARE MARRIED TO EACH OTHER
