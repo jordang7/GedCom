@@ -1,9 +1,6 @@
 package com.gedcom.processor;
 
-import com.gedcom.models.Family;
-import com.gedcom.models.GedcomResponse;
-import com.gedcom.models.IndiFamilyResponse;
-import com.gedcom.models.Individual;
+import com.gedcom.models.*;
 //import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import java.text.ParseException;
@@ -14,6 +11,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.gedcom.processor.GedcomValidator.formatter;
 
@@ -83,231 +81,14 @@ public class GedcomProcessor {
     }
 
     public IndiFamilyResponse createIndiAndFamilyList(List<String> validLines) {
-        IndiFamilyResponse response = new IndiFamilyResponse();
-        Individual indi = null;
-        Family family = null;
-        boolean indiStarted = false;
-        boolean isBirthDay = false;
-        boolean isDeathDay = false;
-        boolean familyStarted = false;
-        boolean isMarried = false;
-        boolean isDivorced = false;
+
         List<Individual> individualList = new ArrayList<>();
         List<Family> familyArrayList = new ArrayList<>();
-
+        IndiFamilyResponse response = new IndiFamilyResponse();
         try {
-            for (String gedcomLine : validLines) {
-                //    System.out.println("-->" + gedcomLine);
-                String parsedLine;
-                //  String gedComSplit[] = gedcomLine.split(" ");
 
+            generateIndividualFamilyObjects(validLines, individualList, familyArrayList);
 
-                String[] splitted = gedcomLine.split(" ");
-                if (splitted[1].contentEquals("BIRT")) {
-                    isBirthDay = true;
-                }
-
-                if (splitted[1].contentEquals("DEAT") && splitted[2].contentEquals("Y")) {
-                    isDeathDay = true;
-                }
-
-                if (splitted[1].contentEquals("MARR")) {
-                    isMarried = true;
-                }
-                if (splitted[1].contentEquals("DIV")) {
-                    isDivorced = true;
-                }
-
-
-                if (splitted.length > 2) {
-                    if (splitted[2].contentEquals("INDI")) {
-                        indi = new Individual(splitted[1]);
-
-                        indiStarted = true;
-                    } else {
-                        if (indiStarted == true) {
-                            if (splitted[1].contentEquals("NAME")) {
-
-                                for (int j = 2; j < splitted.length; j++) {
-                                    indi.setName(indi.getName() + " " + splitted[j]);
-                                }
-
-                            }
-
-                            if (splitted[1].contentEquals("SEX")) {
-                                indi.setGender(splitted[2]);
-                            }
-
-                            if (splitted[1].contentEquals("DATE")) {
-                                if (isBirthDay == true) {
-                                    for (int j = 2; j < splitted.length; j++) {
-                                        indi.setBirthDay(indi.getBirthDay() + " " + splitted[j]);
-                                    }
-                                    isBirthDay = false;
-
-                                    Date date = new Date();
-
-                                    Date date1 = new SimpleDateFormat(" dd MMM yyyy").parse(indi.getBirthDay());
-                                    java.util.Date date2 = new java.util.Date();
-
-                                    int age = 0;
-                                    if( indi.getDeath() !=null && indi.getDeath() != ""){
-                                        age = Period.between(LocalDate.parse(indi.getBirthDay(), formatter), LocalDate.parse(indi.getDeath(), formatter)).getYears();
-                                    }
-
-                                    age = Period.between(LocalDate.parse(indi.getBirthDay(), formatter), LocalDate.now()).getYears();
-                                   /* long time = getDateDiff(date1, date2, TimeUnit.MINUTES);
-                                    Calendar c = Calendar.getInstance();
-                                    c.setTimeInMillis(time);
-                                    int mYear = c.get(Calendar.YEAR) - 1970;*/
-                                    indi.setAge(age);
-                                }
-                                if (isDeathDay == true) {
-                                    for (int j = 2; j < splitted.length; j++) {
-                                        indi.setDeath(indi.getDeath() + " " + splitted[j]);
-                                    }
-                                    isDeathDay = false;
-                                }
-                            }
-
-                            if (splitted[1].contentEquals("CHIL")) {
-                                indi.setChild(splitted[2]);
-                            }
-
-                            if (splitted[1].contentEquals("CHIL")) {
-                                indi.setChild(splitted[2]);
-                            }
-
-                            if ((splitted[1].contentEquals("FAMC") || splitted[1].contentEquals("FAMS")) && indiStarted == true) {
-                                if (splitted[1].contentEquals("FAMS")) {
-                                    indi.setChild(splitted[2]);
-                                }
-
-                                individualList.add(indi);
-                                indiStarted = false;
-                            }
-                        }
-
-
-                    }
-
-                    // String[] splitted = gedcomLine.split(" ");
-
-
-                    if (splitted[2].contentEquals("FAM") && !familyStarted)  {
-                        family = new Family(splitted[1]);
-
-
-                        familyStarted = true;
-                    } else {
-//                    	System.out.println(familyStarted);
-                        if (familyStarted == true) {
-                            if (splitted[1].contentEquals("HUSB")) {
-                                family.setHusbandId(splitted[2]);
-//                                System.out.println(family.getId() + "husb");
-                            }
-
-
-                            if (splitted[1].contentEquals("DATE")) {
-                                if (isMarried == true) {
-                                    for (int j = 2; j < splitted.length; j++) {
-                                        family.setMarried(family.getMarried() + " " + splitted[j]);
-                                    }
-                                    isMarried = false;
-                                }
-//                                System.out.println(family.getId() + "Date1");
-                            }
-                            if (splitted[1].contentEquals("DATE")) {
-                                if (isDivorced == true) {
-                                    for (int j = 2; j < splitted.length; j++) {
-                                        family.setDivorced(family.getDivorced() + " " + splitted[j]);
-                                    }
-                                    isDivorced = false;
-                                }
-//                                System.out.println(family.getId() + "date2");
-                            }
-                            if (splitted[1].contentEquals("WIFE")) {
-                                family.setWifeId(splitted[2]);
-//                                System.out.println(family.getId() + "wife");
-                            }
-
-                            if (splitted[1].contentEquals("CHIL")) {
-                                family.setChildren((family.getChildren().equals("") ? family.getChildren() : family.getChildren() + ",") + splitted[2]);
-//                                System.out.println(family.getId() + "chil");
-                            }
-
-
-                            if (splitted[0].contentEquals("0") && familyStarted) {
-//                                if (splitted[2] == "N") {
-//                                    family.setDivorced("YES");
-//                                }
-//
-//                                if (splitted[2] == "Y") {
-//                                    family.setDivorced("NA");
-//                                }
-//                                System.out.println(family.getId() + "end");
-                                familyArrayList.add(family);
-
-                                if(splitted.length < 2)
-                                {
-                                    if(!splitted[1].contentEquals("FAM") || !splitted[1].contentEquals("MARR"))
-                                    {
-                                        familyStarted = false;
-//                                		System.out.println(familyStarted);
-//                                		System.out.println(family.getId() + "end1");
-                                    }
-                                }
-                                else
-                                {
-                                    family = new Family(splitted[1]);
-//                                	System.out.println(family.getId() + "new Begins");
-                                }
-
-                            }
-
-                        }
-
-
-                    }
-
-
-                    if (splitted[1].contentEquals("BIRT")) {
-                        isBirthDay = true;
-                    }
-
-                    if (splitted[1].contentEquals("DEAT") && splitted[2].contentEquals("Y")) {
-                        isDeathDay = true;
-                        indi.setAlive("N");
-                    }
-                }
-                else
-                {
-                    if(splitted[0].contentEquals("0") && splitted[1].contentEquals("TRLR"))
-                    {
-                        familyArrayList.add(family);
-                        familyStarted = false;
-//                		System.out.println(familyStarted);
-//                		System.out.println(family.getId() + "end1");
-                    }
-                }
-
-            }
-
-
-            for (int i = 0; i < familyArrayList.size(); i++) {
-                for (int j = 0; j < individualList.size(); j++) {
-                    if (familyArrayList.get(i).getHusbandId().equals(individualList.get(j).getId())) {
-                        familyArrayList.get(i).setHusbandName(individualList.get(j).getName());
-                    }
-
-                    if (familyArrayList.get(i).getWifeId().equals(individualList.get(j).getId())) {
-                        familyArrayList.get(i).setWifeName(individualList.get(j).getName());
-                    }
-                }
-
-                // System.out.println(familyArrayList.get(i).wifeName);
-
-            }
             GedcomValidator gvalidator = new GedcomValidator();
             List<Family> ambiguosFamilyMarrDeathList = gvalidator.marriageBeforeDeath(individualList, familyArrayList);
             response.setAmbiguosFamilyMarrDeathList(ambiguosFamilyMarrDeathList);
@@ -323,8 +104,15 @@ public class GedcomProcessor {
 
             List<Family> ambiguousFamilyMarrBefore14 = gvalidator.marriageBefore14(individualList, familyArrayList);
             response.setAmbiguousFamilyMarrBefore14(ambiguousFamilyMarrBefore14);
+
             List<Family> ambiguousFamilyDivBeforeDeath = gvalidator.divorceBeforeDeath(individualList, familyArrayList);
             response.setAmbiguosFamilyDivorceDeathList(ambiguousFamilyDivBeforeDeath);
+
+            List<Family> ambiguousMaleLastNames = gvalidator.maleNamesSameCheck(familyArrayList);
+            response.setAmbiguousMaleLastNames(ambiguousMaleLastNames);
+
+            List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList = gvalidator.siblingsShouldNotMarry(familyArrayList);
+            response.setAmbiguousSblingsMarriageList(ambiguousSblingsMarriageList);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -337,383 +125,247 @@ public class GedcomProcessor {
 
     }
 
-    public void printFamily(List<Family> familyArrayList) {
-        System.out.println("FAMILY INFORMATION");
-        System.out.println();
-        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
-                "+");
-        System.out.println("|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |");
-        System.out.println("+---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
-                "+");
-
-        for (Family family : familyArrayList) {
-            System.out.format(" %5s       %30s   %10s               %10s           %5s        %7s       %7s           %7s      ",
-                    family.getId(), family.getMarried(), family.getDivorced(), family.getHusbandId(), family.getHusbandName(), family.getWifeId(), family.getWifeName(), family.getChildren());
-            System.out.println();
-        }
-        System.out.println("+---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
-                "+");
-
-    }
+    private void generateIndividualFamilyObjects(List<String> validLines, List<Individual> individualList, List<Family> familyArrayList) {
+        Individual indi = null;
+        Family family = null;
+        boolean indiStarted = false;
+        boolean isBirthDay = false;
+        boolean isDeathDay = false;
+        boolean familyStarted = false;
+        boolean isMarried = false;
+        boolean isDivorced = false;
+        for (String gedcomLine : validLines) {
+            //    System.out.println("-->" + gedcomLine);
+            String parsedLine;
+            //  String gedComSplit[] = gedcomLine.split(" ");
 
 
-    public void printListOfIndividualsBornBeforeParentsMarriage(List<Family> familyArrayList, List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+            String[] splitted = gedcomLine.split(" ");
+            if (splitted[1].contentEquals("BIRT")) {
+                isBirthDay = true;
+            }
 
-        for (Family family : familyArrayList) {
+            if (splitted[1].contentEquals("DEAT") && splitted[2].contentEquals("Y")) {
+                isDeathDay = true;
+            }
 
-            String mDt = family.getMarried().trim();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.US);
-            Date marriageDate = sdf.parse(mDt);
+            if (splitted[1].contentEquals("MARR")) {
+                isMarried = true;
+            }
+            if (splitted[1].contentEquals("DIV")) {
+                isDivorced = true;
+            }
 
-            String childrenString = family.getChildren();
 
-            for(Individual indi : individualArrayList)
-            {
-                if(indi.getBirthDay() != null && indi.getBirthDay() != "" && childrenString.contains( indi.getId()))
-                {
-                    String bDt = indi.getBirthDay();
-                    SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
-                    Date birthDate = sdfBdt.parse(bDt);
+            if (splitted.length > 2) {
+                if (splitted[2].contentEquals("INDI")) {
+                    indi = new Individual(splitted[1]);
 
-                    if(marriageDate.compareTo(birthDate) > 0)
-                    {
-                        System.out.println("ANOMALY: " + "FAMILY : US08: " +family.getId() + ": CHILD "+ indi.getName() +"BORN"  + indi.getId() + "Before MARRIAGE: "+ family.getMarried());
+                    indiStarted = true;
+                } else {
+                    if (indiStarted == true) {
+                        if (splitted[1].contentEquals("NAME")) {
 
+                            for (int j = 2; j < splitted.length; j++) {
+                                indi.setName(indi.getName() + " " + splitted[j]);
+                            }
+
+                        }
+
+                        if (splitted[1].contentEquals("SEX")) {
+                            indi.setGender(splitted[2]);
+                        }
+
+                        if (splitted[1].contentEquals("DATE")) {
+                            if (isBirthDay == true) {
+                                StringBuilder birthDay = new StringBuilder();
+                                for (int j = 2; j < splitted.length; j++) {
+                                    birthDay.append(splitted[j] + " ");
+
+                                }
+                                indi.setBdate( Optional.of(LocalDate.parse(birthDay, GedcomValidator.formatter)));
+                                isBirthDay = false;
+
+                                int age = 0;
+
+                                if( indi.getDeathDate().isPresent() ){
+                                    age = Period.between(indi.getBdate().get(), indi.getDeathDate().get()).getYears();
+                                } else {
+                                    age = Period.between(indi.getBdate().get(), LocalDate.now()).getYears();
+                                }
+                                indi.setAge(age);
+                            }
+                            if (isDeathDay == true) {
+                                StringBuilder deathDay = new StringBuilder();
+
+                                for (int j = 2; j < splitted.length; j++) {
+                                    deathDay.append(splitted[j] + " ");
+
+                                }
+                                indi.setDeathDate( Optional.of( LocalDate.parse( deathDay.toString(), GedcomValidator.formatter) ));
+                                //indi.setDeath(indi.getDeath() + " " + splitted[j]);
+                                isDeathDay = false;
+
+                                int age = 0;
+                                if( indi.getDeathDate().isPresent() ){
+                                    age = Period.between(indi.getBdate().get(), indi.getDeathDate().get()).getYears();
+                                }
+                                indi.setAge(age);
+                            }
+                        }
+
+                        if (splitted[1].contentEquals("CHIL")) {
+                            indi.setChild(splitted[2]);
+                        }
+
+                        if (splitted[1].contentEquals("CHIL")) {
+                            indi.setChild(splitted[2]);
+                        }
+
+                        if ((splitted[1].contentEquals("FAMC") || splitted[1].contentEquals("FAMS")) && indiStarted == true) {
+                            if (splitted[1].contentEquals("FAMS")) {
+                                indi.setChild(splitted[2]);
+                            }
+
+                            individualList.add(indi);
+                            indiStarted = false;
+                        }
+                    }
+
+
+                }
+
+                // String[] splitted = gedcomLine.split(" ");
+
+
+                if (splitted[2].contentEquals("FAM") && !familyStarted)  {
+                    family = new Family(splitted[1]);
+
+
+                    familyStarted = true;
+                } else {
+//                    	System.out.println(familyStarted);
+                    if (familyStarted == true) {
+                        if (splitted[1].contentEquals("HUSB")) {
+                            family.setHusbandId(splitted[2]);
+
+                            family.setHusbandIndi( individualList.stream().filter( ind -> ind.getId().equals(splitted[2])).findFirst());
+
+//                                System.out.println(family.getId() + "husb");
+                        }
+
+
+                        if (splitted[1].contentEquals("DATE")) {
+                            if (isMarried == true) {
+                                StringBuilder marridDate = new StringBuilder();
+                                for (int j = 2; j < splitted.length; j++) {
+                                    marridDate.append( splitted[j] + " ");
+
+                                }
+                                family.setMarried(LocalDate.parse(marridDate.toString(), GedcomValidator.formatter));
+                                isMarried = false;
+                            }
+//                                System.out.println(family.getId() + "Date1");
+                        }
+                        if (splitted[1].contentEquals("DATE")) {
+                            if (isDivorced == true) {
+                                StringBuilder divorceDate = new StringBuilder();
+                                for (int j = 2; j < splitted.length; j++) {
+                                    divorceDate.append( splitted[j] + " ");
+                                }
+                                family.setDivorced(LocalDate.parse(divorceDate.toString(), GedcomValidator.formatter));
+                                isDivorced = false;
+                            }
+//                                System.out.println(family.getId() + "date2");
+                        }
+                        if (splitted[1].contentEquals("WIFE")) {
+                            family.setWifeId(splitted[2]);
+                            family.setWifeIndi( individualList.stream().filter( ind -> ind.getId().equals(splitted[2])).findFirst());
+                        }
+
+                        if (splitted[1].contentEquals("CHIL")) {
+                            family.setChildren((family.getChildren().equals("") ? family.getChildren() : family.getChildren() + ",") + splitted[2]);
+
+                            family.addChildrenIndi(individualList.stream().filter( ind -> ind.getId().equals(splitted[2])).findFirst());
+
+
+//                                System.out.println(family.getId() + "chil");
+                        }
+
+
+                        if (splitted[0].contentEquals("0") && familyStarted) {
+//                                if (splitted[2] == "N") {
+//                                    family.setDivorced("YES");
+//                                }
+//
+//                                if (splitted[2] == "Y") {
+//                                    family.setDivorced("NA");
+//                                }
+//                                System.out.println(family.getId() + "end");
+                            familyArrayList.add(family);
+
+                            if(splitted.length < 2)
+                            {
+                                if(!splitted[1].contentEquals("FAM") || !splitted[1].contentEquals("MARR"))
+                                {
+                                    familyStarted = false;
+//                                		System.out.println(familyStarted);
+//                                		System.out.println(family.getId() + "end1");
+                                }
+                            }
+                            else
+                            {
+                                family = new Family(splitted[1]);
+//                                	System.out.println(family.getId() + "new Begins");
+                            }
+
+                        }
 
                     }
 
+
+                }
+
+
+                if (splitted[1].contentEquals("BIRT")) {
+                    isBirthDay = true;
+                }
+
+                if (splitted[1].contentEquals("DEAT") && splitted[2].contentEquals("Y")) {
+                    isDeathDay = true;
+                    indi.setAlive("N");
                 }
             }
-        }
-
-    }
-    
-    
-    public void printListOfIndividualsBornAfterParentsDeath(List<Family> familyArrayList, List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
-
-        for (Family family : familyArrayList) {
-
-            String mDt = family.getMarried().trim();
-            
-            
-            String child = family.getChildren();
-            
-            String childArr[] = child.split(",");
-            
-            for(int i=0; i<individualArrayList.size(); i++)
+            else
             {
-            	if(individualArrayList.get(i).getId().equals(family.getHusbandId()))
-            	{
-            		if(individualArrayList.get(i).getAlive().equals("N"))
-            		{
-            			String DDate = individualArrayList.get(i).getDeath();
-            			 SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
-            			
-            			 Date DeathDate = sdfBdt.parse(DDate);
-//            			System.out.println(DeathDate);
-            			for(String childId : childArr)
-                        {
-                        	if(childId != null && childId != "")
-                        	{
-                        		for(int k=0; k<individualArrayList.size(); k++)
-                                {
-//                        			System.out.println(individualArrayList.get(k).getId() + " - " + childId);
-                        			if(individualArrayList.get(k).getId().equals(childId))
-                                	{
-                        				String BDate = individualArrayList.get(k).getBirthDay();
-                        				Date BirthDate = sdfBdt.parse(BDate);
-//                        				System.out.println(BirthDate + " Birth Date");
-                        				
-                        				if(BirthDate.compareTo(DeathDate)>0)
-                        				{
-                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
-                        				}
-                                	}
-                                }
-                        		
-                        	}
-                        }
-            		}
-            	}
-            	
-            	
-            	if(individualArrayList.get(i).getId().equals(family.getWifeId()))
-            	{
-            		if(individualArrayList.get(i).getAlive().equals("N"))
-            		{
-            			String DDate = individualArrayList.get(i).getDeath();
-            			 SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
-            			
-            			 Date DeathDate = sdfBdt.parse(DDate);
-//            			System.out.println(DeathDate);
-            			for(String childId : childArr)
-                        {
-                        	if(childId != null && childId != "")
-                        	{
-                        		for(int k=0; k<individualArrayList.size(); k++)
-                                {
-//                        			System.out.println(individualArrayList.get(k).getId() + " - " + childId);
-                        			if(individualArrayList.get(k).getId().equals(childId))
-                                	{
-                        				String BDate = individualArrayList.get(k).getBirthDay();
-                        				Date BirthDate = sdfBdt.parse(BDate);
-//                        				System.out.println(BirthDate + " Birth Date");
-                        				
-                        				if(BirthDate.compareTo(DeathDate)>0)
-                        				{
-                        					System.out.println("ANOMALY: INDIVIDUAL : " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH"); 
-                        				}
-                                	}
-                                }
-                        		
-                        	}
-                        }
-            		}
-            	}
-            }
-            
-            	
-            
-//            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.US);
-//            Date marriageDate = sdf.parse(mDt);
-//
-//            String childrenString = family.getChildren();
-//
-//            for(Individual indi : individualArrayList)
-//            {
-//                if(indi.getBirthDay() != null && indi.getBirthDay() != "" && childrenString.contains( indi.getId()))
-//                {
-//                    String bDt = indi.getBirthDay();
-//                    SimpleDateFormat sdfBdt = new SimpleDateFormat("dd MMM yyyy",Locale.US);
-//                    Date birthDate = sdfBdt.parse(bDt);
-//
-//                    if(marriageDate.compareTo(birthDate) > 0)
-//                    {
-//                        System.out.println("ANOMALY: " + "FAMILY : US08: " +family.getId() + ": CHILD "+ indi.getName() +"BORN"  + indi.getId() + "Before MARRIAGE: "+ family.getMarried());
-//
-//
-//                    }
-//
-//                }
-//            }
-        }
-
-    }
-
-    public void printIndividualsWithAgeMoreThan150(List<Individual> individualArrayList) {
-
-        for (Individual indi : individualArrayList) {
-            if(indi.getAge() > 150)
-            {
-                System.out.println("ERROR: INDIVIDUAL : US07 :"+ indi.getId() +": MORE THAN 150 YEARS OLD - BIRTH DATE"+ indi.getBirthDay());
-            }
-        }
-    }
-
-    public void printIndividuals(List<Individual> individualArrayList) {
-        System.out.println("INDIVIDUAL INFORMATION");
-        System.out.println();
-        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
-                "+-------------------+");
-        System.out.println("|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |");
-        System.out.println("+---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------" +
-                "+-------------------+");
-
-        for (Individual indi : individualArrayList) {
-           /* String child = indi.Child;
-            if(indi.Child.equals(""))
-                child = "N/A";*/
-            System.out.format("   %5s   %30s %10s          %10s     %5s %7s                     %7s                                             %7s                                 %5s",
-                    indi.getId(), indi.getName(), indi.getGender(), indi.getBirthDay(), indi.getAge(), indi.getAlive(), indi.getDeath(), indi.getChild(), indi.getSpouse());
-            System.out.println();
-        }
-        System.out.println("+---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------" +
-                "+---------------------+");
-
-    }
-
-    public void printMarriageBeforeDivorceError(IndiFamilyResponse indiFamilyResponse) {
-        for( Family family : indiFamilyResponse.getAmbiguousFamilyMarrDivList()) {
-            System.out.println("ERROR: FAMILY:US04:" +family.getId()+ " DIVORCED " + family.getDivorced()+" BEFORE MARRIAGE" + family.getMarried());
-        }
-    }
-
-    public void printMarriageBefore14Error(IndiFamilyResponse indiFamilyResponse){
-        for (Family family : indiFamilyResponse.getAmbiguousFamilyMarrBefore14()) {
-
-            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
-            Individual wife = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
-            if (wife.getBirthDay() != null && husband.getBirthDay() != null && !wife.getBirthDay().isEmpty() && !husband.getBirthDay().isEmpty()) {
-                LocalDate wifeBdate = LocalDate.parse(wife.getBirthDay(), formatter);
-                LocalDate husbandBdate = LocalDate.parse(husband.getBirthDay(), formatter);
-
-                LocalDate familyMarriage = LocalDate.parse(family.getMarried(), formatter);
-                Period p = Period.between(wifeBdate, familyMarriage);
-                Period p1 = Period.between(husbandBdate, familyMarriage);
-                if (p.getYears() <= 14)
-                    System.out.println("ANOMALY: FAMILY :US10:" + family.getId() + " WIFE AGE ( BDATE" + wifeBdate + " )DURING MARRIAGE WAS" + "BELOW 14 ( MARRIAGE DATE" + family.getMarried() + " )");
-                if (p1.getYears() <= 14)
-                    System.out.println("ANOMALY: FAMILY :US10:" + family.getId() + " HUSBAND AGE ( BDATE" + husbandBdate + " )DURING MARRIAGE WAS" + "BELOW 14 ( MARRIAGE DATE" + family.getMarried() + " )");
-            }
-        }
-    }
-    public void printMarriageBeforeDeathError(IndiFamilyResponse indiFamilyResponse) {
-        for (Family family : indiFamilyResponse.getAmbiguosFamilyMarrDeathList()) {
-            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
-            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
-
-            LocalDate wifeDeath = null;
-            if( wife.getDeath() == null || wife.getDeath().equals("")){
-
-            } else {
-                wifeDeath = LocalDate.parse(wife.getDeath(), formatter);
-            }
-
-            LocalDate husbandDeath = null;
-            if( husband.getDeath() == null || husband.getDeath().equals("")){
-
-            } else {
-                husbandDeath = LocalDate.parse(husband.getDeath(), formatter);
-            }
-
-            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getMarried(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER WIFE'S DEATH ( "+wife.getId() +")"+ wife.getDeath());
-            }
-            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getMarried(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US05:"+family.getId()+" MARRIED " + family.getMarried() + " AFTER HUSBANDS'S DEATH (" +husband.getId() +")"+ husband.getDeath());
-            }
-        }
-    }
-
-    public void printBirthBeforeDeathError(IndiFamilyResponse indiFamilyResponse) {
-        for( Individual indi : indiFamilyResponse.getAmbiguousIndividuals()) {
-            System.out.println("ERROR: INDIVIDUAL:US03 " +indi.getId()+ " BIRTH " + indi.getBirthDay()+"AFTER DEATH" + indi.getDeath());
-        }
-    }
-    public void printBirthBeforeMarriageError(IndiFamilyResponse indiFamilyResponse) {
-        for (Family family : indiFamilyResponse.getAmbiguosbirthBeforeMarriage()) {
-            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
-            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
-
-            LocalDate wifeBirth = null;
-            if( wife.getBirthDay() == null || wife.getBirthDay().equals("")){
-
-            } else {
-                wifeBirth = LocalDate.parse(wife.getBirthDay(), formatter);
-            }
-
-
-            LocalDate husbandBirth = null;
-
-            if( husband.getBirthDay() == null || husband.getBirthDay().equals("")){
-
-            } else {
-                husbandBirth = LocalDate.parse(husband.getBirthDay(), formatter);
-            }
-
-            if( wifeBirth != null && wifeBirth.isAfter(LocalDate.parse(family.getMarried(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH ( "+wife.getId() +")"+ wife.getBirthDay());
-            }
-            if ( husbandBirth != null && husbandBirth.isAfter( LocalDate.parse(family.getMarried(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US02:"+family.getId()+" MARRIED " + family.getMarried() + " BEFORE WIFE'S BIRTH (" +husband.getId() +")"+ husband.getBirthDay());
-            }
-        }
-    }
-
-    public long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-        long diffInMillies = date2.getTime() - date1.getTime();
-        //return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
-        return diffInMillies;
-    }
-
-    public void printIndividualsWithDivorceBeforeDeath(IndiFamilyResponse indiFamilyResponse) {
-
-        for (Family family : indiFamilyResponse.getAmbiguosFamilyDivorceDeathList()) {
-            Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();
-            Individual wife = indiFamilyResponse.getIndividualList().stream().filter( indi -> indi.getId().equals(family.getWifeId())).findFirst().get();
-
-            LocalDate wifeDeath = null;
-            if( wife.getDeath() == null || wife.getDeath().equals("")){
-
-            } else {
-                wifeDeath = LocalDate.parse(wife.getDeath(), formatter);
-            }
-
-            LocalDate husbandDeath = null;
-            if( husband.getDeath() == null || husband.getDeath().equals("")){
-
-            } else {
-                husbandDeath = LocalDate.parse(husband.getDeath(), formatter);
-            }
-
-            if( wifeDeath != null && wifeDeath.isBefore( LocalDate.parse(family.getDivorced(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US06:"+family.getId()+" Divorced " + family.getDivorced() + " AFTER WIFE'S DEATH ( "+wife.getId() +")"+ wife.getDeath());
-            }
-            if ( husbandDeath != null && husbandDeath.isBefore( LocalDate.parse(family.getDivorced(), formatter)) ){
-                System.out.println("ERROR: FAMILY: US06:"+family.getId()+" Divorced " + family.getDivorced() + " AFTER HUSBANDS'S DEATH (" +husband.getId() +")"+ husband.getDeath());
-            }
-        }
-    }
-    public void printIndividualsWithBirthBeforeCurrentData(List<Family> individualFamList,List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
-
-        for (Individual indi : individualArrayList) {
-            String birth = indi.getBirthDay();
-            String death = indi.getDeath();
-
-            String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-            SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
-            if ((birth != null && !birth.isEmpty()) && (now != null && !now.isEmpty())){
-
-                Date dateToCompare = sdf.parse(birth);
-                Calendar cal_instance = Calendar.getInstance();
-                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-                Date currentDate = sdf.parse(now);
-                if(currentDate.before(dateToCompare))
-                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +indi.getId() + ": BIRTH DATE IS AFTER CURRENTDATE");
-
-            }
-            if ((death != null && !death.isEmpty()) && (now != null && !now.isEmpty())){
-
-                Date dateToCompare = sdf.parse(death);
-                Calendar cal_instance = Calendar.getInstance();
-                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-                Date currentDate = sdf.parse(now);
-                if(currentDate.before(dateToCompare))
-                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +indi.getId() + ": Death DATE IS AFTER CURRENTDATE");
-
-            }
-
-        }
-        for (Family fam : individualFamList) {
-            String marr = fam.getMarried();
-            String div = fam.getDivorced();
-
-            String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-            SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
-            if ((marr != null && !marr.isEmpty()) && (now != null && !now.isEmpty())){
-
-                Date dateToCompare = sdf.parse(marr);
-                Calendar cal_instance = Calendar.getInstance();
-                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-                Date currentDate = sdf.parse(now);
-                if(currentDate.before(dateToCompare))
-                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +fam.getId() + ": Marriage DATE IS AFTER CURRENTDATE");
-
-            }
-            if ((div != null && !div.isEmpty()) && (now != null && !now.isEmpty())){
-
-                Date dateToCompare = sdf.parse(div);
-                Calendar cal_instance = Calendar.getInstance();
-                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-                Date currentDate = sdf.parse(now);
-                if(currentDate.before(dateToCompare))
-                    System.out.println("ERROR: " + "INDIVIDUAL: US01: " +fam.getId() + ": Divorce DATE IS AFTER CURRENTDATE");
-
+                if(splitted[0].contentEquals("0") && splitted[1].contentEquals("TRLR"))
+                {
+                    familyArrayList.add(family);
+                    familyStarted = false;
+//                		System.out.println(familyStarted);
+//                		System.out.println(family.getId() + "end1");
+                }
             }
 
         }
 
+
+        for (int i = 0; i < familyArrayList.size(); i++) {
+            for (int j = 0; j < individualList.size(); j++) {
+                if (familyArrayList.get(i).getHusbandId().equals(individualList.get(j).getId())) {
+                    familyArrayList.get(i).setHusbandName(individualList.get(j).getName());
+                }
+
+                if (familyArrayList.get(i).getWifeId().equals(individualList.get(j).getId())) {
+                    familyArrayList.get(i).setWifeName(individualList.get(j).getName());
+                }
+            }
+
+            // System.out.println(familyArrayList.get(i).wifeName);
+
+        }
     }
+
 
 }
 

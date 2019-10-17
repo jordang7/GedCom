@@ -22,8 +22,30 @@ public class IndiFamilyResponse {
 
     List<Family> ambiguousFamilyMarrBefore14;
 
-  List<Family>  ambiguosFamilyDivorceDeathList;
-  
+   List<Family>  ambiguosFamilyDivorceDeathList;
+
+    List<Family> ambiguousMaleLastNames;
+
+    List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
+
+    public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousSblingsMarriageList() {
+        return ambiguousSblingsMarriageList;
+    }
+
+    public void setAmbiguousSblingsMarriageList(List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList) {
+        this.ambiguousSblingsMarriageList = ambiguousSblingsMarriageList;
+    }
+
+
+    public List<Family> getAmbiguousMaleLastNames() {
+        return ambiguousMaleLastNames;
+    }
+
+    public void setAmbiguousMaleLastNames(List<Family> ambiguousMaleLastNames) {
+        this.ambiguousMaleLastNames = ambiguousMaleLastNames;
+    }
+
+
     public List<Family> getAmbiguousFamilyMarrBefore14() {
         return ambiguousFamilyMarrBefore14;
     }
