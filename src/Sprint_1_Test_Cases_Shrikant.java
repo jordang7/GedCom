@@ -3,6 +3,7 @@ import java.util.List;
 import com.gedcom.file.GedcomFileReader;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
+import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,9 @@ public class Sprint_1_Test_Cases_Shrikant {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
-        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+
+        gedcomPrinter.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
 		fail("Not yet implemented");
 	}
 
@@ -44,7 +47,8 @@ public class Sprint_1_Test_Cases_Shrikant {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
-        gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+        gedcomPrinter.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
 		fail("Not yet implemented");
 	}
 
@@ -62,7 +66,8 @@ public class Sprint_1_Test_Cases_Shrikant {
            GedcomProcessor gdp = new GedcomProcessor();
            GedcomResponse response= gdp.parser(gedcomLines,tagSet);
            IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
-           gdp.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+           gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
    		fail("Not yet implemented");
    	}
     

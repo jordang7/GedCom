@@ -3,6 +3,7 @@ package com.gedcom.application;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
+import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -25,24 +26,29 @@ public class Application {
         GedcomProcessor gdp = new GedcomProcessor();
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
 
-        gdp.printIndividuals(indiFamilyResponse.getIndividualList());
-        gdp.printFamily(indiFamilyResponse.getFamilyList());
+        gedcomPrinter.printIndividuals(indiFamilyResponse.getIndividualList());
+        gedcomPrinter.printFamily(indiFamilyResponse.getFamilyList());
 
         System.out.println("---- GEDCOM ERRORS -----");
+        gedcomPrinter.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList()); //US01
+        gedcomPrinter.printBirthBeforeMarriageError(indiFamilyResponse);//US02
+        gedcomPrinter.printBirthBeforeDeathError(indiFamilyResponse);//US03
+        gedcomPrinter.printMarriageBeforeDivorceError(indiFamilyResponse);//US04
+        gedcomPrinter.printMarriageBeforeDeathError(indiFamilyResponse);//US05
+        gedcomPrinter.printIndividualsWithDivorceBeforeDeath(indiFamilyResponse);//US06
+        gedcomPrinter.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());//US07
+        gedcomPrinter.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US08
+        gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US09
+        gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
 
-        gdp.printMarriageBeforeDeathError(indiFamilyResponse);
-        gdp.printMarriageBeforeDivorceError(indiFamilyResponse);
+        //Call Priting Functions and make sure that user story numbers are are sorted like above and remove this comment at the end
 
-        gdp.printBirthBeforeDeathError(indiFamilyResponse);
-        gdp.printBirthBeforeMarriageError(indiFamilyResponse);
-        gdp.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
-        gdp.printIndividualsWithAgeMoreThan150(indiFamilyResponse.getIndividualList());
-        gdp.printMarriageBefore14Error(indiFamilyResponse);
+        gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
+        gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         
-        gdp.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
-        	 gdp.printIndividualsWithDivorceBeforeDeath(indiFamilyResponse);
-       gdp.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList());
+
     }
 
 }
