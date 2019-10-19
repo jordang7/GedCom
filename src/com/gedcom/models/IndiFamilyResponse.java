@@ -28,6 +28,33 @@ public class IndiFamilyResponse {
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
 
+    public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousFirstCousinsMarriageList() {
+        return ambiguousFirstCousinsMarriageList;
+    }
+
+    public void setAmbiguousFirstCousinsMarriageList(List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList) {
+        this.ambiguousFirstCousinsMarriageList = ambiguousFirstCousinsMarriageList;
+    }
+
+    List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList;
+    public List<Family> getAmbiguosbirthBeforeMarriageList() {
+        return ambiguosbirthBeforeMarriageList;
+    }
+
+    public void setAmbiguosbirthBeforeMarriageList(List<Family> ambiguosbirthBeforeMarriageList) {
+        this.ambiguosbirthBeforeMarriageList = ambiguosbirthBeforeMarriageList;
+    }
+
+    public List<FamilyWithParentMarriedToDescendants> getAmbiguousParentDescendantMarriageList() {
+        return ambiguousParentDescendantMarriageList;
+    }
+
+    public void setAmbiguousParentDescendantMarriageList(List<FamilyWithParentMarriedToDescendants> ambiguousParentDescendantMarriageList) {
+        this.ambiguousParentDescendantMarriageList = ambiguousParentDescendantMarriageList;
+    }
+
+    List<FamilyWithParentMarriedToDescendants> ambiguousParentDescendantMarriageList;
+
     public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousSblingsMarriageList() {
         return ambiguousSblingsMarriageList;
     }
