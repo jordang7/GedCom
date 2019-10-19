@@ -1,17 +1,11 @@
 package com.gedcom.processor;
-
-import com.gedcom.models.Family;
-import com.gedcom.models.FamilyWithChildrenMarriedToEachOther;
-import com.gedcom.models.Individual;
+import com.gedcom.models.*;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -290,5 +284,129 @@ public class GedcomValidator {
 
     }
 
+    //US17 - Jinal
+    public List<FamilyWithParentMarriedToDescendants> parentShouldNotMarryADescendant(List<Individual> individualList, List<Family> familyArrayList) {
+        List<FamilyWithParentMarriedToDescendants> ambiguousParentDescendantMarriageList = new ArrayList<>();
+        HashMap<String, Family> childToFamilyMap = new HashMap<>();
+        for (Family fam : familyArrayList) {
+            if (fam.getChildren() != null) {
+                for (String child : fam.getChildren().split(",")) {
+                    childToFamilyMap.put(child, fam);
+                }
+            }
+        }
+        for (Family family : familyArrayList) {
+            List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+            for (Individual child : childrenOfTheFamily) {
+                String childId = child.getId();
+                Set<String> ancestors = new HashSet<String>();
+                loadAncestors(family, ancestors, childToFamilyMap);
+                if (child.getGender().equals("M")) {
+                    Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(childId)).findFirst();
+                    if (childIsHusbandInThisFamily.isPresent()) {
+                        String wifeId = childIsHusbandInThisFamily.get().getWifeId();
+                        if (ancestors.contains(wifeId)) {
+                            Optional<Individual> ancestorWife = individualList.stream().filter(ind -> ind.getId().equals(wifeId)).findFirst();
+                            if (ancestorWife.isPresent())
+                                ambiguousParentDescendantMarriageList.add(new FamilyWithParentMarriedToDescendants(family, child, ancestorWife.get()));
+                        }
+                    }
 
+                }
+                else if (child.getGender().equals("F")) {
+                    Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(childId)).findFirst();
+                    if (childIsWifeInThisFamily.isPresent()) {
+                        String husbandId = childIsWifeInThisFamily.get().getHusbandId();
+                        if (ancestors.contains(husbandId)) {
+                            Optional<Individual> ancestorHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
+                            if (ancestorHusband.isPresent())
+                                ambiguousParentDescendantMarriageList.add(new FamilyWithParentMarriedToDescendants(family, child, ancestorHusband.get()));
+                        }
+                    }
+
+                }
+            }
+        }
+        return ambiguousParentDescendantMarriageList;
+    }
+
+    public void loadAncestors(Family family, Set<String> ancestors, HashMap<String, Family> childToFamilyMap) {
+        if (family == null) {
+            return;
+        } else {
+            if (family.getHusbandId() != null) {
+                ancestors.add(family.getHusbandId());
+                loadAncestors(childToFamilyMap.get(family.getHusbandId()), ancestors, childToFamilyMap);
+            }
+            if (family.getWifeId() != null) {
+                ancestors.add(family.getWifeId());
+                loadAncestors(childToFamilyMap.get(family.getWifeId()), ancestors, childToFamilyMap);
+            }
+        }
+    }
+
+    //US19 - Jinal
+    public List<FamilyWithChildrenMarriedToEachOther> firstCousinsShouldNotMarryOneAnother(List<Individual> individualList, List<Family> familyArrayList) {
+        List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList = new ArrayList<>();
+        HashMap<String, Family> childToFamilyMap = new HashMap<>();
+        for (Family fam : familyArrayList) {
+            if (fam.getChildren() != null) {
+                for (String child : fam.getChildren().split(",")) {
+                    childToFamilyMap.put(child, fam);
+                }
+            }
+        }
+        for (Family family : familyArrayList) {
+            List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+            Set<String> firstCousins = new HashSet<String>();
+            Family mothersFamily = childToFamilyMap.get(family.getWifeId());
+            Family fathersFamily = childToFamilyMap.get(family.getHusbandId());
+            if(mothersFamily != null)
+            loadFirstCousins(mothersFamily,firstCousins,familyArrayList);
+            if(fathersFamily != null)
+            loadFirstCousins(fathersFamily,firstCousins,familyArrayList);
+            for (Individual child : childrenOfTheFamily) {
+
+                if (child.getGender().equals("M")) {
+                    Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(child.getId())).findFirst();
+                    if (childIsHusbandInThisFamily.isPresent()) {
+                        String wifeId = childIsHusbandInThisFamily.get().getWifeId();
+                        if (firstCousins.contains(wifeId)) {
+                            Optional<Individual> cousinWife = individualList.stream().filter(ind -> ind.getId().equals(wifeId)).findFirst();
+                            if (cousinWife.isPresent())
+                                ambiguousFirstCousinsMarriageList.add(new FamilyWithChildrenMarriedToEachOther(family, child, cousinWife.get()));
+                        }
+                    }
+                }
+                else{
+                    Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
+                    if (childIsWifeInThisFamily.isPresent()) {
+                        String husbandId = childIsWifeInThisFamily.get().getWifeId();
+                        if (firstCousins.contains(husbandId)) {
+                            Optional<Individual> cousinHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
+                            if (cousinHusband.isPresent())
+                                ambiguousFirstCousinsMarriageList.add(new FamilyWithChildrenMarriedToEachOther(family, child, cousinHusband.get()));
+                        }
+                    }
+                }
+            }
+        }
+        return  ambiguousFirstCousinsMarriageList;
+    }
+public void loadFirstCousins(Family family,Set<String> firstCousins,List<Family> familyArrayList){
+    for(Individual sibling:family.getChildrenIndis()){
+        if(sibling.getGender().equals("M")) {
+            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
+            if(relatives.isPresent())
+            {
+                firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
+            }
+        }else if(sibling.getGender().equals("F")){
+            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
+            if(relatives.isPresent())
+            {
+                firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
+            }
+        }
+    }
 }

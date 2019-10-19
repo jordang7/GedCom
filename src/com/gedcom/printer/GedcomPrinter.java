@@ -1,9 +1,6 @@
 package com.gedcom.printer;
 
-import com.gedcom.models.Family;
-import com.gedcom.models.FamilyWithChildrenMarriedToEachOther;
-import com.gedcom.models.IndiFamilyResponse;
-import com.gedcom.models.Individual;
+import com.gedcom.models.*;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -307,4 +304,15 @@ public class GedcomPrinter {
         return "-NA-";
     }
 
+    public void printAmbiguousParentDescendantMarriageList(IndiFamilyResponse indiFamilyResponse) {
+            for(FamilyWithParentMarriedToDescendants familyWithParentMarriedToDescendants : indiFamilyResponse.getAmbiguousParentDescendantMarriageList()){
+                System.out.println("ERROR : FAMILY : US17 "+ familyWithParentMarriedToDescendants.getFamily().getId() + " PARENT SHOULD NOT BE MARRIED TO A DESCENDANT" + familyWithParentMarriedToDescendants.getHusband().getName() + ", "+familyWithParentMarriedToDescendants.getWife().getName());
+            }
+    }
+
+    public void printAmbiguousFirstCousinsMarriageList(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithChildrenMarriedToEachOther familyWithFirstCousinsMarried : indiFamilyResponse.getAmbiguousFirstCousinsMarriageList()){
+            System.out.println("ANOMALY : FAMILY : US19 "+ familyWithFirstCousinsMarried.getFamily().getId() + " FIRST COUSINS SHOULD NOT BE MARRIED" + familyWithFirstCousinsMarried.getHusband().getName() + ", "+familyWithFirstCousinsMarried.getWife().getName());
+        }
+    }
 }
