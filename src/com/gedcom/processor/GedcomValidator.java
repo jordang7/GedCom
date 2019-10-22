@@ -418,8 +418,8 @@ public List<Family> fewerThan15Children(List<Family> familyList){
 		count=0;
 		List<Individual> childrenOfTheFamily = family.getChildrenIndis();
 		for (Iterator<Individual> iterator = childrenOfTheFamily.iterator(); iterator.hasNext();) {
-			Individual child = iterator.next();
 			count++;
+			Individual child = iterator.next();
 		}
 		if(count>15) {
 			ambiguousMoreThan15Children.add(family);

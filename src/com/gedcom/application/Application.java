@@ -44,7 +44,7 @@ public class Application {
         gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
 
         //Call Priting Functions and make sure that user story numbers are are sorted like above and remove this comment at the end
-
+        gedcomPrinter.printAmbiguousMoreThan15Children(indiFamilyResponse); //US15
         gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
