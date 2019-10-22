@@ -47,8 +47,8 @@ public class Application {
 
         gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
-        
-
+        gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
+        gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
     }
 
 }
