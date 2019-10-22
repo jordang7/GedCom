@@ -27,6 +27,8 @@ public class IndiFamilyResponse {
     List<Family> ambiguousMaleLastNames;
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
+    
+    List<Family> ambiguousMoreThan15Children;
 
     public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousFirstCousinsMarriageList() {
         return ambiguousFirstCousinsMarriageList;
@@ -139,5 +141,12 @@ public class IndiFamilyResponse {
 
     public void setAmbiguosFamilyDivorceDeathList(List<Family> ambiguosFamilyDivorceDeathList) {
         this.ambiguosFamilyDivorceDeathList = ambiguosFamilyDivorceDeathList;
+    }
+    public List<Family> getAmbiguousMoreThan15Children() {
+        return ambiguousMoreThan15Children;
+    }
+
+    public void setAmbiguousMoreThan15Children(List<Family> ambiguousMoreThan15Children) {
+        this.ambiguousMoreThan15Children = ambiguousMoreThan15Children;
     }
 }

@@ -5,7 +5,7 @@ import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
 import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import java.text.ParseException;
 
 import java.util.*;
 
