@@ -315,4 +315,9 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US19 "+ familyWithFirstCousinsMarried.getFamily().getId() + " FIRST COUSINS SHOULD NOT BE MARRIED" + familyWithFirstCousinsMarried.getHusband().getName() + ", "+familyWithFirstCousinsMarried.getWife().getName());
         }
     }
+    public void printAmbiguousMoreThan15Children(IndiFamilyResponse indiFamilyResponse) {
+        for(Family fam : indiFamilyResponse.getAmbiguousMoreThan15Children()){
+            System.out.println("ANOMALY : FAMILY : US15 "+ fam.getId() + " CANNOT HAVE MORE THAN 15 CHILDREN");
+        }
+    }
 }

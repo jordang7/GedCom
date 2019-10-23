@@ -118,6 +118,9 @@ public class GedcomProcessor {
             response.setAmbiguousParentDescendantMarriageList(ambiguousParentDescendantMarriageList);
             List<FamilyWithChildrenMarriedToEachOther> ambiguousCousinsMarriageList = gvalidator.firstCousinsShouldNotMarryOneAnother(individualList,familyArrayList);
             response.setAmbiguousFirstCousinsMarriageList(ambiguousCousinsMarriageList);
+            
+            List<Family> ambiguousMoreThan15Children = gvalidator.fewerThan15Children(familyArrayList);
+            response.setAmbiguousMoreThan15Children(ambiguousMoreThan15Children);
 
         } catch (Exception e) {
             e.printStackTrace();

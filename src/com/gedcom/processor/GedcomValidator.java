@@ -410,3 +410,21 @@ public void loadFirstCousins(Family family,Set<String> firstCousins,List<Family>
         }
     }
 }
+// US15 
+public List<Family> fewerThan15Children(List<Family> familyList){
+	List<Family> ambiguousMoreThan15Children = new ArrayList<>();
+	int count;
+	for (Family family : familyList) {
+		count=0;
+		List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+		for (Iterator<Individual> iterator = childrenOfTheFamily.iterator(); iterator.hasNext();) {
+			count++;
+			Individual child = iterator.next();
+		}
+		if(count>15) {
+			ambiguousMoreThan15Children.add(family);
+		}
+	}
+	return ambiguousMoreThan15Children;
+}
+}
