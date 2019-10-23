@@ -42,12 +42,11 @@ public class Application {
         gedcomPrinter.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US08
         gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US09
         gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
-
-        //Call Priting Functions and make sure that user story numbers are are sorted like above and remove this comment at the end
+        gedcomPrinter.printFamilyWithOlderParents(indiFamilyResponse);//US12;
         gedcomPrinter.printAmbiguousMoreThan15Children(indiFamilyResponse); //US15
         gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
-        gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
+        gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
         //gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
     }

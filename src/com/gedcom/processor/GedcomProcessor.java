@@ -122,6 +122,9 @@ public class GedcomProcessor {
             List<Family> ambiguousMoreThan15Children = gvalidator.fewerThan15Children(familyArrayList);
             response.setAmbiguousMoreThan15Children(ambiguousMoreThan15Children);
 
+            List<FamilyWithOlderParents> familyWithOlderParents = gvalidator.getFamiliesWithOlderParents(familyArrayList);
+            response.setFamilyWithOlderParents( familyWithOlderParents );
+
         } catch (Exception e) {
             e.printStackTrace();
         }

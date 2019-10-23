@@ -185,6 +185,20 @@ public class GedcomPrinter {
             }
         }
     }
+
+    public void printFamilyWithOlderParents(IndiFamilyResponse indiFamilyResponse){
+
+        for(FamilyWithOlderParents famWithOlderParent : indiFamilyResponse.getFamilyWithOlderParents()){
+
+            if( famWithOlderParent.getOlderHusband().isPresent() )
+                System.out.println("ANOMALY: FAMILY: US12: " + famWithOlderParent.getFamily().getId() + " HUSBAND " + famWithOlderParent.getOlderHusband().get().getName() + " WAS OLDER THAN 80 YEARS WHEN ONE OF HIS CHILD WAS BORN");
+            if( famWithOlderParent.getOlderWife().isPresent() )
+                System.out.println("ANOMALY: FAMILY: US12: " + famWithOlderParent.getFamily().getId() + " WIFE " + famWithOlderParent.getOlderWife().get().getName() + " WAS OLDER THAN 60 YEARS WHEN ONE OF HER CHILD WAS BORN");
+
+
+        }
+    }
+
     public void printMarriageBeforeDeathError(IndiFamilyResponse indiFamilyResponse) {
         for (Family family : indiFamilyResponse.getAmbiguosFamilyMarrDeathList()) {
             Individual husband = indiFamilyResponse.getIndividualList().stream().filter(indi -> indi.getId().equals(family.getHusbandId())).findFirst().get();

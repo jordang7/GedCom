@@ -120,7 +120,7 @@ public class GedcomValidator {
                         Optional<Individual> ambiguousSibling = siblingList.stream().filter(sib -> sib.getId().equals(wifeId)).findFirst();
                         if (ambiguousSibling.isPresent()) {
 
-                            ambiguousSblingsMarriageList.add(new FamilyWithChildrenMarriedToEachOther( family, sibling, ambiguousSibling.get()));
+                            ambiguousSblingsMarriageList.add(new FamilyWithChildrenMarriedToEachOther(family, sibling, ambiguousSibling.get()));
                         }
 
                     }
@@ -312,8 +312,7 @@ public class GedcomValidator {
                         }
                     }
 
-                }
-                else if (child.getGender().equals("F")) {
+                } else if (child.getGender().equals("F")) {
                     Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(childId)).findFirst();
                     if (childIsWifeInThisFamily.isPresent()) {
                         String husbandId = childIsWifeInThisFamily.get().getHusbandId();
@@ -361,10 +360,10 @@ public class GedcomValidator {
             Set<String> firstCousins = new HashSet<String>();
             Family mothersFamily = childToFamilyMap.get(family.getWifeId());
             Family fathersFamily = childToFamilyMap.get(family.getHusbandId());
-            if(mothersFamily != null)
-            loadFirstCousins(mothersFamily,firstCousins,familyArrayList);
-            if(fathersFamily != null)
-            loadFirstCousins(fathersFamily,firstCousins,familyArrayList);
+            if (mothersFamily != null)
+                loadFirstCousins(mothersFamily, firstCousins, familyArrayList);
+            if (fathersFamily != null)
+                loadFirstCousins(fathersFamily, firstCousins, familyArrayList);
             for (Individual child : childrenOfTheFamily) {
 
                 if (child.getGender().equals("M")) {
@@ -377,11 +376,10 @@ public class GedcomValidator {
                                 ambiguousFirstCousinsMarriageList.add(new FamilyWithChildrenMarriedToEachOther(family, child, cousinWife.get()));
                         }
                     }
-                }
-                else{
+                } else {
                     Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
                     if (childIsWifeInThisFamily.isPresent()) {
-                        String husbandId = childIsWifeInThisFamily.get().getWifeId();
+                        String husbandId = childIsWifeInThisFamily.get().getHusbandId();
                         if (firstCousins.contains(husbandId)) {
                             Optional<Individual> cousinHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
                             if (cousinHusband.isPresent())
@@ -391,23 +389,69 @@ public class GedcomValidator {
                 }
             }
         }
-        return  ambiguousFirstCousinsMarriageList;
+        return ambiguousFirstCousinsMarriageList;
     }
-public void loadFirstCousins(Family family,Set<String> firstCousins,List<Family> familyArrayList){
-    for(Individual sibling:family.getChildrenIndis()){
-        if(sibling.getGender().equals("M")) {
-            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
-            if(relatives.isPresent())
-            {
-                firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
-            }
-        }else if(sibling.getGender().equals("F")){
-            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
-            if(relatives.isPresent())
-            {
-                firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
+
+    public void loadFirstCousins(Family family, Set<String> firstCousins, List<Family> familyArrayList) {
+        for (Individual sibling : family.getChildrenIndis()) {
+            if (sibling.getGender().equals("M")) {
+                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
+                if (relatives.isPresent()) {
+                    firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
+                }
+            } else if (sibling.getGender().equals("F")) {
+                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
+                if (relatives.isPresent()) {
+                    firstCousins.addAll(Arrays.asList(relatives.get().getChildren().split(",")));
+                }
             }
         }
+    }
+    // US15
+    public List<Family> fewerThan15Children(List<Family> familyList){
+        List<Family> ambiguousMoreThan15Children = new ArrayList<>();
+        for (Family family : familyList) {
+            if(family.getChildrenIndis().size()>15) {
+                ambiguousMoreThan15Children.add(family);
+            }
+        }
+        return ambiguousMoreThan15Children;
+    }
+
+    // US12
+    public List<FamilyWithOlderParents> getFamiliesWithOlderParents( List<Family> familyList ){
+
+        List<FamilyWithOlderParents> famWithOlderParents = new ArrayList<>();
+        for( Family fam : familyList ) {
+            FamilyWithOlderParents familyWithOlderParent = new FamilyWithOlderParents();
+            familyWithOlderParent.setFamily(fam);
+            boolean oldParent = false;
+            List<LocalDate> childrenBdates = fam.getChildrenIndis().stream().filter(i -> i.getBdate().isPresent()).map( i -> i.getBdate().get() ).collect(Collectors.toList());
+            if( fam.getHusbandIndi().isPresent()) {
+                Optional<LocalDate> hBdate = fam.getHusbandIndi().get().getBdate();
+
+                if( hBdate.isPresent() ){
+                    boolean fatherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(hBdate.get(), d).getYears() > 80).findFirst().isPresent();
+                    if( fatherIsReallyOld ){
+                        familyWithOlderParent.setOlderHusband( fam.getHusbandIndi());
+                        oldParent = true;
+                    }
+                }
+            }
+            if( fam.getWifeIndi().isPresent()) {
+                Optional<LocalDate> wBdate = fam.getWifeIndi().get().getBdate();
+                if( wBdate.isPresent() ){
+                    boolean motherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(wBdate.get(), d).getYears() > 60).findFirst().isPresent();
+                    if( motherIsReallyOld ){
+                        familyWithOlderParent.setOlderWife( fam.getWifeIndi());
+                        oldParent = true;
+                    }
+                }
+            }
+            if( oldParent )
+                famWithOlderParents.add( familyWithOlderParent);
+        }
+        return famWithOlderParents;
     }
 }
 public void loadAuntUncles(Family family,Set<String> auntUncles,List<Family> familyArrayList) {

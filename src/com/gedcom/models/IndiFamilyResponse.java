@@ -32,6 +32,16 @@ public class IndiFamilyResponse {
     
     List<Family> ambiguousMoreThan15Children;
 
+    List<FamilyWithOlderParents> familyWithOlderParents;
+
+    public List<FamilyWithOlderParents> getFamilyWithOlderParents() {
+        return familyWithOlderParents;
+    }
+
+    public void setFamilyWithOlderParents(List<FamilyWithOlderParents> familyWithOlderParents) {
+        this.familyWithOlderParents = familyWithOlderParents;
+    }
+
     public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousFirstCousinsMarriageList() {
         return ambiguousFirstCousinsMarriageList;
     }
