@@ -28,7 +28,19 @@ public class IndiFamilyResponse {
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
     
+    List<AuntUncleMarriedNN> ambiguousAuntUncleMarriedNNList;
+    
     List<Family> ambiguousMoreThan15Children;
+
+    List<FamilyWithOlderParents> familyWithOlderParents;
+
+    public List<FamilyWithOlderParents> getFamilyWithOlderParents() {
+        return familyWithOlderParents;
+    }
+
+    public void setFamilyWithOlderParents(List<FamilyWithOlderParents> familyWithOlderParents) {
+        this.familyWithOlderParents = familyWithOlderParents;
+    }
 
     public List<FamilyWithChildrenMarriedToEachOther> getAmbiguousFirstCousinsMarriageList() {
         return ambiguousFirstCousinsMarriageList;
@@ -37,6 +49,15 @@ public class IndiFamilyResponse {
     public void setAmbiguousFirstCousinsMarriageList(List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList) {
         this.ambiguousFirstCousinsMarriageList = ambiguousFirstCousinsMarriageList;
     }
+    
+    public List<AuntUncleMarriedNN> getAmbiguousAuntUncleMarriedNN() {
+        return ambiguousAuntUncleMarriedNNList;
+    }
+
+    public void setAuntUncleMarriedNN(List<AuntUncleMarriedNN> ambiguousAuntUncleMarriedNNList) {
+        this.ambiguousAuntUncleMarriedNNList = ambiguousAuntUncleMarriedNNList;
+    }
+
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList;
     public List<Family> getAmbiguosbirthBeforeMarriageList() {
