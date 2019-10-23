@@ -5,7 +5,7 @@ import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
 import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import java.text.ParseException;
 
 import java.util.*;
 
@@ -43,8 +43,9 @@ public class Application {
         gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US09
         gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
 
-        //Call Printing Functions and make sure that user story numbers are are sorted like above and remove this comment at the end
 
+        //Call Printing Functions and make sure that user story numbers are are sorted like above and remove this comment at the end
+        gedcomPrinter.printAmbiguousMoreThan15Children(indiFamilyResponse); //US15
         gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
         gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18

@@ -407,4 +407,14 @@ public class GedcomValidator {
             }
         }
     }
+    // US15
+    public List<Family> fewerThan15Children(List<Family> familyList){
+        List<Family> ambiguousMoreThan15Children = new ArrayList<>();
+        for (Family family : familyList) {
+            if(family.getChildrenIndis().size()>15) {
+                ambiguousMoreThan15Children.add(family);
+            }
+        }
+        return ambiguousMoreThan15Children;
+    }
 }

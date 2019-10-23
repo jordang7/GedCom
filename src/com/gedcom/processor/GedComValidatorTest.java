@@ -222,9 +222,66 @@ class GedComValidatorTest {
         List<FamilyWithChildrenMarriedToEachOther> ambigousSiblingMArriage1 = validator.siblingsShouldNotMarry(families);
         assertEquals(1,ambigousSiblingMArriage1.size());
 
-
-
     }
 
-
+    @org.junit.jupiter.api.Test
+    void testFewerThan15Children() {
+        List<Family> ambiguousMoreThan15Children = validator.fewerThan15Children(new ArrayList<Family>());
+        assertEquals(0,ambiguousMoreThan15Children.size());
+        Family family = new Family("F1US15");
+        List<Family> families = new ArrayList<>();
+        
+        Individual child1 = new Individual("I1US15");
+        child1.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child1));
+        Individual child2 = new Individual("I2US15");
+        child2.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child2));
+        Individual child3 = new Individual("I3US15");
+        child3.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child3));
+        Individual child4 = new Individual("I4US15");
+        child4.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child4));
+        Individual child5 = new Individual("I5US15");
+        child5.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child5));
+        Individual child6 = new Individual("I6US15");
+        child6.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child6));
+        Individual child7 = new Individual("I7US15");
+        child7.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child7));
+        Individual child8 = new Individual("I8US15");
+        child8.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child8));
+        Individual child9 = new Individual("I9US15");
+        child9.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child9));
+        Individual child10 = new Individual("I10US15");
+        child10.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child10));
+        Individual child11 = new Individual("I11US15");
+        child11.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child11));
+        Individual child12 = new Individual("I12US15");
+        child12.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child12));
+        Individual child13 = new Individual("I13US15");
+        child13.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child13));
+        Individual child14 = new Individual("I14US15");
+        child14.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child14));
+        Individual child15 = new Individual("I15US15");
+        child15.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child15));
+        Individual child16 = new Individual("I16US15");
+        child15.setName("Megsri /Mad/");
+        family.addChildrenIndi(Optional.of(child16));
+		families.add(family);
+        
+        List<Family> ambiguousMoreThan15Children1 = validator.fewerThan15Children(families);
+        assertEquals(1,ambiguousMoreThan15Children1.size());
+    }
 }
