@@ -454,3 +454,87 @@ public class GedcomValidator {
         return famWithOlderParents;
     }
 }
+public void loadAuntUncles(Family family,Set<String> auntUncles,List<Family> familyArrayList) {
+	for(Individual sibling:family.getChildrenIndis()){
+        if(sibling.getGender().equals("M")) {
+            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
+            if(relatives.isPresent())
+            {
+                auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
+            }
+        }else if(sibling.getGender().equals("F")){
+            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
+            if(relatives.isPresent())
+            {
+                auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
+            }
+        }
+    }
+}
+// US15 
+public List<Family> fewerThan15Children(List<Family> familyList){
+	List<Family> ambiguousMoreThan15Children = new ArrayList<>();
+	int count;
+	for (Family family : familyList) {
+		count=0;
+		List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+		for (Iterator<Individual> iterator = childrenOfTheFamily.iterator(); iterator.hasNext();) {
+			count++;
+			Individual child = iterator.next();
+		}
+		if(count>15) {
+			ambiguousMoreThan15Children.add(family);
+		}
+	}
+	return ambiguousMoreThan15Children;
+}
+// US20
+/*
+public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individual> individualList){
+    List<Family> ambiguousAuntUncleMarryNN = new ArrayList<>();
+    HashMap<String, Family> childToFamilyMap = new HashMap<>();
+    for (Family fam : familyArrayList) {
+        if (fam.getChildren() != null) {
+            for (String child : fam.getChildren().split(",")) {
+                childToFamilyMap.put(child, fam);
+            }
+        }
+    }
+    for (Family family : familyArrayList) {
+        List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+        Set<String> auntUncles = new HashSet<String>();
+        Family mothersFamily = childToFamilyMap.get(family.getWifeId());
+        Family fathersFamily = childToFamilyMap.get(family.getHusbandId());
+        if(mothersFamily != null)
+        	loadAuntUncles(mothersFamily,auntUncles,familyArrayList);
+        if(fathersFamily != null)
+        	loadAuntUncles(fathersFamily,auntUncles,familyArrayList);
+        
+        for (Individual child : childrenOfTheFamily) {
+            if (child.getGender().equals("M")) {
+                Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(child.getId())).findFirst();
+                if (childIsHusbandInThisFamily.isPresent()) {
+                    String wifeId = childIsHusbandInThisFamily.get().getWifeId();
+                    if (auntUncles.contains(wifeId)) {
+                        Optional<Individual> auntWife = individualList.stream().filter(ind -> ind.getId().equals(wifeId)).findFirst();
+                        if (auntWife.isPresent())
+                        	ambiguousAuntUncleMarryNN.add(new AuntUncleMarriedNN(family, child, auntWife.get()));
+                    }
+                }
+            }
+            else{
+                Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
+                if (childIsWifeInThisFamily.isPresent()) {
+                    String husbandId = childIsWifeInThisFamily.get().getWifeId();
+                    if (auntUncles.contains(husbandId)) {
+                        Optional<Individual> uncleHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
+                        if (uncleHusband.isPresent())
+                        	ambiguousAuntUncleMarryNN.add(new AuntUncleMarriedNN(family, child, uncleHusband.get()));
+                    }
+                }
+            }
+        }
+    }
+    return  ambiguousAuntUncleMarryNN;
+} */
+}

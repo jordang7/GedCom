@@ -334,4 +334,10 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US15 "+ fam.getId() + " CANNOT HAVE MORE THAN 15 CHILDREN");
         }
     }
+    public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
+        for(AuntUncleMarriedNN au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
+            System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW" + au.getHusband().getName() + ", "+au.getWife().getName());
+        }
+
+    }
 }
