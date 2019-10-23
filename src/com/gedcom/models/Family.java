@@ -14,6 +14,8 @@ public class Family {
     private String wifeId = "";
     private String wifeName = "";
     private String children = "";
+
+
     private Optional<LocalDate> divorced = Optional.empty();
 
     private Optional<Individual> husbandIndi = Optional.empty();

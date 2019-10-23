@@ -417,4 +417,40 @@ public class GedcomValidator {
         }
         return ambiguousMoreThan15Children;
     }
+
+    // US12
+    public List<FamilyWithOlderParents> getFamiliesWithOlderParents( List<Family> familyList ){
+
+        List<FamilyWithOlderParents> famWithOlderParents = new ArrayList<>();
+        for( Family fam : familyList ) {
+            FamilyWithOlderParents familyWithOlderParent = new FamilyWithOlderParents();
+            familyWithOlderParent.setFamily(fam);
+            boolean oldParent = false;
+            List<LocalDate> childrenBdates = fam.getChildrenIndis().stream().filter(i -> i.getBdate().isPresent()).map( i -> i.getBdate().get() ).collect(Collectors.toList());
+            if( fam.getHusbandIndi().isPresent()) {
+                Optional<LocalDate> hBdate = fam.getHusbandIndi().get().getBdate();
+
+                if( hBdate.isPresent() ){
+                    boolean fatherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(hBdate.get(), d).getYears() > 80).findFirst().isPresent();
+                    if( fatherIsReallyOld ){
+                        familyWithOlderParent.setOlderHusband( fam.getHusbandIndi());
+                        oldParent = true;
+                    }
+                }
+            }
+            if( fam.getWifeIndi().isPresent()) {
+                Optional<LocalDate> wBdate = fam.getWifeIndi().get().getBdate();
+                if( wBdate.isPresent() ){
+                    boolean motherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(wBdate.get(), d).getYears() > 60).findFirst().isPresent();
+                    if( motherIsReallyOld ){
+                        familyWithOlderParent.setOlderWife( fam.getWifeIndi());
+                        oldParent = true;
+                    }
+                }
+            }
+            if( oldParent )
+                famWithOlderParents.add( familyWithOlderParent);
+        }
+        return famWithOlderParents;
+    }
 }
