@@ -49,6 +49,7 @@ public class Application {
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
         gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
+        //gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
     }
 
 }
