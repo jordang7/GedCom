@@ -379,7 +379,7 @@ public class GedcomValidator {
                 } else {
                     Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
                     if (childIsWifeInThisFamily.isPresent()) {
-                        String husbandId = childIsWifeInThisFamily.get().getWifeId();
+                        String husbandId = childIsWifeInThisFamily.get().getHusbandId();
                         if (firstCousins.contains(husbandId)) {
                             Optional<Individual> cousinHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
                             if (cousinHusband.isPresent())
