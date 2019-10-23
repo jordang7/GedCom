@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -138,6 +140,62 @@ public class GedcomPrinter {
                 System.out.println("ERROR: INDIVIDUAL : US07 :"+ indi.getId() +": MORE THAN 150 YEARS OLD - BIRTH DATE "+formatDate(indi.getBdate()));
             }
         }
+    }
+    
+    public void printSiblingSpacingErrors(List<Family> familyArrayList, List<Individual> individualArrayList) {
+
+        for (Family fam : familyArrayList) {
+//            System.out.println(fam.getChildren());
+        	
+        	List<Individual> tempIndiList = new ArrayList<Individual>();
+        	HashSet<String> tempHashSet = new HashSet<String>();
+            
+            for(int i=0; i<fam.getChildren().split(",").length; i++)
+            {
+            	for(Individual indi : individualArrayList)
+                {
+                	if(indi.getId().equals(fam.getChildren().split(",")[i]))
+                	{
+//                		System.out.println("Indi Name US13 ---- " + indi.getName());
+                		tempIndiList.add(indi);
+                	}
+                }
+            }
+            
+            for(Individual indi1 : tempIndiList)
+            {
+            	for(Individual indi2 : tempIndiList)
+            	{
+            		if(!indi1.getName().equals(indi2.getName()))
+            		{
+//            			System.out.println(Math.abs(indi1.getAge() - indi2.getAge()));
+            			if(Math.abs(indi1.getAge() - indi2.getAge()) < 1)
+            			{
+            				if(!tempHashSet.contains(indi1.getName()+indi1.getLastName()) && !tempHashSet.contains(indi2.getName()+indi2.getLastName()))
+            				{
+            					tempHashSet.add(indi1.getName()+indi1.getLastName());
+            					System.out.println("ERROR: FAMILY : US13 : SIBLINGS "+ indi1.getName() + " " + indi1.getLastName() + ": AND "+ indi2.getName() + " " + indi2.getLastName() + " HAVE SPACING LESS THAN 1 YEAR");
+            				}
+            			}
+            		}
+            	}
+            }
+            
+           
+        }
+    }
+    
+    public void printMultipleBirthsLessThan5Errors(List<Family> familyArrayList) {
+    		
+    	for(Family fam : familyArrayList)
+    	{
+    		String totalChildren = fam.getChildren();
+    		
+    		if(totalChildren.split(",").length >= 5)
+    		{
+    			System.out.println("ERROR: FAMILY : US14 : MULTIPLE BIRTHS "+ fam.getHusbandName() + " AND " + fam.getWifeName() + " GAVE MULTIPLE BIRTHS. THE COUNT IS "+ totalChildren.split(",").length);
+    		}
+    	}
     }
 
     public void printIndividuals(List<Individual> individualArrayList) {

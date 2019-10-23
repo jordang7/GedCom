@@ -72,5 +72,49 @@ public class Sprint_1_Test_Cases_Shrikant {
    	}
     
     
+    @Test
+   	public void testprintSiblingSpacingErrors() throws ParseException, java.text.ParseException {
+   		
+   		GedcomFileReader gfr = new GedcomFileReader();
+           List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+           HashSet<String> tagSet = new HashSet<String>();
+           List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
+
+           for (String tagName: tagNames ) {
+               tagSet.add(tagName);
+           }
+           GedcomProcessor gdp = new GedcomProcessor();
+           GedcomResponse response= gdp.parser(gedcomLines,tagSet);
+           IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+           gedcomPrinter.printSiblingSpacingErrors(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+   		fail("Not yet implemented");
+   	}
+    
+    
+    
+    @Test
+   	public void testprintMultipleBirthsLessThan5Errors() throws ParseException, java.text.ParseException {
+   		
+   		GedcomFileReader gfr = new GedcomFileReader();
+           List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+           HashSet<String> tagSet = new HashSet<String>();
+           List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
+
+           for (String tagName: tagNames ) {
+               tagSet.add(tagName);
+           }
+           GedcomProcessor gdp = new GedcomProcessor();
+           GedcomResponse response= gdp.parser(gedcomLines,tagSet);
+           IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+           gedcomPrinter.printMultipleBirthsLessThan5Errors(indiFamilyResponse.getFamilyList());
+   		fail("Not yet implemented");
+   	}
+    
+    
+//    printMultipleBirthsLessThan5Errors
+    
+    
     
 }
