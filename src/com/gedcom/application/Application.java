@@ -31,6 +31,8 @@ public class Application {
         gedcomPrinter.printIndividuals(indiFamilyResponse.getIndividualList());
         gedcomPrinter.printFamily(indiFamilyResponse.getFamilyList());
 
+
+
         System.out.println("---- GEDCOM ERRORS -----");
         gedcomPrinter.printIndividualsWithBirthBeforeCurrentData(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList()); //US01
         gedcomPrinter.printBirthBeforeMarriageError(indiFamilyResponse);//US02
@@ -42,15 +44,17 @@ public class Application {
         gedcomPrinter.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US08
         gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US09
         gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
-                gedcomPrinter.printAmbiguousBigamyLIst(indiFamilyResponse);//US11
+        //gedcomPrinter.printAmbiguousBigamyLIst(indiFamilyResponse);//US11
         gedcomPrinter.printFamilyWithOlderParents(indiFamilyResponse);//US12;
+        gedcomPrinter.printSiblingSpacingErrors(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList()); //US13
+        gedcomPrinter.printMultipleBirthsLessThan5Errors(indiFamilyResponse.getFamilyList()); // US14
         gedcomPrinter.printAmbiguousMoreThan15Children(indiFamilyResponse); //US15
         gedcomPrinter.printAmbiguosMaleLastNames(indiFamilyResponse);//US16
         gedcomPrinter.printAmbiguousParentDescendantMarriageList(indiFamilyResponse);//US17
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
-        gedcomPrinter.printSiblingSpacingErrors(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList());
-        gedcomPrinter.printMultipleBirthsLessThan5Errors(indiFamilyResponse.getFamilyList());
+
+
         //gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
 
     }
