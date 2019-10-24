@@ -537,4 +537,32 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
     }
     return  ambiguousAuntUncleMarryNN;
 } */
+
+public List<FamilyWithAnomaly> noBigamyIsAllowed(List<Individual> individualList, List<Family> familyArrayList){
+    List<FamilyWithAnomaly> familyWithBigamy = new ArrayList<FamilyWithAnomaly>();
+    for (Family family : familyArrayList) {
+        String husbandId= family.getHusbandId();
+        String wifeId = family.getWifeId();
+        Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
+        Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
+        if(anotherFamilyOfThisMan.isPresent()){
+            loadFamilyWithBigamy(anotherFamilyOfThisMan.get(),family,familyWithBigamy);
+        }
+        if(anotherFamilyOfThisWoman.isPresent()){
+            loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(),family,familyWithBigamy);
+        }
+    }
+    return familyWithBigamy;
+    }
+    public void loadFamilyWithBigamy(Family anotherFamily,Family family,List<FamilyWithAnomaly> familyWitBigamy){
+            if(anotherFamily.getDivorced().isEmpty()){
+                FamilyWithAnomaly familyWithAnomaly = new FamilyWithAnomaly();
+                familyWithAnomaly.setFamily(family);
+                familyWithAnomaly.setHusbandId(family.getHusbandId());
+                familyWithAnomaly.setAnotherFamilyOfAPerson(anotherFamily);
+                familyWitBigamy.add(familyWithAnomaly);
+            }
+
+    }
+	
 }
