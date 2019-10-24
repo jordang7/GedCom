@@ -398,4 +398,9 @@ public class GedcomPrinter {
         }
 
     }
+       public void printAmbiguousBigamyLIst(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithAnomaly bigamyList : indiFamilyResponse.getAmbiguousBigamyList()){
+            System.out.println("ERROR : FAMILY : US11 "+ " Someone in these families has bigamy without divorce" + bigamyList.getFamily().getId() +" AND "+bigamyList.getAnotherFamilyOfAPerson().getId());
+        }
+    }
 }
