@@ -453,41 +453,25 @@ public class GedcomValidator {
         }
         return famWithOlderParents;
     }
-}
-public void loadAuntUncles(Family family,Set<String> auntUncles,List<Family> familyArrayList) {
-	for(Individual sibling:family.getChildrenIndis()){
-        if(sibling.getGender().equals("M")) {
-            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
-            if(relatives.isPresent())
-            {
-                auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
-            }
-        }else if(sibling.getGender().equals("F")){
-            Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
-            if(relatives.isPresent())
-            {
-                auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
+
+    public void loadAuntUncles(Family family,Set<String> auntUncles,List<Family> familyArrayList) {
+        for(Individual sibling:family.getChildrenIndis()){
+            if(sibling.getGender().equals("M")) {
+                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
+                if(relatives.isPresent())
+                {
+                    auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
+                }
+            }else if(sibling.getGender().equals("F")){
+                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
+                if(relatives.isPresent())
+                {
+                    auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
+                }
             }
         }
     }
-}
-// US15 
-public List<Family> fewerThan15Children(List<Family> familyList){
-	List<Family> ambiguousMoreThan15Children = new ArrayList<>();
-	int count;
-	for (Family family : familyList) {
-		count=0;
-		List<Individual> childrenOfTheFamily = family.getChildrenIndis();
-		for (Iterator<Individual> iterator = childrenOfTheFamily.iterator(); iterator.hasNext();) {
-			count++;
-			Individual child = iterator.next();
-		}
-		if(count>15) {
-			ambiguousMoreThan15Children.add(family);
-		}
-	}
-	return ambiguousMoreThan15Children;
-}
+
 // US20
 /*
 public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individual> individualList){
@@ -509,7 +493,7 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
         	loadAuntUncles(mothersFamily,auntUncles,familyArrayList);
         if(fathersFamily != null)
         	loadAuntUncles(fathersFamily,auntUncles,familyArrayList);
-        
+
         for (Individual child : childrenOfTheFamily) {
             if (child.getGender().equals("M")) {
                 Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(child.getId())).findFirst();
@@ -538,31 +522,32 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
     return  ambiguousAuntUncleMarryNN;
 } */
 
-public List<FamilyWithAnomaly> noBigamyIsAllowed(List<Individual> individualList, List<Family> familyArrayList){
-    List<FamilyWithAnomaly> familyWithBigamy = new ArrayList<FamilyWithAnomaly>();
-    for (Family family : familyArrayList) {
-        String husbandId= family.getHusbandId();
-        String wifeId = family.getWifeId();
-        Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
-        Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
-        if(anotherFamilyOfThisMan.isPresent()){
-            loadFamilyWithBigamy(anotherFamilyOfThisMan.get(),family,familyWithBigamy);
-        }
-        if(anotherFamilyOfThisWoman.isPresent()){
-            loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(),family,familyWithBigamy);
-        }
-    }
-    return familyWithBigamy;
-    }
-    public void loadFamilyWithBigamy(Family anotherFamily,Family family,List<FamilyWithAnomaly> familyWitBigamy){
-            if(anotherFamily.getDivorced().isEmpty()){
-                FamilyWithAnomaly familyWithAnomaly = new FamilyWithAnomaly();
-                familyWithAnomaly.setFamily(family);
-                familyWithAnomaly.setHusbandId(family.getHusbandId());
-                familyWithAnomaly.setAnotherFamilyOfAPerson(anotherFamily);
-                familyWitBigamy.add(familyWithAnomaly);
-            }
-
-    }
-	
+//    public List<FamilyWithAnomaly> noBigamyIsAllowed(List<Individual> individualList, List<Family> familyArrayList){
+//        List<FamilyWithAnomaly> familyWithBigamy = new ArrayList<FamilyWithAnomaly>();
+//        for (Family family : familyArrayList) {
+//            String husbandId= family.getHusbandId();
+//            String wifeId = family.getWifeId();
+//            Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
+//            Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
+//            if(anotherFamilyOfThisMan.isPresent()){
+//                loadFamilyWithBigamy(anotherFamilyOfThisMan.get(),family,familyWithBigamy);
+//            }
+//            if(anotherFamilyOfThisWoman.isPresent()){
+//                loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(),family,familyWithBigamy);
+//            }
+//        }
+//        return familyWithBigamy;
+//    }
+//
+//    public void loadFamilyWithBigamy(Family anotherFamily,Family family,List<FamilyWithAnomaly> familyWitBigamy){
+//        if(anotherFamily.getDivorced().isEmpty()){
+//            FamilyWithAnomaly familyWithAnomaly = new FamilyWithAnomaly();
+//            familyWithAnomaly.setFamily(family);
+//            familyWithAnomaly.setHusbandId(family.getHusbandId());
+//            familyWithAnomaly.setAnotherFamilyOfAPerson(anotherFamily);
+//            familyWitBigamy.add(familyWithAnomaly);
+//        }
+//
+//    }
 }
+

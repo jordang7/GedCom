@@ -89,7 +89,7 @@ public class GedcomPrinter {
 
                                         if(bDate.isPresent() && deathDate.isPresent() && bDate.get().isAfter(deathDate.get()))
                                         {
-                                            System.out.println("ANOMALY: FAMILY: US09 : "+family.getId() + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH");
+                                            System.out.println("ANOMALY: FAMILY: US09 : "+family.getId() + " " + individualArrayList.get(k).getId() + " BORN AFTER PARENT'S " + individualArrayList.get(i).getId() + " DEATH");
                                         }
                                     }
                                 }
@@ -392,15 +392,17 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US15 "+ fam.getId() + " CANNOT HAVE MORE THAN 15 CHILDREN");
         }
     }
-    public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
+
+    /*public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
         for(AuntUncleMarriedNN au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
             System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW" + au.getHusband().getName() + ", "+au.getWife().getName());
         }
 
-    }
-       public void printAmbiguousBigamyLIst(IndiFamilyResponse indiFamilyResponse) {
+    }*/
+
+    /*public void printAmbiguousBigamyLIst(IndiFamilyResponse indiFamilyResponse) {
         for(FamilyWithAnomaly bigamyList : indiFamilyResponse.getAmbiguousBigamyList()){
             System.out.println("ERROR : FAMILY : US11 "+ " Someone in these families has bigamy without divorce" + bigamyList.getFamily().getId() +" AND "+bigamyList.getAnotherFamilyOfAPerson().getId());
         }
-    }
+    }*/
 }
