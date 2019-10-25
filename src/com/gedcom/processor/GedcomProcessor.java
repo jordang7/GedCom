@@ -124,8 +124,8 @@ public class GedcomProcessor {
 
             List<FamilyWithOlderParents> familyWithOlderParents = gvalidator.getFamiliesWithOlderParents(familyArrayList);
             response.setFamilyWithOlderParents( familyWithOlderParents );
-            //List<FamilyWithAnomaly> ambiguousBigamyList = gvalidator.noBigamyIsAllowed(individualList,familyArrayList);
-            //response.setAmbiguousBigamyList(ambiguousBigamyList);
+            List<FamilyWithAnomaly> ambiguousBigamyList = gvalidator.noBigamyIsAllowed(individualList,familyArrayList);
+            response.setAmbiguousBigamyList(ambiguousBigamyList);
 
 
         } catch (Exception e) {
