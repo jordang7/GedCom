@@ -170,4 +170,15 @@ public class IndiFamilyResponse {
     public void setAmbiguousMoreThan15Children(List<Family> ambiguousMoreThan15Children) {
         this.ambiguousMoreThan15Children = ambiguousMoreThan15Children;
     }
+    List<FamilyWithAnomaly> ambiguousBigamyList;
+
+    public List<FamilyWithAnomaly> getAmbiguousBigamyList() {
+        return ambiguousBigamyList;
+    }
+
+    public void setAmbiguousBigamyList(List<FamilyWithAnomaly> ambiguousBigamyList) {
+        this.ambiguousBigamyList = ambiguousBigamyList;
+    }
+
+
 }

@@ -44,7 +44,7 @@ public class Application {
         gedcomPrinter.printListOfIndividualsBornBeforeParentsMarriage(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US08
         gedcomPrinter.printListOfIndividualsBornAfterParentsDeath(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());//US09
         gedcomPrinter.printMarriageBefore14Error(indiFamilyResponse);//US10
-        //gedcomPrinter.printAmbiguousBigamyLIst(indiFamilyResponse);//US11
+        gedcomPrinter.printAmbiguousBigamyLIst(indiFamilyResponse);//US11
         gedcomPrinter.printFamilyWithOlderParents(indiFamilyResponse);//US12;
         gedcomPrinter.printSiblingSpacingErrors(indiFamilyResponse.getFamilyList(),indiFamilyResponse.getIndividualList()); //US13
         gedcomPrinter.printMultipleBirthsLessThan5Errors(indiFamilyResponse.getFamilyList()); // US14
