@@ -291,6 +291,48 @@ public class GedcomPrinter {
         }
     }
 
+    public void printAmbiguousGenderForRoles(IndiFamilyResponse indiFamilyResponse){
+        for(Family family : indiFamilyResponse.getAmbiguousGenderForRoles()){
+
+            Optional<Individual> husbandOpt = family.getHusbandIndi();
+            Optional<Individual> wifeOpt = family.getWifeIndi();
+
+            if(husbandOpt.isPresent()&& wifeOpt.isPresent()){
+                String husbGender = husbandOpt.get().getGender();
+
+                if(husbGender.equals("F") ){
+                    System.out.println("ANOMALY : FAMILY : US21 " + family.getId() + " Husband's Gender is Female Instead of Male");
+                }
+                String wifeGender = wifeOpt.get().getGender();
+                if(wifeGender.equals("M")){
+                    System.out.println("ANOMALY : FAMILY : US21 " + family.getId() + " Wife's Gender is Male Instead of Female");
+                }
+            }
+
+        }
+    }
+
+
+    public void printambiguousIndividualId(IndiFamilyResponse indiFamilyResponse){
+        for(Individual individual : indiFamilyResponse.getAmbiguousIndividualIDList()){
+
+            String indi = individual.getId();
+            if(!indi.isEmpty()){
+                System.out.println("ERROR : INDIVIDUAL : US22 " + individual.getId() + " already exists and used by other individual");
+            }
+        }
+    }
+
+    public void printambiguousFamilyId(IndiFamilyResponse indiFamilyResponse){
+        for(Family family : indiFamilyResponse.getAmbiguousFamilyIDList()){
+
+            String indi = family.getId();
+            if(!indi.isEmpty()){
+                System.out.println("ERROR : FAMILY : US22 " + family.getId() + " already exists and used by other individual");
+            }
+        }
+    }
+
     public void printAmbiguosSiblingMarriageList(IndiFamilyResponse indiFamilyResponse){
         for(FamilyWithChildrenMarriedToEachOther familyWithChildrenMarriedToEachOther : indiFamilyResponse.getAmbiguousSblingsMarriageList()){
             System.out.println("ANOMALY : FAMILY : US18 "+ familyWithChildrenMarriedToEachOther.getFamily().getId() + " SIBLINGS " + familyWithChildrenMarriedToEachOther.getHusband().getName() + ", "+familyWithChildrenMarriedToEachOther.getWife().getName()+ " ARE MARRIED TO EACH OTHER");
