@@ -104,6 +104,57 @@ public class GedcomValidator {
         return ambiguousMaleLastNames;
     }
 
+    //US21 - Meghana
+    public List<Family> checkCorrectGenderforRoles(List<Family> familyList ){
+        List<Family> ambiguousGenderForRoles = new ArrayList<>();
+
+        for(Family family : familyList){
+            Optional<Individual> husbandOpt = family.getHusbandIndi();
+            Optional<Individual> wifeOpt = family.getWifeIndi();
+
+            if(husbandOpt.isPresent() && wifeOpt.isPresent()){
+                String husbGender = husbandOpt.get().getGender();
+                String wifeGender = wifeOpt.get().getGender();
+                if(husbGender.equals("F")||wifeGender.equals("M")){
+                        ambiguousGenderForRoles.add(family);
+                }
+            }
+        }
+
+        return ambiguousGenderForRoles;
+    }
+
+    //US22 - Meghana
+    public List<Individual> uniqueID(List<Individual> individualList){
+        List<Individual> ambiguousIndividualIDList = new ArrayList<>();
+        HashSet<String> set = new HashSet<>();
+        for(Individual indi : individualList){
+            String id = indi.getId();
+            if(set.contains(id)){
+                ambiguousIndividualIDList.add(indi);
+            }
+            else {
+                set.add(id);
+            }
+        }
+        return ambiguousIndividualIDList;
+    }
+
+    public List<Family> uniqueFamilyID(List<Family> familyList){
+        List<Family> ambiguousFamilyIDList = new ArrayList<>();
+        HashSet<String> set = new HashSet<>();
+        for(Family family : familyList){
+            String id = family.getId();
+            if(set.contains(id)){
+                ambiguousFamilyIDList.add(family);
+            }
+            else {
+                set.add(id);
+            }
+        }
+        return ambiguousFamilyIDList;
+    }
+
     //US18 Meghana
     public List<FamilyWithChildrenMarriedToEachOther> siblingsShouldNotMarry(List<Family> familyList) {
         List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList = new ArrayList<>();
@@ -540,7 +591,7 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
     }
 
     public void loadFamilyWithBigamy(Family anotherFamily,Family family,List<FamilyWithAnomaly> familyWitBigamy){
-        if(anotherFamily.getDivorced().isEmpty()){
+        if(!anotherFamily.getDivorced().isPresent()){
             FamilyWithAnomaly familyWithAnomaly = new FamilyWithAnomaly();
             familyWithAnomaly.setFamily(family);
             familyWithAnomaly.setHusbandId(family.getHusbandId());
@@ -549,5 +600,6 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
         }
 
     }
+
 }
 

@@ -34,6 +34,37 @@ public class IndiFamilyResponse {
 
     List<FamilyWithOlderParents> familyWithOlderParents;
 
+    public List<Family> getAmbiguousGenderForRoles() {
+        return ambiguousGenderForRoles;
+    }
+
+    public void setAmbiguousGenderForRoles(List<Family> ambiguousGenderForRoles) {
+        this.ambiguousGenderForRoles = ambiguousGenderForRoles;
+    }
+
+    List<Family> ambiguousGenderForRoles;
+
+    public List<Individual> getAmbiguousIndividualIDList() {
+        return ambiguousIndividualIDList;
+    }
+
+    public void setAmbiguousIndividualIDList(List<Individual> ambiguousIndividualIDList) {
+        this.ambiguousIndividualIDList = ambiguousIndividualIDList;
+    }
+
+    List<Individual> ambiguousIndividualIDList;
+
+    public List<Family> getAmbiguousFamilyIDList() {
+        return ambiguousFamilyIDList;
+    }
+
+    public void setAmbiguousFamilyIDList(List<Family> ambiguousFamilyIDList) {
+        this.ambiguousFamilyIDList = ambiguousFamilyIDList;
+    }
+
+    List<Family> ambiguousFamilyIDList;
+
+
     public List<FamilyWithOlderParents> getFamilyWithOlderParents() {
         return familyWithOlderParents;
     }

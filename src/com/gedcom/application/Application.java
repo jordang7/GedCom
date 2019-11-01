@@ -56,6 +56,9 @@ public class Application {
 
 
         //gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
+        gedcomPrinter.printAmbiguousGenderForRoles(indiFamilyResponse);
+        gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
+        gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
 
     }
 
