@@ -1,0 +1,165 @@
+Sprint 3 US21 and US22 (Implemented and tested by Meghana)
+
+Output
+
+INDIVIDUAL INFORMATION
+
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+   I1US12                      Alex /US12/          M          10 Feb 1900       119       Y                        -NA-                                              F1US12
+   I2US12                     Debra /US12/          F          10 Feb 1920        99       Y                        -NA-                                              F1US12
+   I2US21                     Debora /Deb/          M          10 Feb 1920        99       Y                        -NA-                                              F1US21
+   I1US21                      John /Mill/          F          10 Feb 1920        99       Y                        -NA-                                              F1US21
+   I1US22                      John /Mill/          M          10 Feb 1920        99       Y                        -NA-                                              F1US22
+   I1US22                      John /Mill/          M          10 Feb 1920        99       Y                        -NA-                                              F1US22
+   I3US12                  Al-DEBRA /US12/          M          10 Feb 1989        30       Y                        -NA-
+   I4US12                 Al-DEBRA2 /US12/          M          10 Feb 1950        69       Y                        -NA-
+   I2US09                    White /Smith/          F          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09
+   I1US13                   White /Darren/          M          2 Oct 1959        40       N                     5 Mar 2000                                              F1US13
+   I2US13                    White /Walty/          F          2 Oct 1969        39       N                     5 Mar 2009                                              F1US13
+   I3US13                   White /Warren/          M          2 Oct 2002        17       Y                        -NA-                                              F1US13
+   I4US13                   White /Sarren/          F          3 Oct 2002        17       Y                        -NA-                                              F1US13
+   I1US09                    Black /Smith/          M          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09
+   I3US09                     Gray /Smith/          M          2 Oct 2004        15       Y                        -NA-                                              F1US09
+      I2                    Henry /Smith/          M          2 Oct 1959       -19       N                     5 Mar 1940                                                  F2
+      I3                   Mary /Poppins/          F                -NA-         0       Y                        -NA-                                                  F2
+      I4                     Lexy /Smith/          F          15 Jul 1990        29       Y                        -NA-                                                  F1
+      I5                    John /Downey/          M          8 Jun 1960        59       Y                        -NA-                                                  F3
+      I6                   Emily /Downey/          F          12 Jan 2007        12       Y                        -NA-
+      I7                  Joseph /Downey/          M          7 Nov 2009         9       Y                        -NA-
+      I8                      Joe /Smith/          M          24 Jun 2014         5       Y                        -NA-
+   I1US07                    Niles /Smith/          M          10 Feb 1800       219       Y                        -NA-
+   I1US10                     Alex /Smith/          M          10 Feb 1989        30       Y                        -NA-                                              F1US10
+   I1US02                  Frasier /Smith/          M          10 Feb 1800       219       Y                        -NA-
+   I1US01                   Martin /Smith/          M          10 Feb 2022        -2       Y                        -NA-
+   I2US02                    Maris /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US02
+   I2US10                   Lilith /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US10
+   I1US16                        Sri /Mad/          M          10 Feb 1989        30       Y                        -NA-                                              F1US16
+   I2US16                        Meg /Mad/          F          10 Feb 1989        30       Y                        -NA-                                              F1US16
+   I3US16                        Nid /Mad/          M          10 Feb 2015         4       Y                        -NA-
+   I4US16                       Bhar /Dam/          M          10 Feb 2012         7       Y                        -NA-
+   I1US18                   Bharath /Bhat/          M          10 Feb 1953        66       Y                        -NA-                                              F1US18
+   I2US18                  Srinidhi /Bhat/          F          10 Feb 1954        65       Y                        -NA-                                              F1US18
+   I3US18                    Sribha /Bhat/          M          10 Feb 1970        49       Y                        -NA-
+   I4US18                    Bharsri /Dam/          F          10 Feb 1972        47       Y                        -NA-
+   I1US17                  Micheal /Smith/          M                -NA-         0       Y                        -NA-                                              F1US17
+   I2US17                      Sue /I2US17          F                -NA-         0       Y                        -NA-                                              F1US17
+   I3US17                            Mark/          M                -NA-         0       Y                        -NA-                                              F2US17
+   I4US17                      Juan/ Gerry          M                -NA-         0       Y                        -NA-                                              F3US17
+   I5US17                            Merry          F                -NA-         0       Y                        -NA-                                              F2US17
+   I1US19                          Gerardo          M                -NA-         0       Y                        -NA-                                              F1US19
+   I2US19                  Catherin/Albert          F                -NA-         0       Y                        -NA-                                              F1US19
+   I3US19                            Lilly          F                -NA-         0       Y                        -NA-
+   I4US19                           Joseph          M                -NA-         0       Y                        -NA-                                              F2US19
+   I1US15                      jordan1 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I2US15                      jordan2 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I3US15                      jordan3 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I4US15                      jordan4 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I5US15                      jordan5 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I6US15                      jordan6 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I7US15                      jordan7 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I8US15                      jordan8 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I9US15                      jordan9 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I10US15                     jordan10 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I11US15                     jordan11 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I12US15                     jordan12 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I13US15                     jordan13 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I14US15                     jordan14 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I15US15                     jordan15 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I16US15                     jordan16 /j/          M          10 Feb 1953        66       Y                        -NA-
+   I1US20                      Grandpa /j/          M          10 Feb 1953        66       Y                        -NA-                                              F1US20
+   I2US20                      Grandma /j/          F          10 Feb 1953        66       Y                        -NA-                                              F2US20
+   I3US20                          dad /j/          M          10 Feb 1953        66       Y                        -NA-
+   I4US20                        Uncle /j/          M          10 Feb 1953        66       Y                        -NA-
+   I5US20                         wife /j/          F          10 Feb 1953        66       Y                        -NA-                                             F1US201
+   I4US20                        child /j/          F          10 Feb 1953        66       Y                        -NA-
+   I1US11                              Joe          M                -NA-         0       Y                        -NA-                                              F1US11
+   I2US11                            Maria          F                -NA-         0       Y                        -NA-                                              F2US11
+   I3US11                            Irina          F                -NA-         0       Y                        -NA-                                              F2US11
++---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------+---------------------+
+FAMILY INFORMATION
+
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+ F1US201                                 -NA-         -NA-                   I3US20            dad /j/         I5US20        wife /j/            I6US20
+ F1US202                                 -NA-         -NA-                   I4US20            child /j/         I6US20
+    F1                          10 Apr 2015         -NA-                       I1                             I4        Lexy /Smith/                I8
+    F2                           8 May 1986   8 May 1985                       I2            Henry /Smith/             I3        Mary /Poppins/                I1
+    F3                          17 May 2005         -NA-                       I5            John /Downey/             I3        Mary /Poppins/             I6,I7
+ F1US10                          10 Apr 1999         -NA-                   I1US10            Alex /Smith/         I2US10        Lilith /Smith/
+ F1US02                          10 Apr 1988         -NA-                   I1US02            Frasier /Smith/         I2US02        Maris /Smith/
+ F1US09                          10 Apr 1988         -NA-                   I1US09            Black /Smith/         I2US09        White /Smith/            I3US09
+ F1US16                          10 Apr 2010         -NA-                   I1US16            Sri /Mad/         I2US16        Meg /Mad/           I3US16,I4US16
+ F1US18                          10 Apr 1968         -NA-                   I1US18            Bharath /Bhat/         I2US18        Srinidhi /Bhat/           I3US18,I4US18
+ F2US18                          10 Apr 2010         -NA-                   I3US18            Sribha /Bhat/         I4US18        Bharsri /Dam/
+ F1US12                          10 Apr 1945         -NA-                   I1US12            Alex /US12/         I2US12        Debra /US12/           I3US12,I4US12
+ F1US21                          10 Apr 1945         -NA-                   I1US21            John /Mill/         I2US21        Debora /Deb/
+ F1US22                          10 Apr 1945         -NA-                   I1US22            John /Mill/         I2US22
+ F1US22                          10 Apr 1945         -NA-                   I1US22            John /Mill/         I2US22
+ F1US17                                 -NA-         -NA-                   I1US17            Micheal /Smith/         I2US17        Sue /I2US17           I3US17,I2US19
+ F2US17                                 -NA-         -NA-                   I3US17            Mark/         I5US17         Merry           I4US17,I4US19
+ F3US17                                 -NA-         -NA-                   I4US17            Juan/ Gerry         I2US17        Sue /I2US17
+ F1US19                                 -NA-         -NA-                   I1US19            Gerardo         I2US19        Catherin/Albert            I3US19
+ F1US13                                 -NA-         -NA-                   I1US13            White /Darren/         I2US13        White /Walty/           I3US13,I4US13
+ F2US19                                 -NA-         -NA-                   I4US19            Joseph         I3US19         Lilly
+ F1US15                                 -NA-         -NA-                                                                                 I1US15,I2US15,I3US15,I4US15,I5US15,I6US15,I7US15,I8US15,I9US15,I10US15,I11US15,I12US15,I13US15,I14US15,I15US15,I16US15
+ F1US11                                 -NA-         -NA-                   I1US11             Joe         I2US11         Maria
+ F2US11                                 -NA-         -NA-                   I1US11             Joe         I3US11         Irina
++---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+---- GEDCOM ERRORS -----
+ERROR: INDIVIDUAL: US01: I1US01: BIRTH DATE IS AFTER CURRENTDATE
+ERROR: FAMILY: US02:F1US02 MARRIED 10 Apr 1988 BEFORE WIFE'S BIRTH ( I2US02) 10 Feb 1989
+ERROR: INDIVIDUAL:US03 I2 BIRTH 2 Oct 1959 AFTER DEATH 5 Mar 1940
+ERROR: FAMILY:US04:F2 DIVORCED 8 May 1985 BEFORE MARRIAGE8 May 1986
+ERROR: FAMILY: US05:F2 MARRIED 8 May 1986 AFTER HUSBANDS'S DEATH (I2)5 Mar 1940
+ERROR: FAMILY: US06:F2 Divorced 8 May 1985 AFTER HUSBANDS'S DEATH (I2) 5 Mar 1940
+ERROR: INDIVIDUAL : US07 :I1US07: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ERROR: INDIVIDUAL : US07 :I1US02: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ANOMALY: FAMILY : US08: F1: CHILD  Joe /Smith/BORN I8 Before MARRIAGE: 10 Apr 2015
+ANOMALY: FAMILY : US08: F1US16: CHILD  Lexy /Smith/BORN I4 Before MARRIAGE: 10 Apr 2010
+ANOMALY: FAMILY : US09 F1US09I3US09 BORN AFTER PARENT'S I2US09 DEATH
+ANOMALY: FAMILY: US09 : F1US09 I3US09 BORN AFTER PARENT'S I1US09 DEATH
+ANOMALY: FAMILY: US09 : F1US13 I3US13 BORN AFTER PARENT'S I1US13 DEATH
+ANOMALY: FAMILY: US09 : F1US13 I4US13 BORN AFTER PARENT'S I1US13 DEATH
+ANOMALY: FAMILY :US10:F1US10 WIFE AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ANOMALY: FAMILY :US10:F1US10 HUSBAND AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF1US11 AND F2US11
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF2US11 AND F1US11
+ANOMALY: FAMILY: US12: F1US12 HUSBAND  Alex /US12/ WAS OLDER THAN 80 YEARS WHEN ONE OF HIS CHILD WAS BORN
+ANOMALY: FAMILY: US12: F1US12 WIFE  Debra /US12/ WAS OLDER THAN 60 YEARS WHEN ONE OF HER CHILD WAS BORN
+ERROR: FAMILY : US13 : SIBLINGS  Mark/ Mark/: AND  Catherin/Albert Catherin/Albert HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  Juan/ Gerry Gerry: AND  Joseph Joseph HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  White /Warren/ /Warren/: AND  White /Sarren/ /Sarren/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan1 /j/ /j/: AND  jordan2 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan2 /j/ /j/: AND  jordan3 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan3 /j/ /j/: AND  jordan4 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan4 /j/ /j/: AND  jordan5 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan5 /j/ /j/: AND  jordan6 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan6 /j/ /j/: AND  jordan7 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan7 /j/ /j/: AND  jordan8 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan8 /j/ /j/: AND  jordan9 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan9 /j/ /j/: AND  jordan10 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan10 /j/ /j/: AND  jordan11 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan11 /j/ /j/: AND  jordan12 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan12 /j/ /j/: AND  jordan13 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan13 /j/ /j/: AND  jordan14 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan14 /j/ /j/: AND  jordan15 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  jordan15 /j/ /j/: AND  jordan16 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US14 : MULTIPLE BIRTHS  AND  GAVE MULTIPLE BIRTHS. THE COUNT IS 16
+ANOMALY : FAMILY : US15 F1US15 CANNOT HAVE MORE THAN 15 CHILDREN
+ANOMALY: FAMILY: US16 F1US16 MALE /Dam/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Mad/
+ANOMALY: FAMILY: US16 F1US17 MALE Mark/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Smith/
+ANOMALY: FAMILY: US16 F2US17 MALE Gerry LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
+ANOMALY: FAMILY: US16 F2US17 MALE Joseph LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
+ANOMALY: FAMILY: US16 F1US13 MALE /Warren/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Darren/
+ERROR : FAMILY : US17 F2US17 PARENT SHOULD NOT BE MARRIED TO A DESCENDANT Juan/ Gerry,  Sue /I2US17
+ANOMALY : FAMILY : US18 F1US18 SIBLINGS  Sribha /Bhat/,  Bharsri /Dam/ ARE MARRIED TO EACH OTHER
+ANOMALY : FAMILY : US19 F2US17 FIRST COUSINS SHOULD NOT BE MARRIED Joseph,  Lilly
+ANOMALY : FAMILY : US19 F1US19 FIRST COUSINS SHOULD NOT BE MARRIED Lilly,  Joseph
+ANOMALY : FAMILY : US21 F1US21 Husband's Gender is Female Instead of Male
+ANOMALY : FAMILY : US21 F1US21 Wife's Gender is Male Instead of Female
+ERROR : INDIVIDUAL : US22 I1US22 already exists and used by other individual
+ERROR : INDIVIDUAL : US22 I4US20 already exists and used by other individual
+ERROR : FAMILY : US22 F1US22 already exists and used by other individual
