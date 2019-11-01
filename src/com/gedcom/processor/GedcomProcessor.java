@@ -127,6 +127,14 @@ public class GedcomProcessor {
             List<FamilyWithAnomaly> ambiguousBigamyList = gvalidator.noBigamyIsAllowed(individualList,familyArrayList);
             response.setAmbiguousBigamyList(ambiguousBigamyList);
 
+            List<Family> ambiguousGenderForRoles = gvalidator.checkCorrectGenderforRoles(familyArrayList);
+            response.setAmbiguousGenderForRoles(ambiguousGenderForRoles);
+
+            List<Individual> ambiguousIndividualIDList = gvalidator.uniqueID(individualList);
+            response.setAmbiguousIndividualIDList(ambiguousIndividualIDList);
+
+            List<Family> ambiguousFamilyIDList = gvalidator.uniqueFamilyID(familyArrayList);
+            response.setAmbiguousFamilyIDList(ambiguousFamilyIDList);
 
         } catch (Exception e) {
             e.printStackTrace();

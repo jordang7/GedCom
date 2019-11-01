@@ -177,7 +177,31 @@ class GedComValidatorTest {
         assertEquals(1,ambiguousMaleLastName1.size());
 
     }
+    //US21 Meghana
+    @org.junit.jupiter.api.Test
+    void testGenderForRoles(){
+        List<Family> ambiguousGenderForRoles = validator.checkCorrectGenderforRoles(new ArrayList<Family>());
+        assertEquals(0,ambiguousGenderForRoles.size());
 
+        List<Family> family = new ArrayList<>();
+
+        Individual husband = new Individual("I1US21");
+        husband.setGender("F");
+
+        Individual wife = new Individual("I2US21");
+        wife.setGender("M");
+
+        Family family1 = new Family("F1US21");
+
+        family1.setHusbandIndi(Optional.of(husband));
+        family1.setWifeIndi(Optional.of(wife));
+
+
+        family.add(family1);
+        List<Family> ambiguousGenderForRoles1 = validator.checkCorrectGenderforRoles(family);
+        assertEquals(2,ambiguousGenderForRoles1.size());
+
+    }
     //US18 Meghana
     @org.junit.jupiter.api.Test
     void testSiblingsShouldNotMArry(){
