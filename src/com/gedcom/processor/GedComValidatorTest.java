@@ -8,6 +8,7 @@ import com.sun.org.apache.bcel.internal.generic.LUSHR;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -177,7 +178,53 @@ class GedComValidatorTest {
         assertEquals(1,ambiguousMaleLastName1.size());
 
     }
+    //US21 Meghana
+    @org.junit.jupiter.api.Test
+    void testGenderForRoles(){
+        List<Family> ambiguousGenderForRoles = validator.checkCorrectGenderforRoles(new ArrayList<Family>());
+        assertEquals(0,ambiguousGenderForRoles.size());
 
+        List<Family> family = new ArrayList<>();
+
+        Individual husband = new Individual("I1US21");
+        husband.setGender("F");
+
+        Individual wife = new Individual("I2US21");
+        wife.setGender("M");
+
+        Family family1 = new Family("F1US21");
+
+        family1.setHusbandIndi(Optional.of(husband));
+        family1.setWifeIndi(Optional.of(wife));
+
+
+        family.add(family1);
+        List<Family> ambiguousGenderForRoles1 = validator.checkCorrectGenderforRoles(family);
+        assertEquals(1,ambiguousGenderForRoles1.size());
+
+    }
+    //US22 - Meghana
+    @org.junit.jupiter.api.Test
+    void testUniqueIndividualFamilyID(){
+        List<Individual> ambiguousIndividualIDList = validator.uniqueID(new ArrayList<Individual>());
+        assertEquals(0,ambiguousIndividualIDList.size());
+
+        List<Individual> individualList = new ArrayList<>();
+        Individual husband = new Individual("I1US21");
+        Individual wife = new Individual("I1US21");
+
+        ambiguousIndividualIDList = validator.uniqueID(Arrays.asList(husband, wife));
+        assertEquals(1,ambiguousIndividualIDList.size());
+        List<Family> ambiguousFamilyIDList = validator.uniqueFamilyID(new ArrayList<Family>());
+        assertEquals(0,ambiguousFamilyIDList.size());
+
+        Family family1 = new Family("F1US21");
+        Family family2 = new Family("F1US21");
+
+        ambiguousFamilyIDList = validator.uniqueFamilyID(Arrays.asList(family1, family2));
+        assertEquals(1,ambiguousFamilyIDList.size());
+
+    }
     //US18 Meghana
     @org.junit.jupiter.api.Test
     void testSiblingsShouldNotMArry(){
