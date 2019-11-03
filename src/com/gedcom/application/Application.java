@@ -59,6 +59,7 @@ public class Application {
         gedcomPrinter.printAmbiguousGenderForRoles(indiFamilyResponse);
         gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
         gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
+        gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
 
     }
 

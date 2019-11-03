@@ -2,9 +2,10 @@
 package com.gedcom.processor;
 
 import com.gedcom.models.Family;
+import com.gedcom.models.FamilyWithAnomaly;
 import com.gedcom.models.FamilyWithChildrenMarriedToEachOther;
 import com.gedcom.models.Individual;
-import com.sun.org.apache.bcel.internal.generic.LUSHR;
+//import com.sun.org.apache.bcel.internal.generic.LUSHR;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -330,5 +331,21 @@ class GedComValidatorTest {
         
         List<Family> ambiguousMoreThan15Children1 = validator.fewerThan15Children(families);
         assertEquals(1,ambiguousMoreThan15Children1.size());
+    }
+    @org.junit.jupiter.api.Test
+    void testUniqueFirstNameInFamily(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+
+        List<Individual> individualList = new ArrayList<>();
+        Individual husband = new Individual("I1US25");
+        husband.setName("I1/ US25 ");
+        Individual wife = new Individual("I2US25");
+        wife.setName("I1/US25");
+        Family family = new Family("F1US25");
+        family.setHusbandIndi(Optional.of(husband));
+        family.setWifeIndi(Optional.of(wife));
+        familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(Arrays.asList(husband, wife),Arrays.asList(family));
+        assertEquals(1,familyWithAnomalyList.size());
     }
 }

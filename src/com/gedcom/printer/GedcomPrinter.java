@@ -447,4 +447,9 @@ public class GedcomPrinter {
             System.out.println("ERROR : FAMILY : US11 "+ " Someone in these families has bigamy without divorce" + bigamyList.getFamily().getId() +" AND "+bigamyList.getAnotherFamilyOfAPerson().getId());
         }
     }
+    public void printDuplicateFirstNameList(IndiFamilyResponse indiFamResp){
+        for(FamilyWithAnomaly duplicateNamesList : indiFamResp.getAmbiguousDuplicateFirstNameFamilies()){
+            System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
+        }
+    }
 }
