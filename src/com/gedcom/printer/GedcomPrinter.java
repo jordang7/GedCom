@@ -435,12 +435,12 @@ public class GedcomPrinter {
         }
     }
 
-    /*public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
-        for(AuntUncleMarriedNN au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
-            System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW" + au.getHusband().getName() + ", "+au.getWife().getName());
+    public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithAnomaly au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
+            System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW : " + au.getHusbandId()+ ", "+au.getWifeId());
         }
 
-    }*/
+    }
 
     public void printAmbiguousBigamyLIst(IndiFamilyResponse indiFamilyResponse) {
         for(FamilyWithAnomaly bigamyList : indiFamilyResponse.getAmbiguousBigamyList()){

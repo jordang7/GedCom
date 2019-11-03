@@ -13,6 +13,11 @@ public class FamilyWithAnomaly {
 public FamilyWithAnomaly(){
 
 }
+public FamilyWithAnomaly(Family family, String husbandId, String wifeId){
+    this.family=family;
+    this.husbandId = husbandId;
+    this.wifeId = wifeId;
+}
     public FamilyWithAnomaly(Family family, Individual husband, Individual wife,Family anotherFamilyOfAPerson) {
         this.family = family;
         this.husband = husband;
