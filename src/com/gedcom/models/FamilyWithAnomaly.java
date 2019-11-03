@@ -1,5 +1,9 @@
 package com.gedcom.models;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by Sri on 10/17/2019.
  */
@@ -10,8 +14,15 @@ public class FamilyWithAnomaly {
     Family anotherFamilyOfAPerson;
     private String husbandId;
     private String wifeId;
+
+    private Set<String> duplicateNamesInFamily;
 public FamilyWithAnomaly(){
 
+}
+public FamilyWithAnomaly(Family family, String husbandId, String wifeId){
+    this.family=family;
+    this.husbandId = husbandId;
+    this.wifeId = wifeId;
 }
     public FamilyWithAnomaly(Family family, Individual husband, Individual wife,Family anotherFamilyOfAPerson) {
         this.family = family;
@@ -87,4 +98,15 @@ public FamilyWithAnomaly(){
     public void setWifeId(String wifeId) {
         this.wifeId = wifeId;
     }
+
+    public Set<String> getDuplicateNamesInFamily() {
+    if(duplicateNamesInFamily != null)
+        return duplicateNamesInFamily;
+    else return new HashSet<String>();
+    }
+
+    public void setDuplicateNamesInFamily(Set<String> duplicateNamesInFamily) {
+        this.duplicateNamesInFamily = duplicateNamesInFamily;
+    }
+
 }

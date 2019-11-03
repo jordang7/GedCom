@@ -435,16 +435,21 @@ public class GedcomPrinter {
         }
     }
 
-    /*public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
-        for(AuntUncleMarriedNN au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
-            System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW" + au.getHusband().getName() + ", "+au.getWife().getName());
+    public void printAmbiguousAuntUncleNNList(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithAnomaly au : indiFamilyResponse.getAmbiguousAuntUncleMarriedNN()){
+            System.out.println("ANOMALY : FAMILY : US20 "+ au.getFamily().getId() + " AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW : " + au.getHusbandId()+ ", "+au.getWifeId());
         }
 
-    }*/
+    }
 
     public void printAmbiguousBigamyLIst(IndiFamilyResponse indiFamilyResponse) {
         for(FamilyWithAnomaly bigamyList : indiFamilyResponse.getAmbiguousBigamyList()){
             System.out.println("ERROR : FAMILY : US11 "+ " Someone in these families has bigamy without divorce" + bigamyList.getFamily().getId() +" AND "+bigamyList.getAnotherFamilyOfAPerson().getId());
+        }
+    }
+    public void printDuplicateFirstNameList(IndiFamilyResponse indiFamResp){
+        for(FamilyWithAnomaly duplicateNamesList : indiFamResp.getAmbiguousDuplicateFirstNameFamilies()){
+            System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
         }
     }
 }

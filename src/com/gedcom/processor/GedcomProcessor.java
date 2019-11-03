@@ -136,6 +136,11 @@ public class GedcomProcessor {
             List<Family> ambiguousFamilyIDList = gvalidator.uniqueFamilyID(familyArrayList);
             response.setAmbiguousFamilyIDList(ambiguousFamilyIDList);
 
+            List<FamilyWithAnomaly> ambiguousFamilyWithUncleAunt = gvalidator.AuntUncleMarryNN(familyArrayList, individualList);
+            response.setAuntUncleMarriedNN(ambiguousFamilyWithUncleAunt);
+            List<FamilyWithAnomaly> ambiguousFamilyWithDuplicateFirstNames = gvalidator.firstNamesShouldBeUniqueInTheFamily(individualList, familyArrayList);
+            response.setAmbiguousDuplicateFirstNameFamilies(ambiguousFamilyWithDuplicateFirstNames);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

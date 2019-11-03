@@ -55,10 +55,11 @@ public class Application {
         gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
 
 
-        //gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
+        gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
         gedcomPrinter.printAmbiguousGenderForRoles(indiFamilyResponse);
         gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
         gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
+        gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
 
     }
 

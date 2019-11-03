@@ -105,18 +105,18 @@ public class GedcomValidator {
     }
 
     //US21 - Meghana
-    public List<Family> checkCorrectGenderforRoles(List<Family> familyList ){
+    public List<Family> checkCorrectGenderforRoles(List<Family> familyList) {
         List<Family> ambiguousGenderForRoles = new ArrayList<>();
 
-        for(Family family : familyList){
+        for (Family family : familyList) {
             Optional<Individual> husbandOpt = family.getHusbandIndi();
             Optional<Individual> wifeOpt = family.getWifeIndi();
 
-            if(husbandOpt.isPresent() && wifeOpt.isPresent()){
+            if (husbandOpt.isPresent() && wifeOpt.isPresent()) {
                 String husbGender = husbandOpt.get().getGender();
                 String wifeGender = wifeOpt.get().getGender();
-                if(husbGender.equals("F")||wifeGender.equals("M")){
-                        ambiguousGenderForRoles.add(family);
+                if (husbGender.equals("F") || wifeGender.equals("M")) {
+                    ambiguousGenderForRoles.add(family);
                 }
             }
         }
@@ -125,30 +125,28 @@ public class GedcomValidator {
     }
 
     //US22 - Meghana
-    public List<Individual> uniqueID(List<Individual> individualList){
+    public List<Individual> uniqueID(List<Individual> individualList) {
         List<Individual> ambiguousIndividualIDList = new ArrayList<>();
         HashSet<String> set = new HashSet<>();
-        for(Individual indi : individualList){
+        for (Individual indi : individualList) {
             String id = indi.getId();
-            if(set.contains(id)){
+            if (set.contains(id)) {
                 ambiguousIndividualIDList.add(indi);
-            }
-            else {
+            } else {
                 set.add(id);
             }
         }
         return ambiguousIndividualIDList;
     }
 
-    public List<Family> uniqueFamilyID(List<Family> familyList){
+    public List<Family> uniqueFamilyID(List<Family> familyList) {
         List<Family> ambiguousFamilyIDList = new ArrayList<>();
         HashSet<String> set = new HashSet<>();
-        for(Family family : familyList){
+        for (Family family : familyList) {
             String id = family.getId();
-            if(set.contains(id)){
+            if (set.contains(id)) {
                 ambiguousFamilyIDList.add(family);
-            }
-            else {
+            } else {
                 set.add(id);
             }
         }
@@ -384,11 +382,11 @@ public class GedcomValidator {
         if (family == null) {
             return;
         } else {
-            if (family.getHusbandId() != null) {
+            if (family.getHusbandId() != null && !family.getHusbandId().equals("")) {
                 ancestors.add(family.getHusbandId());
                 loadAncestors(childToFamilyMap.get(family.getHusbandId()), ancestors, childToFamilyMap);
             }
-            if (family.getWifeId() != null) {
+            if (family.getWifeId() != null && !family.getWifeId().equals("")) {
                 ancestors.add(family.getWifeId());
                 loadAncestors(childToFamilyMap.get(family.getWifeId()), ancestors, childToFamilyMap);
             }
@@ -458,11 +456,12 @@ public class GedcomValidator {
             }
         }
     }
+
     // US15
-    public List<Family> fewerThan15Children(List<Family> familyList){
+    public List<Family> fewerThan15Children(List<Family> familyList) {
         List<Family> ambiguousMoreThan15Children = new ArrayList<>();
         for (Family family : familyList) {
-            if(family.getChildrenIndis().size()>15) {
+            if (family.getChildrenIndis().size() > 15) {
                 ambiguousMoreThan15Children.add(family);
             }
         }
@@ -470,128 +469,121 @@ public class GedcomValidator {
     }
 
     // US12
-    public List<FamilyWithOlderParents> getFamiliesWithOlderParents( List<Family> familyList ){
+    public List<FamilyWithOlderParents> getFamiliesWithOlderParents(List<Family> familyList) {
 
         List<FamilyWithOlderParents> famWithOlderParents = new ArrayList<>();
-        for( Family fam : familyList ) {
+        for (Family fam : familyList) {
             FamilyWithOlderParents familyWithOlderParent = new FamilyWithOlderParents();
             familyWithOlderParent.setFamily(fam);
             boolean oldParent = false;
-            List<LocalDate> childrenBdates = fam.getChildrenIndis().stream().filter(i -> i.getBdate().isPresent()).map( i -> i.getBdate().get() ).collect(Collectors.toList());
-            if( fam.getHusbandIndi().isPresent()) {
+            List<LocalDate> childrenBdates = fam.getChildrenIndis().stream().filter(i -> i.getBdate().isPresent()).map(i -> i.getBdate().get()).collect(Collectors.toList());
+            if (fam.getHusbandIndi().isPresent()) {
                 Optional<LocalDate> hBdate = fam.getHusbandIndi().get().getBdate();
 
-                if( hBdate.isPresent() ){
-                    boolean fatherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(hBdate.get(), d).getYears() > 80).findFirst().isPresent();
-                    if( fatherIsReallyOld ){
-                        familyWithOlderParent.setOlderHusband( fam.getHusbandIndi());
+                if (hBdate.isPresent()) {
+                    boolean fatherIsReallyOld = childrenBdates.stream().filter(d -> Period.between(hBdate.get(), d).getYears() > 80).findFirst().isPresent();
+                    if (fatherIsReallyOld) {
+                        familyWithOlderParent.setOlderHusband(fam.getHusbandIndi());
                         oldParent = true;
                     }
                 }
             }
-            if( fam.getWifeIndi().isPresent()) {
+            if (fam.getWifeIndi().isPresent()) {
                 Optional<LocalDate> wBdate = fam.getWifeIndi().get().getBdate();
-                if( wBdate.isPresent() ){
-                    boolean motherIsReallyOld = childrenBdates.stream().filter( d -> Period.between(wBdate.get(), d).getYears() > 60).findFirst().isPresent();
-                    if( motherIsReallyOld ){
-                        familyWithOlderParent.setOlderWife( fam.getWifeIndi());
+                if (wBdate.isPresent()) {
+                    boolean motherIsReallyOld = childrenBdates.stream().filter(d -> Period.between(wBdate.get(), d).getYears() > 60).findFirst().isPresent();
+                    if (motherIsReallyOld) {
+                        familyWithOlderParent.setOlderWife(fam.getWifeIndi());
                         oldParent = true;
                     }
                 }
             }
-            if( oldParent )
-                famWithOlderParents.add( familyWithOlderParent);
+            if (oldParent)
+                famWithOlderParents.add(familyWithOlderParent);
         }
         return famWithOlderParents;
     }
 
-    public void loadAuntUncles(Family family,Set<String> auntUncles,List<Family> familyArrayList) {
-        for(Individual sibling:family.getChildrenIndis()){
-            if(sibling.getGender().equals("M")) {
-                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(sibling.getId())).findFirst();
-                if(relatives.isPresent())
-                {
-                    auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
-                }
-            }else if(sibling.getGender().equals("F")){
-                Optional<Family> relatives = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(sibling.getId())).findFirst();
-                if(relatives.isPresent())
-                {
-                    auntUncles.addAll(Arrays.asList(relatives.get().getId().split(",")));
-                }
-            }
+    public void loadAuntUncles(Family family, Set<String> auntUncles, List<Family> familyArrayList) {
+        for (Individual sibling : family.getChildrenIndis()) {
+            auntUncles.add(sibling.getId());
         }
     }
 
 // US20
-/*
-public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individual> individualList){
-    List<Family> ambiguousAuntUncleMarryNN = new ArrayList<>();
-    HashMap<String, Family> childToFamilyMap = new HashMap<>();
-    for (Family fam : familyArrayList) {
-        if (fam.getChildren() != null) {
-            for (String child : fam.getChildren().split(",")) {
-                childToFamilyMap.put(child, fam);
-            }
-        }
-    }
-    for (Family family : familyArrayList) {
-        List<Individual> childrenOfTheFamily = family.getChildrenIndis();
-        Set<String> auntUncles = new HashSet<String>();
-        Family mothersFamily = childToFamilyMap.get(family.getWifeId());
-        Family fathersFamily = childToFamilyMap.get(family.getHusbandId());
-        if(mothersFamily != null)
-        	loadAuntUncles(mothersFamily,auntUncles,familyArrayList);
-        if(fathersFamily != null)
-        	loadAuntUncles(fathersFamily,auntUncles,familyArrayList);
 
-        for (Individual child : childrenOfTheFamily) {
-            if (child.getGender().equals("M")) {
-                Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(child.getId())).findFirst();
-                if (childIsHusbandInThisFamily.isPresent()) {
-                    String wifeId = childIsHusbandInThisFamily.get().getWifeId();
-                    if (auntUncles.contains(wifeId)) {
-                        Optional<Individual> auntWife = individualList.stream().filter(ind -> ind.getId().equals(wifeId)).findFirst();
-                        if (auntWife.isPresent())
-                        	ambiguousAuntUncleMarryNN.add(new AuntUncleMarriedNN(family, child, auntWife.get()));
-                    }
-                }
-            }
-            else{
-                Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
-                if (childIsWifeInThisFamily.isPresent()) {
-                    String husbandId = childIsWifeInThisFamily.get().getWifeId();
-                    if (auntUncles.contains(husbandId)) {
-                        Optional<Individual> uncleHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
-                        if (uncleHusband.isPresent())
-                        	ambiguousAuntUncleMarryNN.add(new AuntUncleMarriedNN(family, child, uncleHusband.get()));
-                    }
+    public List<FamilyWithAnomaly> AuntUncleMarryNN(List<Family> familyArrayList, List<Individual> individualList) {
+        List<FamilyWithAnomaly> ambiguousAuntUncleMarryNN = new ArrayList<>();
+        HashMap<String, Family> childToFamilyMap = new HashMap<>();
+        for (Family fam : familyArrayList) {
+            if (fam.getChildren() != null) {
+                for (String child : fam.getChildren().split(",")) {
+                    childToFamilyMap.put(child, fam);
                 }
             }
         }
-    }
-    return  ambiguousAuntUncleMarryNN;
-} */
+        for (Family family : familyArrayList) {
+            List<Individual> childrenOfTheFamily = family.getChildrenIndis();
+            Set<String> auntUncles = new HashSet<String>();
+            Family mothersFamily = null;
+            Family fathersFamily = null;
+            if (null != family.getWifeId() && !family.getWifeId().equals("")) {
+                mothersFamily = childToFamilyMap.get(family.getWifeId());
+            }
+            if (null != family.getHusbandId() && !family.getHusbandId().equals("")) {
+                fathersFamily = childToFamilyMap.get(family.getHusbandId());
+            }
+            if (mothersFamily != null)
+                loadAuntUncles(mothersFamily, auntUncles, familyArrayList);
+            if (fathersFamily != null)
+                loadAuntUncles(fathersFamily, auntUncles, familyArrayList);
 
-    public List<FamilyWithAnomaly> noBigamyIsAllowed(List<Individual> individualList, List<Family> familyArrayList){
+            for (Individual child : childrenOfTheFamily) {
+                if (child.getGender().equals("M")) {
+                    Optional<Family> childIsHusbandInThisFamily = familyArrayList.stream().filter(fam -> fam.getHusbandId().equals(child.getId())).findFirst();
+                    if (childIsHusbandInThisFamily.isPresent()) {
+                        String wifeId = childIsHusbandInThisFamily.get().getWifeId();
+                        if (auntUncles.contains(wifeId)) {
+                            Optional<Individual> auntWife = individualList.stream().filter(ind -> ind.getId().equals(wifeId)).findFirst();
+                            if (auntWife.isPresent())
+                                ambiguousAuntUncleMarryNN.add(new FamilyWithAnomaly(childIsHusbandInThisFamily.get(), child.getId(), wifeId));
+                        }
+                    }
+                } else {
+                    Optional<Family> childIsWifeInThisFamily = familyArrayList.stream().filter(fam -> fam.getWifeId().equals(child.getId())).findFirst();
+                    if (childIsWifeInThisFamily.isPresent()) {
+                        String husbandId = childIsWifeInThisFamily.get().getWifeId();
+                        if (auntUncles.contains(husbandId)) {
+                            Optional<Individual> uncleHusband = individualList.stream().filter(ind -> ind.getId().equals(husbandId)).findFirst();
+                            if (uncleHusband.isPresent())
+                                ambiguousAuntUncleMarryNN.add(new FamilyWithAnomaly(childIsWifeInThisFamily.get(), husbandId, child.getId()));
+                        }
+                    }
+                }
+            }
+        }
+        return ambiguousAuntUncleMarryNN;
+    }
+
+    public List<FamilyWithAnomaly> noBigamyIsAllowed(List<Individual> individualList, List<Family> familyArrayList) {
         List<FamilyWithAnomaly> familyWithBigamy = new ArrayList<FamilyWithAnomaly>();
         for (Family family : familyArrayList) {
-            String husbandId= family.getHusbandId();
+            String husbandId = family.getHusbandId();
             String wifeId = family.getWifeId();
             Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
             Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
-            if(anotherFamilyOfThisMan.isPresent()){
-                loadFamilyWithBigamy(anotherFamilyOfThisMan.get(),family,familyWithBigamy);
+            if (anotherFamilyOfThisMan.isPresent()) {
+                loadFamilyWithBigamy(anotherFamilyOfThisMan.get(), family, familyWithBigamy);
             }
-            if(anotherFamilyOfThisWoman.isPresent()){
-                loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(),family,familyWithBigamy);
+            if (anotherFamilyOfThisWoman.isPresent()) {
+                loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(), family, familyWithBigamy);
             }
         }
         return familyWithBigamy;
     }
 
-    public void loadFamilyWithBigamy(Family anotherFamily,Family family,List<FamilyWithAnomaly> familyWitBigamy){
-        if(!anotherFamily.getDivorced().isPresent()){
+    public void loadFamilyWithBigamy(Family anotherFamily, Family family, List<FamilyWithAnomaly> familyWitBigamy) {
+        if (!anotherFamily.getDivorced().isPresent()) {
             FamilyWithAnomaly familyWithAnomaly = new FamilyWithAnomaly();
             familyWithAnomaly.setFamily(family);
             familyWithAnomaly.setHusbandId(family.getHusbandId());
@@ -601,5 +593,33 @@ public List<Family> AuntUncleMarryNN(List<Family> familyArrayList, List<Individu
 
     }
 
-}
+    public List<FamilyWithAnomaly> firstNamesShouldBeUniqueInTheFamily(List<Individual> individualList, List<Family> familyArrayList) {
+        List<FamilyWithAnomaly> familiesWithDuplicateNames = new ArrayList<FamilyWithAnomaly>();
+        for (Family fam : familyArrayList) {
+            Set<String> familyFirstNames = new HashSet<String>();
+            List<Individual> individualsInTheFam = new ArrayList<Individual>();
+            if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
+                individualsInTheFam.add(fam.getHusbandIndi().get());
+            }
+            if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
+                individualsInTheFam.add(fam.getWifeIndi().get());
+            }
+            if (fam.getChildrenIndis() != null) {
+                individualsInTheFam.addAll(fam.getChildrenIndis());
+            }
+            for (Individual indInFam : individualsInTheFam) {
+                if (familyFirstNames.contains((indInFam.getName().split("/")[0]).trim())) {
+                    FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
+                    anomaly.getDuplicateNamesInFamily().add(indInFam.getName().split("/")[0].trim());
+                    anomaly.setFamily(fam);
+                    familiesWithDuplicateNames.add(anomaly);
+                } else {
+                    familyFirstNames.add((indInFam.getName().split("/")[0]).trim());
+                }
+            }
+        }
+        return familiesWithDuplicateNames;
 
+    }
+
+}

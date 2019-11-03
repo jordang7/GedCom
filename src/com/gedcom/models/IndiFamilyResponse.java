@@ -28,11 +28,14 @@ public class IndiFamilyResponse {
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
     
-    // List<AuntUncleMarriedNN> ambiguousAuntUncleMarriedNNList;
+    List<FamilyWithAnomaly> ambiguousAuntUncleMarriedNNList;
     
     List<Family> ambiguousMoreThan15Children;
 
     List<FamilyWithOlderParents> familyWithOlderParents;
+
+
+    private List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies;
 
     public List<Family> getAmbiguousGenderForRoles() {
         return ambiguousGenderForRoles;
@@ -81,13 +84,13 @@ public class IndiFamilyResponse {
         this.ambiguousFirstCousinsMarriageList = ambiguousFirstCousinsMarriageList;
     }
     
-    /*public List<AuntUncleMarriedNN> getAmbiguousAuntUncleMarriedNN() {
+    public List<FamilyWithAnomaly> getAmbiguousAuntUncleMarriedNN() {
         return ambiguousAuntUncleMarriedNNList;
     }
 
-    public void setAuntUncleMarriedNN(List<AuntUncleMarriedNN> ambiguousAuntUncleMarriedNNList) {
+    public void setAuntUncleMarriedNN(List<FamilyWithAnomaly> ambiguousAuntUncleMarriedNNList) {
         this.ambiguousAuntUncleMarriedNNList = ambiguousAuntUncleMarriedNNList;
-    }*/
+    }
 
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList;
@@ -210,6 +213,12 @@ public class IndiFamilyResponse {
     public void setAmbiguousBigamyList(List<FamilyWithAnomaly> ambiguousBigamyList) {
         this.ambiguousBigamyList = ambiguousBigamyList;
     }
+    public List<FamilyWithAnomaly> getAmbiguousDuplicateFirstNameFamilies() {
+        return ambiguousDuplicateFirstNameFamilies;
+    }
 
+    public void setAmbiguousDuplicateFirstNameFamilies(List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies) {
+        this.ambiguousDuplicateFirstNameFamilies = ambiguousDuplicateFirstNameFamilies;
+    }
 
 }
