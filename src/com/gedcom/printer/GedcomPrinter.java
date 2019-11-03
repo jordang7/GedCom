@@ -452,4 +452,31 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
         }
     }
+    public void printListOfDeceased( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+    		List<String> deceased= new ArrayList<>();
+            for(Individual indi : individualArrayList)
+            {
+                if(indi.getDeathDate().isPresent())
+                {
+                    deceased.add(indi.getId());
+                }
+        }
+         
+            System.out.println("US29: List of all deceased individuals:" + deceased);
+    }
+    
+    public void printListOfLivingMarried( List<Individual> individualArrayList, List<Family> familyArrayList) throws ParseException, java.text.ParseException {
+		List<String> livingMarried= new ArrayList<>();
+		  for (Family family : familyArrayList) {
+	            Optional<LocalDate> marriageDate = family.getMarried();
+	            for(Individual indi : individualArrayList)
+	            {
+                    if( marriageDate.isPresent() && !indi.getDeathDate().isPresent())
+                    {
+                        livingMarried.add(indi.getId());
+                    }
+	            }
+	        }
+		  System.out.println("US30: List of all living married individuals: " + livingMarried);
+    }
 }
