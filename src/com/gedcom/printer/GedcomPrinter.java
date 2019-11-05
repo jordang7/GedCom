@@ -6,10 +6,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -312,7 +309,32 @@ public class GedcomPrinter {
         }
     }
 
+    //US27 - Meghana
+    public void printIndividualListWithAge(List<Individual> individualList){
+        System.out.println("US26 : Individual List with their name and age");
+        System.out.println("                     NAME        :   AGE ");
+        for(Individual individual:individualList){
+            System.out.format("%30s   %5s", individual.getName(), individual.getAge());
+            System.out.println();
+        }
+    }
+    //US28 - Meghan
+    public void printSiblingsByAge(List<Family> familyList){
+        System.out.println("US26 : Siblings List with their name and age");
+        for(Family family : familyList){
+            List<Individual> childrenIndi = family.getChildrenIndis();
+            Collections.sort(childrenIndi,new IndividualAgeComparator());
+            if(!childrenIndi.isEmpty()) {
+                System.out.println("FAMILY ID" + family.getId());
+                System.out.println("                       Name    :    Age       : DOB ");
+                for (Individual siblings : childrenIndi) {
+                    System.out.format("%30s   %5s    %6s", siblings.getName(), siblings.getAge(), formatDate(siblings.getBdate()));
+                    System.out.println();
+                }
+            }
+        }
 
+    }
     public void printambiguousIndividualId(IndiFamilyResponse indiFamilyResponse){
         for(Individual individual : indiFamilyResponse.getAmbiguousIndividualIDList()){
 
