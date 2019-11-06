@@ -413,4 +413,17 @@ class GedComValidatorTest {
         assertEquals(2,familyWithAnomalyList.size());
     }
 
+    @org.junit.jupiter.api.Test
+    void testNoCorrespoindingEntries(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US26");
+        person1.setName("I1/ US26");
+        person1.setGender("M");
+        person1.setSpouse("F1US26");
+        Family family1 = new Family("F2US26");
+        family1.setHusbandIndi(Optional.of(new Individual("I2US26")));
+        familyWithAnomalyList = validator.validateCorrespondingEntry(Arrays.asList(person1), Arrays.asList(family1));
+        assertEquals(1,familyWithAnomalyList.size());
+    }
 }

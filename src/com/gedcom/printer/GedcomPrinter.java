@@ -465,6 +465,11 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
         }
     }
+    public void printMissingCorrespondingEntries(IndiFamilyResponse indiFamResp){
+        for(FamilyWithAnomaly noCorrespondingEntries : indiFamResp.getMissingCorrespondingEntries()){
+            System.out.println("ERROR : FAMILY : US26: NO CORRESPONDING ENTRY WAS FOUND FOR THESE IDS : "+noCorrespondingEntries.getNocorrespondingEntry());
+        }
+    }
     public void printListOfDeceased( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
     		List<String> deceased= new ArrayList<>();
             for(Individual indi : individualArrayList)
