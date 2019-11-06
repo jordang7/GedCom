@@ -62,6 +62,7 @@ public class Application {
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
         
         System.out.println("---- GEDCOM LISTS ----");
+        gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
         }
