@@ -309,16 +309,7 @@ public class GedcomPrinter {
         }
     }
 
-    //US27 - Meghana
-    public void printIndividualListWithAge(List<Individual> individualList){
-        System.out.println("US26 : Individual List with their name and age");
-        System.out.println("                     NAME        :   AGE ");
-        for(Individual individual:individualList){
-            System.out.format("%30s   %5s", individual.getName(), individual.getAge());
-            System.out.println();
-        }
-    }
-    //US28 - Meghan
+    //US28 - Meghana
     public void printSiblingsByAge(List<Family> familyList){
         System.out.println("US26 : Siblings List with their name and age");
         for(Family family : familyList){
