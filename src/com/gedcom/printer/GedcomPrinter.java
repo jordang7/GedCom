@@ -7,21 +7,16 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-import java.util.stream.Collectors;
-
-
-
-
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+
+import java.util.stream.Collectors;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 /**
  * Created by Sri on 10/17/2019.
@@ -323,7 +318,23 @@ public class GedcomPrinter {
         }
     }
 
+    //US28 - Meghana
+    public void printSiblingsByAge(List<Family> familyList){
+        System.out.println("US28 : Siblings List with their name and age");
+        for(Family family : familyList){
+            List<Individual> childrenIndi = family.getChildrenIndis();
+            Collections.sort(childrenIndi,new IndividualAgeComparator());
+            if(!childrenIndi.isEmpty()) {
+                System.out.println("FAMILY ID" + family.getId());
+                System.out.println("                       Name    :    Age       : DOB ");
+                for (Individual siblings : childrenIndi) {
+                    System.out.format("%30s   %5s    %6s", siblings.getName(), siblings.getAge(), formatDate(siblings.getBdate()));
+                    System.out.println();
+                }
+            }
+        }
 
+    }
     public void printambiguousIndividualId(IndiFamilyResponse indiFamilyResponse){
         for(Individual individual : indiFamilyResponse.getAmbiguousIndividualIDList()){
 
@@ -463,6 +474,11 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
         }
     }
+    public void printMissingCorrespondingEntries(IndiFamilyResponse indiFamResp){
+        for(FamilyWithAnomaly noCorrespondingEntries : indiFamResp.getMissingCorrespondingEntries()){
+            System.out.println("ERROR : FAMILY : US26: NO CORRESPONDING ENTRY WAS FOUND FOR THESE IDS : "+noCorrespondingEntries.getNocorrespondingEntry());
+        }
+    }
     public void printListOfDeceased( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
     		List<String> deceased= new ArrayList<>();
             for(Individual indi : individualArrayList)
@@ -492,7 +508,7 @@ public class GedcomPrinter {
     }
     //US27 Parth
     public void printIndividualswithAge(List<Individual> individualArrayList){
-        System.out.println("Individual Names with Age:");
+        System.out.println("US:27 : Individual List with Name and Age:");
         System.out.println("+--------------------+------------+");
         System.out.println("|    NAME            |    AGE     |");
         System.out.println("+--------------------+------------+");

@@ -140,6 +140,9 @@ public class GedcomProcessor {
             response.setAuntUncleMarriedNN(ambiguousFamilyWithUncleAunt);
             List<FamilyWithAnomaly> ambiguousFamilyWithDuplicateFirstNames = gvalidator.firstNamesShouldBeUniqueInTheFamily(individualList, familyArrayList);
             response.setAmbiguousDuplicateFirstNameFamilies(ambiguousFamilyWithDuplicateFirstNames);
+            List<FamilyWithAnomaly> listIndiFamWithMissingCorrespondingEntries = gvalidator.validateCorrespondingEntry(individualList, familyArrayList);
+            response.setMissingCorrespondingEntries(listIndiFamWithMissingCorrespondingEntries);
+
 
         } catch (Exception e) {
             e.printStackTrace();

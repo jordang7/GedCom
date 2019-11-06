@@ -14,7 +14,7 @@ public class FamilyWithAnomaly {
     Family anotherFamilyOfAPerson;
     private String husbandId;
     private String wifeId;
-
+    private Set<String> nocorrespondingEntry;
     private Set<String> duplicateNamesInFamily;
 public FamilyWithAnomaly(){
 
@@ -111,5 +111,18 @@ public FamilyWithAnomaly(Family family, String husbandId, String wifeId){
     public void setDuplicateNamesInFamily(Set<String> duplicateNamesInFamily) {
         this.duplicateNamesInFamily = duplicateNamesInFamily;
     }
+    public Set<String> getNocorrespondingEntry() {
+        if(nocorrespondingEntry != null)
+            return nocorrespondingEntry;
+        else {
+            nocorrespondingEntry = new HashSet<String>();
+            return nocorrespondingEntry;
+        }
+   }
+
+    public void setNocorrespondingEntry(Set<String> nocorrespondingEntry) {
+        this.nocorrespondingEntry = nocorrespondingEntry;
+    }
+
 
 }

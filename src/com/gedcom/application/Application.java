@@ -1,8 +1,10 @@
 package com.gedcom.application;
 
+import com.gedcom.models.FamilyWithAnomaly;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
+import com.gedcom.models.Individual;
 import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
 import java.text.ParseException;
@@ -54,20 +56,23 @@ public class Application {
         gedcomPrinter.printAmbiguosSiblingMarriageList(indiFamilyResponse);//US18
         gedcomPrinter.printAmbiguousFirstCousinsMarriageList(indiFamilyResponse); //US19
 
-
         gedcomPrinter.printAmbiguousAuntUncleNNList(indiFamilyResponse); //US20
-        gedcomPrinter.printAmbiguousGenderForRoles(indiFamilyResponse);
-        gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
-        gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
+        gedcomPrinter.printAmbiguousGenderForRoles(indiFamilyResponse); //US21
+        gedcomPrinter.printambiguousIndividualId(indiFamilyResponse); // US22
+        gedcomPrinter.printambiguousFamilyId(indiFamilyResponse); // US22
+
+
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
-        
+        gedcomPrinter.printMissingCorrespondingEntries(indiFamilyResponse); //US26
         System.out.println("---- GEDCOM LISTS ----");
         gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
+        gedcomPrinter.printSiblingsByAge(indiFamilyResponse.getFamilyList()); //US28
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
         
         gedcomPrinter.printCasesForUniqueNameAndBirthDate(indiFamilyResponse.getIndividualList());
         gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList());
     	}
+
 
 }
