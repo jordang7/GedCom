@@ -163,3 +163,5 @@ ANOMALY : FAMILY : US21 F1US21 Wife's Gender is Male Instead of Female
 ERROR : INDIVIDUAL : US22 I1US22 already exists and used by other individual
 ERROR : INDIVIDUAL : US22 I4US20 already exists and used by other individual
 ERROR : FAMILY : US22 F1US22 already exists and used by other individual
+ERROR : US23: List of all the individuals with Duplicated Names and BirthDates : I1US22, I1US22, 
+ERROR : US24: List of all the Families with duplicated Spouses : F3, F1US22, F3US17, F2US11, F2US20, 

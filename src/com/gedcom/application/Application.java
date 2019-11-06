@@ -65,6 +65,9 @@ public class Application {
         gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
-        }
+        
+        gedcomPrinter.printCasesForUniqueNameAndBirthDate(indiFamilyResponse.getIndividualList());
+        gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList());
+    	}
 
 }
