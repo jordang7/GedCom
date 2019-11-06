@@ -102,7 +102,10 @@ public FamilyWithAnomaly(Family family, String husbandId, String wifeId){
     public Set<String> getDuplicateNamesInFamily() {
     if(duplicateNamesInFamily != null)
         return duplicateNamesInFamily;
-    else return new HashSet<String>();
+    else {
+        duplicateNamesInFamily = new HashSet<String>();
+    return duplicateNamesInFamily;
+    }
     }
 
     public void setDuplicateNamesInFamily(Set<String> duplicateNamesInFamily) {

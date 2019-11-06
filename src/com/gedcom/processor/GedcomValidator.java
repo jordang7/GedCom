@@ -570,14 +570,21 @@ public class GedcomValidator {
         for (Family family : familyArrayList) {
             String husbandId = family.getHusbandId();
             String wifeId = family.getWifeId();
-            Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
-            Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
-            if (anotherFamilyOfThisMan.isPresent()) {
-                loadFamilyWithBigamy(anotherFamilyOfThisMan.get(), family, familyWithBigamy);
+            if(!husbandId.isEmpty()) {
+                Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
+                if (anotherFamilyOfThisMan.isPresent()) {
+                    loadFamilyWithBigamy(anotherFamilyOfThisMan.get(), family, familyWithBigamy);
+                }
             }
-            if (anotherFamilyOfThisWoman.isPresent()) {
-                loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(), family, familyWithBigamy);
+            if(!wifeId.isEmpty())
+            {
+                Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
+
+                if (anotherFamilyOfThisWoman.isPresent()) {
+                    loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(), family, familyWithBigamy);
+                }
             }
+
         }
         return familyWithBigamy;
     }
@@ -597,6 +604,7 @@ public class GedcomValidator {
         List<FamilyWithAnomaly> familiesWithDuplicateNames = new ArrayList<FamilyWithAnomaly>();
         for (Family fam : familyArrayList) {
             Set<String> familyFirstNames = new HashSet<String>();
+            FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
             List<Individual> individualsInTheFam = new ArrayList<Individual>();
             if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
                 individualsInTheFam.add(fam.getHusbandIndi().get());
@@ -609,7 +617,6 @@ public class GedcomValidator {
             }
             for (Individual indInFam : individualsInTheFam) {
                 if (familyFirstNames.contains((indInFam.getName().split("/")[0]).trim())) {
-                    FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
                     anomaly.getDuplicateNamesInFamily().add(indInFam.getName().split("/")[0].trim());
                     anomaly.setFamily(fam);
                     familiesWithDuplicateNames.add(anomaly);
@@ -621,5 +628,6 @@ public class GedcomValidator {
         return familiesWithDuplicateNames;
 
     }
+
 
 }
