@@ -28,8 +28,8 @@ public class Application {
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
         GedcomPrinter gedcomPrinter = new GedcomPrinter();
 
-        gedcomPrinter.printIndividuals(indiFamilyResponse.getIndividualList());
         gedcomPrinter.printFamily(indiFamilyResponse.getFamilyList());
+        gedcomPrinter.printIndividuals(indiFamilyResponse.getIndividualList());
 
 
 
@@ -60,8 +60,9 @@ public class Application {
         gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
         gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
-        
+
         System.out.println("---- GEDCOM LISTS ----");
+        gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
         }
