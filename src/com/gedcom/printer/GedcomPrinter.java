@@ -311,7 +311,7 @@ public class GedcomPrinter {
 
     //US28 - Meghana
     public void printSiblingsByAge(List<Family> familyList){
-        System.out.println("US26 : Siblings List with their name and age");
+        System.out.println("US28 : Siblings List with their name and age");
         for(Family family : familyList){
             List<Individual> childrenIndi = family.getChildrenIndis();
             Collections.sort(childrenIndi,new IndividualAgeComparator());
@@ -494,7 +494,7 @@ public class GedcomPrinter {
     }
     //US27 Parth
     public void printIndividualswithAge(List<Individual> individualArrayList){
-        System.out.println("Individual Names with Age:");
+        System.out.println("US:27 : Individual List with Name and Age:");
         System.out.println("+--------------------+------------+");
         System.out.println("|    NAME            |    AGE     |");
         System.out.println("+--------------------+------------+");
