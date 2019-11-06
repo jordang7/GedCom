@@ -479,4 +479,18 @@ public class GedcomPrinter {
 	        }
 		  System.out.println("US30: List of all living married individuals: " + livingMarried);
     }
+    //US27 Parth
+    public void printIndividualswithAge(List<Individual> individualArrayList){
+        System.out.println("Individual Names with Age:");
+        System.out.println("+--------------------+------------+");
+        System.out.println("|    NAME            |    AGE     |");
+        System.out.println("+--------------------+------------+");
+
+        for (Individual indi : individualArrayList) {
+            System.out.format(" %20s   %10s", indi.getName(),indi.getAge());
+            System.out.println();
+        }
+        System.out.println("+--------------------+------------+");
+
+    }
 }
