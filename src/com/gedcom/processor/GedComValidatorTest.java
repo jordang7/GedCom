@@ -336,8 +336,6 @@ class GedComValidatorTest {
     void testUniqueFirstNameInFamily(){
         List<FamilyWithAnomaly> familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(new ArrayList<Individual>(),new ArrayList<Family>());
         assertEquals(0,familyWithAnomalyList.size());
-
-        List<Individual> individualList = new ArrayList<>();
         Individual husband = new Individual("I1US25");
         husband.setName("I1/ US25 ");
         Individual wife = new Individual("I2US25");
@@ -348,4 +346,71 @@ class GedComValidatorTest {
         familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(Arrays.asList(husband, wife),Arrays.asList(family));
         assertEquals(1,familyWithAnomalyList.size());
     }
+    @org.junit.jupiter.api.Test
+    void testBigami(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US11");
+        person1.setName("I1/ US11");
+        person1.setGender("M");
+        person1.setSpouse("F1US11");
+
+        Individual person2 = new Individual("I2US11");
+        person2.setName("I2/US25");
+        person2.setGender("F");
+        person2.setSpouse("F1US11");
+        Individual person3 = new Individual("I3US11");
+        person3.setName("I3/US25");
+        person3.setGender("F");
+        person3.setSpouse("F2US11");
+        Family family1 = new Family("F1US11");
+        family1.setHusbandIndi(Optional.of(person1));
+        family1.setWifeIndi(Optional.of(person2));
+
+        Family family2 = new Family("F2US11");
+        family2.setHusbandIndi(Optional.of(person1));
+        family2.setWifeIndi(Optional.of(person3));
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(0,familyWithAnomalyList.size());
+        family1.setHusbandId(person1.getId());
+        family1.setWifeId(person2.getId());
+        family2.setHusbandId(person1.getId());
+        family2.setWifeId(person3.getId());
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(2,familyWithAnomalyList.size());
+    }
+    @org.junit.jupiter.api.Test
+    void testAncestorsChildMarriage(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US11");
+        person1.setName("I1/ US11");
+        person1.setGender("M");
+        person1.setSpouse("F1US11");
+
+        Individual person2 = new Individual("I2US11");
+        person2.setName("I2/US25");
+        person2.setGender("F");
+        person2.setSpouse("F1US11");
+        Individual person3 = new Individual("I3US11");
+        person3.setName("I3/US25");
+        person3.setGender("F");
+        person3.setSpouse("F2US11");
+        Family family1 = new Family("F1US11");
+        family1.setHusbandIndi(Optional.of(person1));
+        family1.setWifeIndi(Optional.of(person2));
+
+        Family family2 = new Family("F2US11");
+        family2.setHusbandIndi(Optional.of(person1));
+        family2.setWifeIndi(Optional.of(person3));
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(0,familyWithAnomalyList.size());
+        family1.setHusbandId(person1.getId());
+        family1.setWifeId(person2.getId());
+        family2.setHusbandId(person1.getId());
+        family2.setWifeId(person3.getId());
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(2,familyWithAnomalyList.size());
+    }
+
 }
