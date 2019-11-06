@@ -36,6 +36,7 @@ public class IndiFamilyResponse {
 
 
     private List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies;
+    private List<FamilyWithAnomaly> missingCorrespondingEntries;
 
     public List<Family> getAmbiguousGenderForRoles() {
         return ambiguousGenderForRoles;
@@ -220,5 +221,11 @@ public class IndiFamilyResponse {
     public void setAmbiguousDuplicateFirstNameFamilies(List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies) {
         this.ambiguousDuplicateFirstNameFamilies = ambiguousDuplicateFirstNameFamilies;
     }
+    public List<FamilyWithAnomaly> getMissingCorrespondingEntries() {
+        return missingCorrespondingEntries;
+    }
 
+    public void setMissingCorrespondingEntries(List<FamilyWithAnomaly> missingCorrespondingEntries) {
+        this.missingCorrespondingEntries = missingCorrespondingEntries;
+    }
 }

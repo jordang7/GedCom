@@ -605,16 +605,7 @@ public class GedcomValidator {
         for (Family fam : familyArrayList) {
             Set<String> familyFirstNames = new HashSet<String>();
             FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
-            List<Individual> individualsInTheFam = new ArrayList<Individual>();
-            if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
-                individualsInTheFam.add(fam.getHusbandIndi().get());
-            }
-            if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
-                individualsInTheFam.add(fam.getWifeIndi().get());
-            }
-            if (fam.getChildrenIndis() != null) {
-                individualsInTheFam.addAll(fam.getChildrenIndis());
-            }
+            List<Individual>  individualsInTheFam = loadIndividualsInTheFamily(fam);
             for (Individual indInFam : individualsInTheFam) {
                 if (familyFirstNames.contains((indInFam.getName().split("/")[0]).trim())) {
                     anomaly.getDuplicateNamesInFamily().add(indInFam.getName().split("/")[0].trim());
@@ -626,8 +617,69 @@ public class GedcomValidator {
             }
         }
         return familiesWithDuplicateNames;
-
     }
+public List<Individual> loadIndividualsInTheFamily(Family fam){
+    List<Individual>  individualsInTheFam = new ArrayList<Individual>();
+    if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
+        individualsInTheFam.add(fam.getHusbandIndi().get());
+    }
+    if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
+        individualsInTheFam.add(fam.getWifeIndi().get());
+    }
+    if (fam.getChildrenIndis() != null) {
+        individualsInTheFam.addAll(fam.getChildrenIndis());
+    }
+    return individualsInTheFam;
+}
+    public List<FamilyWithAnomaly> validateCorrespondingEntry(List<Individual> individualList, List<Family> familyArrayList){
+        List<FamilyWithAnomaly> invalidEntries = new ArrayList<FamilyWithAnomaly>();
+        Set<String> individualsIdSet = new HashSet<String>();
+        Set<String> familyIdSet =  new HashSet<String>();
+        FamilyWithAnomaly invalidFamEntry = new FamilyWithAnomaly();
 
+        for (Individual ind : individualList) {
+            if (ind.getId() != null && !ind.getId().isEmpty()) {
+                individualsIdSet.add(ind.getId());
+            }
+        }
+        for (Family fam : familyArrayList) {
+            if(fam.getId().equals("F1US26")){
+                System.out.println("MONITOR");
+            }
+        //    invalidFamEntry.setFamily(fam);
+
+            if (fam.getId() != null && !fam.getId().isEmpty()) {
+              familyIdSet.add(fam.getId());
+            }
+            if (fam.getHusbandId() != null && !fam.getHusbandId().isEmpty() && !individualsIdSet.contains(fam.getHusbandId())) {
+                invalidFamEntry.getNocorrespondingEntry().add(fam.getHusbandId());
+     //           invalidEntries.add(invalidFamEntry);
+            }
+            if (fam.getWifeId() != null && !fam.getWifeId().isEmpty() && !individualsIdSet.contains(fam.getWifeId())) {
+                invalidFamEntry.getNocorrespondingEntry().add(fam.getWifeId());
+    //            invalidEntries.add(invalidFamEntry);
+            }
+            for(Individual child : fam.getChildrenIndis()) {
+                if (!individualsIdSet.contains(child.getId())) {
+                    invalidFamEntry.getNocorrespondingEntry().add(child.getId());
+    //                invalidEntries.add(invalidFamEntry);
+                }
+            }
+        }
+        for(Individual individual : individualList){
+  //          FamilyWithAnomaly invalidIndiEntry = new FamilyWithAnomaly();
+            if(individual.getSpouse()!=null && !individual.getSpouse().isEmpty() && !familyIdSet.contains(individual.getSpouse())){
+                invalidFamEntry.getNocorrespondingEntry().add(individual.getSpouse());
+      //          invalidEntries.add(invalidFamEntry);
+            }
+            if(individual.getChild()!=null && !individual.getChild().isEmpty() && !familyIdSet.contains(individual.getChild())){
+                invalidFamEntry.getNocorrespondingEntry().add(individual.getChild());
+      //          invalidEntries.add(invalidFamEntry);
+            }
+
+        }
+        invalidEntries.add(invalidFamEntry);
+return invalidEntries;
+    }
 
 }

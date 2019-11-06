@@ -1,5 +1,6 @@
 package com.gedcom.application;
 
+import com.gedcom.models.FamilyWithAnomaly;
 import com.gedcom.models.GedcomResponse;
 import com.gedcom.models.IndiFamilyResponse;
 import com.gedcom.file.GedcomFileReader;
@@ -60,10 +61,11 @@ public class Application {
         gedcomPrinter.printambiguousIndividualId(indiFamilyResponse);
         gedcomPrinter.printambiguousFamilyId(indiFamilyResponse);
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
-        
+        gedcomPrinter.printMissingCorrespondingEntries(indiFamilyResponse); //US26
         System.out.println("---- GEDCOM LISTS ----");
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
         }
+
 
 }
