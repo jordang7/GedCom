@@ -1,12 +1,18 @@
-Sprint 3 US21 and US22 (Implemented and tested by Meghana)
+Sprint 3 US21 and US22 and US28 (Implemented and tested by Meghana)
+Sprint 3 US25 and US26 and US20 (Implemented and tested by Jinal)
+Sprint 3 US29 and US30 (Implemented and tested by Jordan)
+Sprint 3 US27 (Implmented and tested by Parth)
+
 
 Output
-
 INDIVIDUAL INFORMATION
 
 +---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
 |  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |
 +---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+   I3US26                                                            -NA-         0       Y                        -NA-                                              F2US26
+   I1US25                 AditiUS25 /US25/          F                -NA-         0       Y                        -NA-                                              F1US25
+   I2US25                 AditiUS25 /US25/          M                -NA-         0       Y                        -NA-                                              F1US25
    I1US12                      Alex /US12/          M          10 Feb 1900       119       Y                        -NA-                                              F1US12
    I2US12                     Debra /US12/          F          10 Feb 1920        99       Y                        -NA-                                              F1US12
    I2US21                     Debora /Deb/          M          10 Feb 1920        99       Y                        -NA-                                              F1US21
@@ -68,23 +74,20 @@ INDIVIDUAL INFORMATION
    I14US15                     jordan14 /j/          M          10 Feb 1953        66       Y                        -NA-
    I15US15                     jordan15 /j/          M          10 Feb 1953        66       Y                        -NA-
    I16US15                     jordan16 /j/          M          10 Feb 1953        66       Y                        -NA-
-   I1US20                      Grandpa /j/          M          10 Feb 1953        66       Y                        -NA-                                              F1US20
-   I2US20                      Grandma /j/          F          10 Feb 1953        66       Y                        -NA-                                              F2US20
-   I3US20                          dad /j/          M          10 Feb 1953        66       Y                        -NA-
-   I4US20                        Uncle /j/          M          10 Feb 1953        66       Y                        -NA-
-   I5US20                         wife /j/          F          10 Feb 1953        66       Y                        -NA-                                             F1US201
-   I4US20                        child /j/          F          10 Feb 1953        66       Y                        -NA-
    I1US11                              Joe          M                -NA-         0       Y                        -NA-                                              F1US11
    I2US11                            Maria          F                -NA-         0       Y                        -NA-                                              F2US11
    I3US11                            Irina          F                -NA-         0       Y                        -NA-                                              F2US11
+   I1US20                             John          M                -NA-         0       Y                        -NA-                                              F1US20
+   I2US20                          John Jr          M                -NA-         0       Y                        -NA-
+   I3US20                          Dorethe          F                -NA-         0       Y                        -NA-
 +---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------+---------------------+
 FAMILY INFORMATION
 
 +---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
 |  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |
 +---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
- F1US201                                 -NA-         -NA-                   I3US20            dad /j/         I5US20        wife /j/            I6US20
- F1US202                                 -NA-         -NA-                   I4US20            child /j/         I6US20
+ F1US201                                 -NA-         -NA-                   I3US20            Dorethe         I5US20                          I6US20
+ F1US202                                 -NA-         -NA-                   I4US20                         I6US20
     F1                          10 Apr 2015         -NA-                       I1                             I4        Lexy /Smith/                I8
     F2                           8 May 1986   8 May 1985                       I2            Henry /Smith/             I3        Mary /Poppins/                I1
     F3                          17 May 2005         -NA-                       I5            John /Downey/             I3        Mary /Poppins/             I6,I7
@@ -107,6 +110,11 @@ FAMILY INFORMATION
  F1US15                                 -NA-         -NA-                                                                                 I1US15,I2US15,I3US15,I4US15,I5US15,I6US15,I7US15,I8US15,I9US15,I10US15,I11US15,I12US15,I13US15,I14US15,I15US15,I16US15
  F1US11                                 -NA-         -NA-                   I1US11             Joe         I2US11         Maria
  F2US11                                 -NA-         -NA-                   I1US11             Joe         I3US11         Irina
+ F1US20                                 -NA-         -NA-                   I1US20            John                                         I2US20
+ F2US20                                 -NA-         -NA-                   I2US20            John Jr         I3US20        Dorethe
+ F3US20                                 -NA-         -NA-                                                                                 I1US20,I3US20
+ F1US25                                 -NA-         -NA-                   I2US25            AditiUS25 /US25/         I1US25        AditiUS25 /US25/
+ F1US26                                 -NA-         -NA-                   I2US26                         I1US26
 +---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
 ---- GEDCOM ERRORS -----
 ERROR: INDIVIDUAL: US01: I1US01: BIRTH DATE IS AFTER CURRENTDATE
@@ -127,6 +135,7 @@ ANOMALY: FAMILY :US10:F1US10 WIFE AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBE
 ANOMALY: FAMILY :US10:F1US10 HUSBAND AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
 ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF1US11 AND F2US11
 ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF2US11 AND F1US11
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF2US20 AND F1US201
 ANOMALY: FAMILY: US12: F1US12 HUSBAND  Alex /US12/ WAS OLDER THAN 80 YEARS WHEN ONE OF HIS CHILD WAS BORN
 ANOMALY: FAMILY: US12: F1US12 WIFE  Debra /US12/ WAS OLDER THAN 60 YEARS WHEN ONE OF HER CHILD WAS BORN
 ERROR: FAMILY : US13 : SIBLINGS  Mark/ Mark/: AND  Catherin/Albert Catherin/Albert HAVE SPACING LESS THAN 1 YEAR
@@ -147,6 +156,7 @@ ERROR: FAMILY : US13 : SIBLINGS  jordan12 /j/ /j/: AND  jordan13 /j/ /j/ HAVE SP
 ERROR: FAMILY : US13 : SIBLINGS  jordan13 /j/ /j/: AND  jordan14 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
 ERROR: FAMILY : US13 : SIBLINGS  jordan14 /j/ /j/: AND  jordan15 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
 ERROR: FAMILY : US13 : SIBLINGS  jordan15 /j/ /j/: AND  jordan16 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US13 : SIBLINGS  John John: AND  Dorethe Dorethe HAVE SPACING LESS THAN 1 YEAR
 ERROR: FAMILY : US14 : MULTIPLE BIRTHS  AND  GAVE MULTIPLE BIRTHS. THE COUNT IS 16
 ANOMALY : FAMILY : US15 F1US15 CANNOT HAVE MORE THAN 15 CHILDREN
 ANOMALY: FAMILY: US16 F1US16 MALE /Dam/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Mad/
@@ -154,12 +164,160 @@ ANOMALY: FAMILY: US16 F1US17 MALE Mark/ LAST NAME IS DIFFERENT FROM FAMILY LASTN
 ANOMALY: FAMILY: US16 F2US17 MALE Gerry LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
 ANOMALY: FAMILY: US16 F2US17 MALE Joseph LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
 ANOMALY: FAMILY: US16 F1US13 MALE /Warren/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Darren/
+ANOMALY: FAMILY: US16 F1US20 MALE Jr LAST NAME IS DIFFERENT FROM FAMILY LASTNAME John
 ERROR : FAMILY : US17 F2US17 PARENT SHOULD NOT BE MARRIED TO A DESCENDANT Juan/ Gerry,  Sue /I2US17
 ANOMALY : FAMILY : US18 F1US18 SIBLINGS  Sribha /Bhat/,  Bharsri /Dam/ ARE MARRIED TO EACH OTHER
 ANOMALY : FAMILY : US19 F2US17 FIRST COUSINS SHOULD NOT BE MARRIED Joseph,  Lilly
 ANOMALY : FAMILY : US19 F1US19 FIRST COUSINS SHOULD NOT BE MARRIED Lilly,  Joseph
+ANOMALY : FAMILY : US20 F2US20 AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW : I2US20, I3US20
 ANOMALY : FAMILY : US21 F1US21 Husband's Gender is Female Instead of Male
 ANOMALY : FAMILY : US21 F1US21 Wife's Gender is Male Instead of Female
 ERROR : INDIVIDUAL : US22 I1US22 already exists and used by other individual
-ERROR : INDIVIDUAL : US22 I4US20 already exists and used by other individual
 ERROR : FAMILY : US22 F1US22 already exists and used by other individual
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US25 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: AditiUS25
+ERROR : FAMILY : US26: NO CORRESPONDING ENTRY WAS FOUND FOR THESE IDS : [I4US20, I2US26, F2US26, I1US26, I1, I6US20, I5US20, I2US22]
+---- GEDCOM LISTS ----
+US:27 : Individual List with Name and Age:
++--------------------+------------+
+|    NAME            |    AGE     |
++--------------------+------------+
+                                 0
+     AditiUS25 /US25/            0
+     AditiUS25 /US25/            0
+          Alex /US12/          119
+         Debra /US12/           99
+         Debora /Deb/           99
+          John /Mill/           99
+          John /Mill/           99
+          John /Mill/           99
+      Al-DEBRA /US12/           30
+     Al-DEBRA2 /US12/           69
+        White /Smith/           40
+       White /Darren/           40
+        White /Walty/           39
+       White /Warren/           17
+       White /Sarren/           17
+        Black /Smith/           40
+         Gray /Smith/           15
+        Henry /Smith/          -19
+       Mary /Poppins/            0
+         Lexy /Smith/           29
+        John /Downey/           59
+       Emily /Downey/           12
+      Joseph /Downey/            9
+          Joe /Smith/            5
+        Niles /Smith/          219
+         Alex /Smith/           30
+      Frasier /Smith/          219
+       Martin /Smith/           -2
+        Maris /Smith/           30
+       Lilith /Smith/           30
+            Sri /Mad/           30
+            Meg /Mad/           30
+            Nid /Mad/            4
+           Bhar /Dam/            7
+       Bharath /Bhat/           66
+      Srinidhi /Bhat/           65
+        Sribha /Bhat/           49
+        Bharsri /Dam/           47
+      Micheal /Smith/            0
+          Sue /I2US17            0
+                Mark/            0
+          Juan/ Gerry            0
+                Merry            0
+              Gerardo            0
+      Catherin/Albert            0
+                Lilly            0
+               Joseph            0
+          jordan1 /j/           66
+          jordan2 /j/           66
+          jordan3 /j/           66
+          jordan4 /j/           66
+          jordan5 /j/           66
+          jordan6 /j/           66
+          jordan7 /j/           66
+          jordan8 /j/           66
+          jordan9 /j/           66
+         jordan10 /j/           66
+         jordan11 /j/           66
+         jordan12 /j/           66
+         jordan13 /j/           66
+         jordan14 /j/           66
+         jordan15 /j/           66
+         jordan16 /j/           66
+                  Joe            0
+                Maria            0
+                Irina            0
+                 John            0
+              John Jr            0
+              Dorethe            0
++--------------------+------------+
+US28 : Siblings List with their name and age
+FAMILY IDF1
+                       Name    :    Age       : DOB
+                   Joe /Smith/       5    24 Jun 2014
+FAMILY IDF3
+                       Name    :    Age       : DOB
+                Emily /Downey/      12    12 Jan 2007
+               Joseph /Downey/       9    7 Nov 2009
+FAMILY IDF1US09
+                       Name    :    Age       : DOB
+                  Gray /Smith/      15    2 Oct 2004
+FAMILY IDF1US16
+                       Name    :    Age       : DOB
+                    Bhar /Dam/       7    10 Feb 2012
+                     Nid /Mad/       4    10 Feb 2015
+FAMILY IDF1US18
+                       Name    :    Age       : DOB
+                 Sribha /Bhat/      49    10 Feb 1970
+                 Bharsri /Dam/      47    10 Feb 1972
+FAMILY IDF1US12
+                       Name    :    Age       : DOB
+              Al-DEBRA2 /US12/      69    10 Feb 1950
+               Al-DEBRA /US12/      30    10 Feb 1989
+FAMILY IDF1US17
+                       Name    :    Age       : DOB
+                         Mark/       0      -NA-
+               Catherin/Albert       0      -NA-
+FAMILY IDF2US17
+                       Name    :    Age       : DOB
+                   Juan/ Gerry       0      -NA-
+                        Joseph       0      -NA-
+FAMILY IDF1US19
+                       Name    :    Age       : DOB
+                         Lilly       0      -NA-
+FAMILY IDF1US13
+                       Name    :    Age       : DOB
+                White /Warren/      17    2 Oct 2002
+                White /Sarren/      17    3 Oct 2002
+FAMILY IDF1US15
+                       Name    :    Age       : DOB
+                   jordan1 /j/      66    10 Feb 1953
+                   jordan2 /j/      66    10 Feb 1953
+                   jordan3 /j/      66    10 Feb 1953
+                   jordan4 /j/      66    10 Feb 1953
+                   jordan5 /j/      66    10 Feb 1953
+                   jordan6 /j/      66    10 Feb 1953
+                   jordan7 /j/      66    10 Feb 1953
+                   jordan8 /j/      66    10 Feb 1953
+                   jordan9 /j/      66    10 Feb 1953
+                  jordan10 /j/      66    10 Feb 1953
+                  jordan11 /j/      66    10 Feb 1953
+                  jordan12 /j/      66    10 Feb 1953
+                  jordan13 /j/      66    10 Feb 1953
+                  jordan14 /j/      66    10 Feb 1953
+                  jordan15 /j/      66    10 Feb 1953
+                  jordan16 /j/      66    10 Feb 1953
+FAMILY IDF1US20
+                       Name    :    Age       : DOB
+                       John Jr       0      -NA-
+FAMILY IDF3US20
+                       Name    :    Age       : DOB
+                          John       0      -NA-
+                       Dorethe       0      -NA-
+US29: List of all deceased individuals:[I2US09, I1US13, I2US13, I1US09, I2]
+US30: List of all living married individuals: [I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20]
+
