@@ -113,6 +113,45 @@ public class Sprint_1_Test_Cases_Shrikant {
    	}
     
     
+    @Test
+   	public void testCasesForUniqueNameAndBirthDate() throws ParseException, java.text.ParseException {
+   		
+   		GedcomFileReader gfr = new GedcomFileReader();
+           List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+           HashSet<String> tagSet = new HashSet<String>();
+           List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
+
+           for (String tagName: tagNames ) {
+               tagSet.add(tagName);
+           }
+           GedcomProcessor gdp = new GedcomProcessor();
+           GedcomResponse response= gdp.parser(gedcomLines,tagSet);
+           IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+           gedcomPrinter.printCasesForUniqueNameAndBirthDate(indiFamilyResponse.getIndividualList());
+   		fail("Not yet implemented");
+   	}
+    
+    
+    @Test
+   	public void testCasesForUniqueFamilyWithSpouses() throws ParseException, java.text.ParseException {
+   		
+   		GedcomFileReader gfr = new GedcomFileReader();
+           List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+           HashSet<String> tagSet = new HashSet<String>();
+           List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
+
+           for (String tagName: tagNames ) {
+               tagSet.add(tagName);
+           }
+           GedcomProcessor gdp = new GedcomProcessor();
+           GedcomResponse response= gdp.parser(gedcomLines,tagSet);
+           IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+           gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList());
+   		fail("Not yet implemented");
+   	}
+    
 //    printMultipleBirthsLessThan5Errors
     
     

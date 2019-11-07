@@ -6,8 +6,17 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+
+import java.util.stream.Collectors;
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 /**
  * Created by Sri on 10/17/2019.
@@ -510,5 +519,67 @@ public class GedcomPrinter {
         }
         System.out.println("+--------------------+------------+");
 
+    }
+    
+    public void printCasesForUniqueNameAndBirthDate(List<Individual> individualArrayList)
+    {
+    	HashMap<String, Integer> uniqueNameAndBirthDateHashMap = new HashMap<String, Integer>();
+    	ArrayList<String> DuplicatedNamesAndBDate = new ArrayList<String>();
+    	
+    	for(Individual indi : individualArrayList)
+    	{
+    		
+    		if(!indi.getBdate().toString().trim().equals("Optional.empty"))
+    		{
+    			String key = indi.getName() + indi.getBdate().toString().trim();
+    			if(!uniqueNameAndBirthDateHashMap.containsKey(key))
+    			{
+    				uniqueNameAndBirthDateHashMap.put(key, 1);
+    			}
+    			else
+    			{
+    				DuplicatedNamesAndBDate.add(indi.getId());
+    			}
+    		}
+    	}
+    	
+    	System.out.print("ERROR : US23: List of all the individuals with Duplicated Names and BirthDates : ");
+    	for(String dupNamesAndBDate : DuplicatedNamesAndBDate)
+    	{
+    		System.out.print(dupNamesAndBDate + ", ");
+    	}
+    	System.out.println();
+    }
+    
+    
+    public void printCasesForUniqueFamilyWithSpouses(List<Family> familyArrayList)
+    {
+    	HashMap<String, Integer> uniqueFamily = new HashMap<String, Integer>();
+    	ArrayList<String> DuplicatedFamilyWithSpouses = new ArrayList<String>();
+    	
+    	for(Family fam : familyArrayList)
+    	{
+    		if(fam.getHusbandId().trim() != "" && fam.getWifeId().trim() != "")
+    		{
+    			if(!uniqueFamily.containsKey(fam.getHusbandId().trim()) && !uniqueFamily.containsKey(fam.getWifeId().trim()))
+    			{
+    				uniqueFamily.put(fam.getHusbandId().trim(), 1);
+    				uniqueFamily.put(fam.getWifeId().trim(), 1);
+    			}
+    			else
+    			{
+    				DuplicatedFamilyWithSpouses.add(fam.getId());
+    			}
+    		}
+    		
+
+    	}
+    	
+    	System.out.print("ERROR : US24: List of all the Families with duplicated Spouses : ");
+    	for(String dupSpouses : DuplicatedFamilyWithSpouses)
+    	{
+    		System.out.print(dupSpouses + ", ");
+    	}
+    	System.out.println();
     }
 }
