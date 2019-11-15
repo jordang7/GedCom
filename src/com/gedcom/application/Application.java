@@ -61,7 +61,8 @@ public class Application {
         gedcomPrinter.printambiguousIndividualId(indiFamilyResponse); // US22
         gedcomPrinter.printambiguousFamilyId(indiFamilyResponse); // US22
 
-
+        gedcomPrinter.printCasesForUniqueNameAndBirthDate(indiFamilyResponse.getIndividualList()); //US23
+        gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList()); //US24
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
         gedcomPrinter.printMissingCorrespondingEntries(indiFamilyResponse); //US26
         System.out.println("---- GEDCOM LISTS ----");
@@ -69,9 +70,14 @@ public class Application {
         gedcomPrinter.printSiblingsByAge(indiFamilyResponse.getFamilyList()); //US28
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
+
+        gedcomPrinter.printLivingSingle(indiFamilyResponse);
+
+        gedcomPrinter.printOrphanChildren(indiFamilyResponse);
+
+
         
-        gedcomPrinter.printCasesForUniqueNameAndBirthDate(indiFamilyResponse.getIndividualList());
-        gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList());
+
     	}
 
 

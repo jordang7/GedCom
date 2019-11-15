@@ -68,6 +68,26 @@ public class IndiFamilyResponse {
 
     List<Family> ambiguousFamilyIDList;
 
+    public List<Individual> getLivingSingleList() {
+        return livingSingleList;
+    }
+
+    public void setLivingSingleList(List<Individual> livingSingleList) {
+        this.livingSingleList = livingSingleList;
+    }
+
+    List<Individual> livingSingleList;
+
+    public List<Individual> getOrphanChildrenList() {
+        return orphanChildrenList;
+    }
+
+    public void setOrphanChildrenList(List<Individual> orphanChildrenList) {
+        this.orphanChildrenList = orphanChildrenList;
+    }
+
+    List<Individual> orphanChildrenList;
+
 
     public List<FamilyWithOlderParents> getFamilyWithOlderParents() {
         return familyWithOlderParents;

@@ -379,6 +379,65 @@ class GedComValidatorTest {
         familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
         assertEquals(2,familyWithAnomalyList.size());
     }
+
+    @org.junit.jupiter.api.Test
+    void testOrphanChildren(){
+        List<Individual> orphanList = validator.orphanChildren(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,orphanList.size());
+
+        Individual indi1 = new Individual("I1");
+        Individual indi2 = new Individual("I2");
+        Individual indi3 = new Individual("I3");
+        Individual indi4 = new Individual("I4");
+
+        indi1.setDeathDate(LocalDate.parse("02 MAY 2018 ", GedcomValidator.formatter));
+        indi2.setDeathDate(LocalDate.parse("02 MAY 2018 ", GedcomValidator.formatter));
+        indi3.setAge(15);
+        indi4.setAge(15);
+
+        List<Individual> allIndividual = new ArrayList<>();
+        allIndividual.add(indi1);
+        allIndividual.add(indi2);
+        allIndividual.add(indi3);
+        allIndividual.add(indi4);
+
+        List<Family> fam = new ArrayList<>();
+        Family f = new Family("F1");
+        f.setHusbandId("I1");
+        f.setWifeId("I2");
+        List<Individual> children = new ArrayList<>();
+        children.add(indi3);
+        children.add(indi4);
+        f.setChildrenIndis(children);
+        fam.add(f);
+        List<Individual> orphanList1 = validator.orphanChildren(new ArrayList<Individual>(allIndividual),new ArrayList<Family>(fam));
+        assertEquals(2,orphanList1.size());
+
+    }
+    @org.junit.jupiter.api.Test
+    void testLivingSingle(){
+        List<Individual> livingSingleList = validator.livingSingle(new ArrayList<Individual>());
+        assertEquals(0, livingSingleList.size());
+
+        Individual indi1 = new Individual("I1US31");
+        indi1.setAge(35);
+        List<Individual> singles = new ArrayList<>();
+        singles.add(indi1);
+        List<Individual> livingSingleList1 = validator.livingSingle(new ArrayList<Individual>(singles));
+        assertEquals(1,livingSingleList1.size());
+
+        Individual indi2 = new Individual("I1US31");
+        indi2.setAge(35);
+        indi2.setSpouse("F1US31");
+
+        List<Individual> notSingles = new ArrayList<>();
+        notSingles.add(indi2);
+        List<Individual> livingSingleList2 = validator.livingSingle(new ArrayList<Individual>(notSingles));
+        assertEquals(0,livingSingleList2.size());
+
+
+    }
+
     @org.junit.jupiter.api.Test
     void testAncestorsChildMarriage(){
         List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());

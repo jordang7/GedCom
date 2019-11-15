@@ -1,13 +1,7 @@
+Sprint 4
 
-Sprint 3 US21 and US22 and US28 (Implemented and tested by Meghana)
-Sprint 3 US25 and US26 and US20 (Implemented and tested by Jinal)
-Sprint 3 US29 and US30 (Implemented and tested by Jordan)
-Sprint 3 US27 (Implmented and tested by Parth)
-
-
-Output
-"C:\Program Files\Java\jdk1.8.0_121\bin\java" -Didea.launcher.port=7553 "-Didea.launcher.bin.path=C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.3.5\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\IntellijWorksplace\GedCom\out\production\GedCom;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.3.5\plugins\junit\lib\junit-jupiter-api-5.0.0-M3.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.3.5\plugins\junit\lib\opentest4j-1.0.0-M1.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2016.3.5\lib\idea_rt.jar" com.intellij.rt.execution.application.AppMain com.gedcom.application.Application C:\IntellijWorksplace\GedCom\gedcomfiles\Test.ged C:\IntellijWorksplace\GedCom\gedcomfiles\TagSet.txt
-MONITOR
+US31 - Implemented and tested by Meghana
+US33 - Implemented and Tested By meghana
 INDIVIDUAL INFORMATION
 
 +---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
@@ -36,7 +30,7 @@ INDIVIDUAL INFORMATION
       I4                     Lexy /Smith/          F          15 Jul 1990        29       Y                        -NA-                                                  F1
       I5                    John /Downey/          M          8 Jun 1960        59       Y                        -NA-                                                  F3
       I6                   Emily /Downey/          F          12 Jan 2007        12       Y                        -NA-
-      I7                  Joseph /Downey/          M          7 Nov 2009         9       Y                        -NA-
+      I7                  Joseph /Downey/          M          7 Nov 2009        10       Y                        -NA-
       I8                      Joe /Smith/          M          24 Jun 2014         5       Y                        -NA-
    I1US07                    Niles /Smith/          M          10 Feb 1800       219       Y                        -NA-
    I1US10                     Alex /Smith/          M          10 Feb 1989        30       Y                        -NA-                                              F1US10
@@ -212,7 +206,7 @@ US:27 : Individual List with Name and Age:
          Lexy /Smith/           29
         John /Downey/           59
        Emily /Downey/           12
-      Joseph /Downey/            9
+      Joseph /Downey/           10
           Joe /Smith/            5
         Niles /Smith/          219
          Alex /Smith/           30
@@ -267,7 +261,7 @@ FAMILY IDF1
 FAMILY IDF3
                        Name    :    Age       : DOB
                 Emily /Downey/      12    12 Jan 2007
-               Joseph /Downey/       9    7 Nov 2009
+               Joseph /Downey/      10    7 Nov 2009
 FAMILY IDF1US09
                        Name    :    Age       : DOB
                   Gray /Smith/      15    2 Oct 2004
@@ -325,3 +319,38 @@ FAMILY IDF3US20
                        Dorethe       0      -NA-
 US29: List of all deceased individuals:[I2US09, I1US13, I2US13, I1US09, I2]
 US30: List of all living married individuals: [I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20, I3US26, I1US25, I2US25, I1US12, I2US12, I2US21, I1US21, I1US22, I1US22, I3US12, I4US12, I3US13, I4US13, I3US09, I3, I4, I5, I6, I7, I8, I1US07, I1US10, I1US02, I1US01, I2US02, I2US10, I1US16, I2US16, I3US16, I4US16, I1US18, I2US18, I3US18, I4US18, I1US17, I2US17, I3US17, I4US17, I5US17, I1US19, I2US19, I3US19, I4US19, I1US15, I2US15, I3US15, I4US15, I5US15, I6US15, I7US15, I8US15, I9US15, I10US15, I11US15, I12US15, I13US15, I14US15, I15US15, I16US15, I1US11, I2US11, I3US11, I1US20, I2US20, I3US20]
+List of living singles
+INDIVIDUAL : I1US12 Name :   Alex /US12/  Age :119
+INDIVIDUAL : I2US12 Name :   Debra /US12/  Age :99
+INDIVIDUAL : I2US21 Name :   Debora /Deb/  Age :99
+INDIVIDUAL : I1US21 Name :   John /Mill/  Age :99
+INDIVIDUAL : I1US22 Name :   John /Mill/  Age :99
+INDIVIDUAL : I1US22 Name :   John /Mill/  Age :99
+INDIVIDUAL : I4US12 Name :   Al-DEBRA2 /US12/  Age :69
+INDIVIDUAL : I5 Name :   John /Downey/  Age :59
+INDIVIDUAL : I1US07 Name :   Niles /Smith/  Age :219
+INDIVIDUAL : I1US02 Name :   Frasier /Smith/  Age :219
+INDIVIDUAL : I1US18 Name :   Bharath /Bhat/  Age :66
+INDIVIDUAL : I2US18 Name :   Srinidhi /Bhat/  Age :65
+INDIVIDUAL : I3US18 Name :   Sribha /Bhat/  Age :49
+INDIVIDUAL : I4US18 Name :   Bharsri /Dam/  Age :47
+INDIVIDUAL : I1US15 Name :   jordan1 /j/  Age :66
+INDIVIDUAL : I2US15 Name :   jordan2 /j/  Age :66
+INDIVIDUAL : I3US15 Name :   jordan3 /j/  Age :66
+INDIVIDUAL : I4US15 Name :   jordan4 /j/  Age :66
+INDIVIDUAL : I5US15 Name :   jordan5 /j/  Age :66
+INDIVIDUAL : I6US15 Name :   jordan6 /j/  Age :66
+INDIVIDUAL : I7US15 Name :   jordan7 /j/  Age :66
+INDIVIDUAL : I8US15 Name :   jordan8 /j/  Age :66
+INDIVIDUAL : I9US15 Name :   jordan9 /j/  Age :66
+INDIVIDUAL : I10US15 Name :   jordan10 /j/  Age :66
+INDIVIDUAL : I11US15 Name :   jordan11 /j/  Age :66
+INDIVIDUAL : I12US15 Name :   jordan12 /j/  Age :66
+INDIVIDUAL : I13US15 Name :   jordan13 /j/  Age :66
+INDIVIDUAL : I14US15 Name :   jordan14 /j/  Age :66
+INDIVIDUAL : I15US15 Name :   jordan15 /j/  Age :66
+INDIVIDUAL : I16US15 Name :   jordan16 /j/  Age :66
+US33 : List of Orphan chidlren
+Individual : I3US09 Name :  Gray /Smith/AGE : 15  Family Id :F1US09
+Individual : I3US13 Name :  White /Warren/AGE : 17  Family Id :F1US13
+Individual : I4US13 Name :  White /Sarren/AGE : 17  Family Id :F1US13
