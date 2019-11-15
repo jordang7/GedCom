@@ -138,6 +138,58 @@ public class GedcomValidator {
         }
         return ambiguousIndividualIDList;
     }
+    //US31
+    public List<Individual> livingSingle(List<Individual> individualList){
+        List<Individual> livingSingleList = new ArrayList<>();
+
+            for(Individual indi : individualList) {
+
+                if (indi.getAge() > 30 && !indi.getDeathDate().isPresent()){
+                    if( indi.getSpouse().isEmpty()){
+                        livingSingleList.add(indi);
+                    }
+
+                }
+            }
+
+        return livingSingleList;
+    }
+    //US33
+    public List<Individual> orphanChildren(List<Individual> individualList, List<Family> familyList){
+        List<Individual> orphanChildrenList = new ArrayList<>();
+
+        for (Family family : familyList) {
+            String husbandId = family.getHusbandId();
+            String wifeId = family.getWifeId();
+
+
+            Optional<Individual> husbandOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(husbandId);
+            }).findFirst();
+
+            Optional<Individual> wifeOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(wifeId);
+            }).findFirst();
+
+            if (husbandOpt.isPresent() && wifeOpt.isPresent() ) {
+                Individual husband = husbandOpt.get();
+                Individual wife = wifeOpt.get();
+
+                Optional<LocalDate> husbandDeathDate = husband.getDeathDate();
+                Optional<LocalDate> wifeDeathDate = wife.getDeathDate();
+
+                if(husbandDeathDate.isPresent() && wifeDeathDate.isPresent()){
+                    for(Individual indi : family.getChildrenIndis()){
+                        if(indi.getAge() < 18 && !indi.getDeathDate().isPresent()){
+                            orphanChildrenList.add(indi);
+                        }
+                    }
+                }
+
+            }
+        }
+        return orphanChildrenList;
+    }
 
     public List<Family> uniqueFamilyID(List<Family> familyList) {
         List<Family> ambiguousFamilyIDList = new ArrayList<>();
@@ -227,6 +279,8 @@ public class GedcomValidator {
 
         return ambiguosbirthBeforeMarriageList;
     }
+
+
 
     //Birth before death
     public List<Individual> birthBeforeDeath(List<Individual> individualList) {
@@ -618,19 +672,19 @@ public class GedcomValidator {
         }
         return familiesWithDuplicateNames;
     }
-public List<Individual> loadIndividualsInTheFamily(Family fam){
-    List<Individual>  individualsInTheFam = new ArrayList<Individual>();
-    if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
-        individualsInTheFam.add(fam.getHusbandIndi().get());
+    public List<Individual> loadIndividualsInTheFamily(Family fam){
+        List<Individual>  individualsInTheFam = new ArrayList<Individual>();
+        if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
+            individualsInTheFam.add(fam.getHusbandIndi().get());
+        }
+        if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
+            individualsInTheFam.add(fam.getWifeIndi().get());
+        }
+        if (fam.getChildrenIndis() != null) {
+            individualsInTheFam.addAll(fam.getChildrenIndis());
+        }
+        return individualsInTheFam;
     }
-    if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
-        individualsInTheFam.add(fam.getWifeIndi().get());
-    }
-    if (fam.getChildrenIndis() != null) {
-        individualsInTheFam.addAll(fam.getChildrenIndis());
-    }
-    return individualsInTheFam;
-}
     public List<FamilyWithAnomaly> validateCorrespondingEntry(List<Individual> individualList, List<Family> familyArrayList){
         List<FamilyWithAnomaly> invalidEntries = new ArrayList<FamilyWithAnomaly>();
         Set<String> individualsIdSet = new HashSet<String>();
@@ -646,40 +700,40 @@ public List<Individual> loadIndividualsInTheFamily(Family fam){
             if(fam.getId().equals("F1US26")){
                 System.out.println("MONITOR");
             }
-        //    invalidFamEntry.setFamily(fam);
+            //    invalidFamEntry.setFamily(fam);
 
             if (fam.getId() != null && !fam.getId().isEmpty()) {
-              familyIdSet.add(fam.getId());
+                familyIdSet.add(fam.getId());
             }
             if (fam.getHusbandId() != null && !fam.getHusbandId().isEmpty() && !individualsIdSet.contains(fam.getHusbandId())) {
                 invalidFamEntry.getNocorrespondingEntry().add(fam.getHusbandId());
-     //           invalidEntries.add(invalidFamEntry);
+                //           invalidEntries.add(invalidFamEntry);
             }
             if (fam.getWifeId() != null && !fam.getWifeId().isEmpty() && !individualsIdSet.contains(fam.getWifeId())) {
                 invalidFamEntry.getNocorrespondingEntry().add(fam.getWifeId());
-    //            invalidEntries.add(invalidFamEntry);
+                //            invalidEntries.add(invalidFamEntry);
             }
             for(Individual child : fam.getChildrenIndis()) {
                 if (!individualsIdSet.contains(child.getId())) {
                     invalidFamEntry.getNocorrespondingEntry().add(child.getId());
-    //                invalidEntries.add(invalidFamEntry);
+                    //                invalidEntries.add(invalidFamEntry);
                 }
             }
         }
         for(Individual individual : individualList){
-  //          FamilyWithAnomaly invalidIndiEntry = new FamilyWithAnomaly();
+            //          FamilyWithAnomaly invalidIndiEntry = new FamilyWithAnomaly();
             if(individual.getSpouse()!=null && !individual.getSpouse().isEmpty() && !familyIdSet.contains(individual.getSpouse())){
                 invalidFamEntry.getNocorrespondingEntry().add(individual.getSpouse());
-      //          invalidEntries.add(invalidFamEntry);
+                //          invalidEntries.add(invalidFamEntry);
             }
             if(individual.getChild()!=null && !individual.getChild().isEmpty() && !familyIdSet.contains(individual.getChild())){
                 invalidFamEntry.getNocorrespondingEntry().add(individual.getChild());
-      //          invalidEntries.add(invalidFamEntry);
+                //          invalidEntries.add(invalidFamEntry);
             }
 
         }
         invalidEntries.add(invalidFamEntry);
-return invalidEntries;
+        return invalidEntries;
     }
 
 }

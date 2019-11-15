@@ -142,6 +142,12 @@ public class GedcomProcessor {
             response.setAmbiguousDuplicateFirstNameFamilies(ambiguousFamilyWithDuplicateFirstNames);
             List<FamilyWithAnomaly> listIndiFamWithMissingCorrespondingEntries = gvalidator.validateCorrespondingEntry(individualList, familyArrayList);
             response.setMissingCorrespondingEntries(listIndiFamWithMissingCorrespondingEntries);
+            //US31
+            List<Individual> livingSingleList =gvalidator.livingSingle(individualList);
+            response.setLivingSingleList(livingSingleList);
+
+            List<Individual> orphanChildrenList =gvalidator.orphanChildren(individualList,familyArrayList);
+            response.setOrphanChildrenList(orphanChildrenList);
 
 
         } catch (Exception e) {

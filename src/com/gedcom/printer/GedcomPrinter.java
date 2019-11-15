@@ -1,6 +1,7 @@
 package com.gedcom.printer;
 
 import com.gedcom.models.*;
+import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -354,7 +355,21 @@ public class GedcomPrinter {
             }
         }
     }
-
+    //US31 Meghana
+    public void printLivingSingle(IndiFamilyResponse indiFamilyResponse){
+        System.out.println(" US31 : List of living singles");
+        for(Individual indi: indiFamilyResponse.getLivingSingleList()){
+            System.out.println("INDIVIDUAL : " + indi.getId() +" Name :  "+ indi.getName() + "  Age :"+indi.getAge());
+        }
+    }
+    //US33 Meghana
+    public void printOrphanChildren(IndiFamilyResponse indiFamilyResponse){
+        System.out.println("US33 : List of Orphan chidlren");
+        for(Individual indi : indiFamilyResponse.getOrphanChildrenList()){
+            System.out.println("Individual : " + indi.getId() + " Name : " + indi.getName() + "AGE : "+
+                    indi.getAge() +"  Family Id :" + indi.getChild() );
+        }
+    }
     public void printAmbiguosSiblingMarriageList(IndiFamilyResponse indiFamilyResponse){
         for(FamilyWithChildrenMarriedToEachOther familyWithChildrenMarriedToEachOther : indiFamilyResponse.getAmbiguousSblingsMarriageList()){
             System.out.println("ANOMALY : FAMILY : US18 "+ familyWithChildrenMarriedToEachOther.getFamily().getId() + " SIBLINGS " + familyWithChildrenMarriedToEachOther.getHusband().getName() + ", "+familyWithChildrenMarriedToEachOther.getWife().getName()+ " ARE MARRIED TO EACH OTHER");
