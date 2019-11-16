@@ -1,7 +1,7 @@
 package com.gedcom.printer;
 
 import com.gedcom.models.*;
-import com.sun.org.apache.xpath.internal.SourceTree;
+
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -597,4 +597,16 @@ public class GedcomPrinter {
     	}
     	System.out.println();
     }
+    public void printLargreAgeDifferences(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithAnomaly fam : indiFamilyResponse.getAmbiguousFamiliesWithLargeAgeDifference()){
+            System.out.println("ANOMALY : FAMILY : US34 "+ " Large age difference in this couple " + fam.getFamily().getId() +". Age of husband on marriage day: " +Period.between( fam.getHusband().getBdate().get(),fam.getFamily().getMarried().get()).getYears()+" Age of wife on marriage day: "+Period.between( fam.getWife().getBdate().get(),fam.getFamily().getMarried().get()).getYears());
+        }
+    }
+    public void printPeopleWhoDiedInLast30Days(IndiFamilyResponse indifamilyResponse){
+        System.out.println("US36 : List of deaths in the last 30 days ");
+        for(Individual individual : indifamilyResponse.getPeopleDiedInLast30Days()){
+            System.out.print(individual.getId() + "| ");
+        }
+    }
+
 }

@@ -148,7 +148,10 @@ public class GedcomProcessor {
 
             List<Individual> orphanChildrenList =gvalidator.orphanChildren(individualList,familyArrayList);
             response.setOrphanChildrenList(orphanChildrenList);
-
+            List<FamilyWithAnomaly> listLargeAgeDifference = gvalidator.loadCouplesWithLargeAgeDifference(familyArrayList);
+            response.setAmbiguousFamiliesWithLargeAgeDifference(listLargeAgeDifference);
+            List<Individual> peopleDiedInLast30Days = gvalidator.listPeopleWhoDiedWithin30Days(individualList);
+            response.setPeopleDiedInLast30Days(peopleDiedInLast30Days);
 
         } catch (Exception e) {
             e.printStackTrace();
