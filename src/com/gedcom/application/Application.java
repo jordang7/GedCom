@@ -65,17 +65,15 @@ public class Application {
         gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList()); //US24
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
         gedcomPrinter.printMissingCorrespondingEntries(indiFamilyResponse); //US26
+        gedcomPrinter.printLargreAgeDifferences(indiFamilyResponse); //US34
         System.out.println("---- GEDCOM LISTS ----");
         gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
         gedcomPrinter.printSiblingsByAge(indiFamilyResponse.getFamilyList()); //US28
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
-
         gedcomPrinter.printLivingSingle(indiFamilyResponse);
-
         gedcomPrinter.printOrphanChildren(indiFamilyResponse);
-
-
+        gedcomPrinter.printPeopleWhoDiedInLast30Days(indiFamilyResponse); //US36
         
 
     	}

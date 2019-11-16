@@ -24,7 +24,7 @@ public FamilyWithAnomaly(Family family, String husbandId, String wifeId){
     this.husbandId = husbandId;
     this.wifeId = wifeId;
 }
-    public FamilyWithAnomaly(Family family, Individual husband, Individual wife,Family anotherFamilyOfAPerson) {
+    public FamilyWithAnomaly(Family family, Individual husband, Individual wife) {
         this.family = family;
         this.husband = husband;
         this.wife = wife;

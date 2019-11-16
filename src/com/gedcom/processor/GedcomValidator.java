@@ -1,11 +1,15 @@
 package com.gedcom.processor;
 import com.gedcom.models.*;
 
+import java.io.PrintStream;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -734,6 +738,33 @@ public class GedcomValidator {
         }
         invalidEntries.add(invalidFamEntry);
         return invalidEntries;
+    }
+
+    public List<FamilyWithAnomaly>  loadCouplesWithLargeAgeDifference(List<Family> familyList){
+        List<FamilyWithAnomaly> familyWithAnomalyList = new ArrayList<FamilyWithAnomaly>();
+        for(Family fam:familyList){
+           if(fam.getHusbandIndi().isPresent() && fam.getWifeIndi().isPresent()) {
+            Individual husband = fam.getHusbandIndi().get();
+            Individual wife = fam.getWifeIndi().get();
+
+            if(husband.getBdate().isPresent() && wife.getBdate().isPresent() && fam.getMarried().isPresent() ){
+                long husbandAgeAtMarriageTime = Period.between( husband.getBdate().get(),fam.getMarried().get()).getYears();
+                long wifeAgeAtMarriageTime = Period.between(wife.getBdate().get(), fam.getMarried().get()).getYears();
+                if(husbandAgeAtMarriageTime > wifeAgeAtMarriageTime *2 || wifeAgeAtMarriageTime > husbandAgeAtMarriageTime*2 ){
+                    familyWithAnomalyList.add(new FamilyWithAnomaly(fam, husband, wife));
+                }
+            }}
+        }
+        return familyWithAnomalyList;
+    }
+    public List<Individual> listPeopleWhoDiedWithin30Days(List<Individual> individualList){
+        List<Individual> deathsInLast30Days = new ArrayList<>();
+        for(Individual individual : individualList){
+            if(individual.getDeathDate().isPresent() &&  30 > ChronoUnit.DAYS.between(individual.getDeathDate().get(), LocalDate.now())){
+                deathsInLast30Days.add(individual);
+            }
+        }
+        return deathsInLast30Days;
     }
 
 }
