@@ -1,0 +1,1336 @@
+MONITOR
+INDIVIDUAL INFORMATION
+
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+|  ID     |                 NAME           |   GENDER    |  Birthday         |   Age         |    Alive        |            Death   |    Child           |        Spouse     |
++---------+--------------------------------+-------------+-------------------+---------------+-----------------+--------------------+--------------------+-------------------+
+   I3US26                                                            -NA-         0       Y                        -NA-                                              F2US26                                      
+   I1US25                 AditiUS25 /US25/          F                -NA-         0       Y                        -NA-                                              F1US25                                      
+   I2US25                 AditiUS25 /US25/          M                -NA-         0       Y                        -NA-                                              F1US25                                      
+   I1US12                      Alex /US12/          M          10 Feb 1900       119       Y                        -NA-                                              F1US12                                      
+   I2US12                     Debra /US12/          F          10 Feb 1920        99       Y                        -NA-                                              F1US12                                      
+   I1US38                      HIHI /US12/          F          30 Nov 1920        98       Y                        -NA-                                              F1US12                                      
+   I2US21                     Debora /Deb/          M          10 Feb 1920        99       Y                        -NA-                                              F1US21                                      
+   I1US21                      John /Mill/          F          10 Feb 1920        99       Y                        -NA-                                              F1US21                                      
+   I1US22                      John /Mill/          M          10 Feb 1920        99       Y                        -NA-                                              F1US22                                      
+   I1US22                      John /Mill/          M          10 Feb 1920        99       Y                        -NA-                                              F1US22                                      
+   I3US12                  Al-DEBRA /US12/          M          10 Feb 1989        30       Y                        -NA-                                                                                          
+   I4US12                 Al-DEBRA2 /US12/          M          10 Feb 1950        69       Y                        -NA-                                                                                          
+   I2US09                    White /Smith/          F          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09                                      
+   I1US13                   White /Darren/          M          2 Oct 1959        40       N                     5 Mar 2000                                              F1US13                                      
+   I2US13                    White /Walty/          F          2 Oct 1969        39       N                     5 Mar 2009                                              F1US13                                      
+   I3US13                   White /Warren/          M          2 Oct 2002        17       Y                        -NA-                                              F1US13                                      
+   I4US13                   White /Sarren/          F          3 Oct 2002        17       Y                        -NA-                                              F1US13                                      
+   I1US09                    Black /Smith/          M          2 Oct 1959        40       N                     5 Mar 2000                                              F1US09                                      
+   I3US09                     Gray /Smith/          M          2 Oct 2004        15       Y                        -NA-                                              F1US09                                      
+      I2                    Henry /Smith/          M          2 Oct 1959       -19       N                     5 Mar 1940                                                  F2                                      
+      I3                   Mary /Poppins/          F                -NA-         0       Y                        -NA-                                                  F2                                      
+      I4                     Lexy /Smith/          F          15 Jul 1990        29       Y                        -NA-                                                  F1                                      
+      I5                    John /Downey/          M          8 Jun 1960        59       Y                        -NA-                                                  F3                                      
+      I6                   Emily /Downey/          F          12 Jan 2007        12       Y                        -NA-                                                                                          
+      I7                  Joseph /Downey/          M          7 Nov 2009        10       Y                        -NA-                                                                                          
+      I8                      Joe /Smith/          M          24 Jun 2014         5       Y                        -NA-                                                                                          
+   I1US07                    Niles /Smith/          M          10 Feb 1800       219       Y                        -NA-                                                                                          
+   I1US10                     Alex /Smith/          M          10 Feb 1989        30       Y                        -NA-                                              F1US10                                      
+   I1US02                  Frasier /Smith/          M          10 Feb 1800       219       Y                        -NA-                                                                                          
+   I1US01                   Martin /Smith/          M          10 Feb 2022        -2       Y                        -NA-                                                                                          
+   I2US02                    Maris /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US02                                      
+   I2US10                   Lilith /Smith/          F          10 Feb 1989        30       Y                        -NA-                                              F1US10                                      
+   I1US16                        Sri /Mad/          M          10 Feb 1989        30       Y                        -NA-                                              F1US16                                      
+   I2US16                        Meg /Mad/          F          10 Feb 1989        30       Y                        -NA-                                              F1US16                                      
+   I3US16                        Nid /Mad/          M          10 Feb 2015         4       Y                        -NA-                                                                                          
+   I4US16                       Bhar /Dam/          M          10 Feb 2012         7       Y                        -NA-                                                                                          
+   I1US18                   Bharath /Bhat/          M          10 Feb 1953        66       Y                        -NA-                                              F1US18                                      
+   I2US18                  Srinidhi /Bhat/          F          10 Feb 1954        65       Y                        -NA-                                              F1US18                                      
+   I3US18                    Sribha /Bhat/          M          10 Feb 1970        49       Y                        -NA-                                                                                          
+   I4US18                    Bharsri /Dam/          F          10 Feb 1972        47       Y                        -NA-                                                                                          
+   I1US17                  Micheal /Smith/          M                -NA-         0       Y                        -NA-                                              F1US17                                      
+   I2US17                      Sue /I2US17          F                -NA-         0       Y                        -NA-                                              F1US17                                      
+   I3US17                            Mark/          M                -NA-         0       Y                        -NA-                                              F2US17                                      
+   I4US17                      Juan/ Gerry          M                -NA-         0       Y                        -NA-                                              F3US17                                      
+   I5US17                            Merry          F                -NA-         0       Y                        -NA-                                              F2US17                                      
+   I1US19                          Gerardo          M                -NA-         0       Y                        -NA-                                              F1US19                                      
+   I2US19                  Catherin/Albert          F                -NA-         0       Y                        -NA-                                              F1US19                                      
+   I3US19                            Lilly          F                -NA-         0       Y                        -NA-                                                                                          
+   I4US19                           Joseph          M                -NA-         0       Y                        -NA-                                              F2US19                                      
+   I1US15                      jordan1 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I2US15                      jordan2 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I3US15                      jordan3 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I4US15                      jordan4 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I5US15                      jordan5 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I6US15                      jordan6 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I7US15                      jordan7 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I8US15                      jordan8 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I9US15                      jordan9 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I10US15                     jordan10 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I11US15                     jordan11 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I12US15                     jordan12 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I13US15                     jordan13 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I14US15                     jordan14 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I15US15                     jordan15 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I16US15                     jordan16 /j/          M          10 Feb 1953        66       Y                        -NA-                                                                                          
+   I1US11                              Joe          M                -NA-         0       Y                        -NA-                                              F1US11                                      
+   I2US11                            Maria          F                -NA-         0       Y                        -NA-                                              F2US11                                      
+   I3US11                            Irina          F                -NA-         0       Y                        -NA-                                              F2US11                                      
+   I1US20                             John          M                -NA-         0       Y                        -NA-                                              F1US20                                      
+   I2US20                          John Jr          M                -NA-         0       Y                        -NA-                                                                                          
+   I3US20                          Dorethe          F                -NA-         0       Y                        -NA-                                                                                          
+   I1US39                     Jack /Hello/          M                -NA-         0       Y                        -NA-                                              F1US39                                      
+   I2US39                    Mary /Popper/          F                -NA-         0       Y                        -NA-                                              F1US39                                      
++---------+--------------------------------+-------------+-------------------+--------------------+-----------------+--------------------+--------------------+---------------------+
+FAMILY INFORMATION
+
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+|  ID     |                 Married        |   Divorced              |  HusbandId        |   Husband Name     |    wife Id      |     wife Name      |         Children  |
++---------+--------------------------------+-------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+ F1US201                                 -NA-         -NA-                   I3US20            Dorethe         I5US20                          I6US20      
+ F1US202                                 -NA-         -NA-                   I4US20                         I6US20                                      
+    F1                          10 Apr 2015         -NA-                       I1                             I4        Lexy /Smith/                I8      
+    F2                           8 May 1986   8 May 1985                       I2            Henry /Smith/             I3        Mary /Poppins/                I1      
+    F3                          17 May 2005         -NA-                       I5            John /Downey/             I3        Mary /Poppins/             I6,I7      
+ F1US10                          10 Apr 1999         -NA-                   I1US10            Alex /Smith/         I2US10        Lilith /Smith/                        
+ F1US02                          10 Apr 1988         -NA-                   I1US02            Frasier /Smith/         I2US02        Maris /Smith/                        
+ F1US09                          10 Apr 1988         -NA-                   I1US09            Black /Smith/         I2US09        White /Smith/            I3US09      
+ F1US16                          10 Apr 2010         -NA-                   I1US16            Sri /Mad/         I2US16        Meg /Mad/           I3US16,I4US16      
+ F1US18                          10 Apr 1968         -NA-                   I1US18            Bharath /Bhat/         I2US18        Srinidhi /Bhat/           I3US18,I4US18      
+ F2US18                          10 Apr 2010         -NA-                   I3US18            Sribha /Bhat/         I4US18        Bharsri /Dam/                        
+ F1US12                          10 Apr 1945         -NA-                   I1US12            Alex /US12/         I2US12        Debra /US12/           I3US12,I4US12      
+ F1US21                          10 Apr 1945         -NA-                   I1US21            John /Mill/         I2US21        Debora /Deb/                        
+ F1US22                          10 Apr 1945         -NA-                   I1US22            John /Mill/         I2US22                                      
+ F1US22                          10 Apr 1945         -NA-                   I1US22            John /Mill/         I2US22                                      
+ F1US17                                 -NA-         -NA-                   I1US17            Micheal /Smith/         I2US17        Sue /I2US17           I3US17,I2US19      
+ F2US17                                 -NA-         -NA-                   I3US17            Mark/         I5US17         Merry           I4US17,I4US19      
+ F3US17                                 -NA-         -NA-                   I4US17            Juan/ Gerry         I2US17        Sue /I2US17                        
+ F1US19                                 -NA-         -NA-                   I1US19            Gerardo         I2US19        Catherin/Albert            I3US19      
+ F1US13                                 -NA-         -NA-                   I1US13            White /Darren/         I2US13        White /Walty/           I3US13,I4US13      
+ F2US19                                 -NA-         -NA-                   I4US19            Joseph         I3US19         Lilly                        
+ F1US15                                 -NA-         -NA-                                                                                 I1US15,I2US15,I3US15,I4US15,I5US15,I6US15,I7US15,I8US15,I9US15,I10US15,I11US15,I12US15,I13US15,I14US15,I15US15,I16US15      
+ F1US11                                 -NA-         -NA-                   I1US11             Joe         I2US11         Maria                        
+ F2US11                                 -NA-         -NA-                   I1US11             Joe         I3US11         Irina                        
+ F1US20                                 -NA-         -NA-                   I1US20            John                                         I2US20      
+ F2US20                                 -NA-         -NA-                   I2US20            John Jr         I3US20        Dorethe                        
+ F3US20                                 -NA-         -NA-                                                                                 I1US20,I3US20      
+ F1US25                                 -NA-         -NA-                   I2US25            AditiUS25 /US25/         I1US25        AditiUS25 /US25/                        
+ F1US26                                 -NA-         -NA-                   I2US26                         I1US26                                      
+ I1US39                                 -NA-         -NA-                                                                                              
+ I2US39                                 -NA-         -NA-                                                                                              
+ F1US39                           1 Dec 2015         -NA-                   I1US39            Jack /Hello/         I2US39        Mary /Popper/                        
++---------+--------------------------------+--------------------------+-------------------+--------------------+-----------------+--------------------+--------------------+
+---- GEDCOM ERRORS -----
+ LINE -----> 207 ERROR: INDIVIDUAL: US01: I1US01: BIRTH DATE IS AFTER CURRENTDATE
+ LINE -----> 206 ERROR: FAMILY: US02:F1US02 MARRIED 10 Apr 1988 BEFORE WIFE'S BIRTH ( I2US02) 10 Feb 1989
+ LINE -----> 19 ERROR: INDIVIDUAL:US03 I2 BIRTH 2 Oct 1959 AFTER DEATH 5 Mar 1940
+ LINE -----> 9 ERROR: FAMILY:US04:F2 DIVORCED 8 May 1985 BEFORE MARRIAGE8 May 1986
+ LINE -----> 9 ERROR: FAMILY: US05:F2 MARRIED 8 May 1986 AFTER HUSBANDS'S DEATH (I2)5 Mar 1940
+ LINE -----> 9 ERROR: FAMILY: US06:F2 Divorced 8 May 1985 AFTER HUSBANDS'S DEATH (I2) 5 Mar 1940
+ LINE -----> 189 ERROR: INDIVIDUAL : US07 :I1US07: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ LINE -----> 201 ERROR: INDIVIDUAL : US07 :I1US02: MORE THAN 150 YEARS OLD - BIRTH DATE 10 Feb 1800
+ LINE -----> 8 ANOMALY: FAMILY : US08: F1: CHILD  Joe /Smith/BORN I8 Before MARRIAGE: 10 Apr 2015
+ LINE -----> 230 ANOMALY: FAMILY : US08: F1US16: CHILD  Lexy /Smith/BORN I4 Before MARRIAGE: 10 Apr 2010
+ LINE -----> 101 ANOMALY: FAMILY : US09 F1US09I3US09 BORN AFTER PARENT'S I2US09 DEATH
+ LINE -----> 101 ANOMALY: FAMILY: US09 : F1US09 I3US09 BORN AFTER PARENT'S I1US09 DEATH
+ LINE -----> 109 ANOMALY: FAMILY: US09 : F1US13 I3US13 BORN AFTER PARENT'S I1US13 DEATH
+ LINE -----> 109 ANOMALY: FAMILY: US09 : F1US13 I4US13 BORN AFTER PARENT'S I1US13 DEATH
+ LINE -----> 194 ANOMALY: FAMILY :US10:F1US10 WIFE AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ LINE -----> 194 ANOMALY: FAMILY :US10:F1US10 HUSBAND AGE ( BDATE 10 Feb 1989 )DURING MARRIAGE WASBELOW 14 ( MARRIAGE DATE 10 Apr 1999 )
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF1US11 AND F2US11
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF2US11 AND F1US11
+ERROR : FAMILY : US11  Someone in these families has bigamy without divorceF2US20 AND F1US201
+ LINE -----> 30 ANOMALY: FAMILY: US12: F1US12 HUSBAND  Alex /US12/ WAS OLDER THAN 80 YEARS WHEN ONE OF HIS CHILD WAS BORN
+ LINE -----> 30 ANOMALY: FAMILY: US12: F1US12 WIFE  Debra /US12/ WAS OLDER THAN 60 YEARS WHEN ONE OF HER CHILD WAS BORN
+ LINE -----> 283 ERROR: FAMILY : US13 : SIBLINGS  Mark/ Mark/: AND  Catherin/Albert Catherin/Albert HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 288 ERROR: FAMILY : US13 : SIBLINGS  Juan/ Gerry Gerry: AND  Joseph Joseph HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 118 ERROR: FAMILY : US13 : SIBLINGS  White /Warren/ /Warren/: AND  White /Sarren/ /Sarren/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 316 ERROR: FAMILY : US13 : SIBLINGS  jordan1 /j/ /j/: AND  jordan2 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 323 ERROR: FAMILY : US13 : SIBLINGS  jordan2 /j/ /j/: AND  jordan3 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 330 ERROR: FAMILY : US13 : SIBLINGS  jordan3 /j/ /j/: AND  jordan4 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 337 ERROR: FAMILY : US13 : SIBLINGS  jordan4 /j/ /j/: AND  jordan5 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 344 ERROR: FAMILY : US13 : SIBLINGS  jordan5 /j/ /j/: AND  jordan6 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 351 ERROR: FAMILY : US13 : SIBLINGS  jordan6 /j/ /j/: AND  jordan7 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 358 ERROR: FAMILY : US13 : SIBLINGS  jordan7 /j/ /j/: AND  jordan8 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 365 ERROR: FAMILY : US13 : SIBLINGS  jordan8 /j/ /j/: AND  jordan9 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 372 ERROR: FAMILY : US13 : SIBLINGS  jordan9 /j/ /j/: AND  jordan10 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 379 ERROR: FAMILY : US13 : SIBLINGS  jordan10 /j/ /j/: AND  jordan11 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 386 ERROR: FAMILY : US13 : SIBLINGS  jordan11 /j/ /j/: AND  jordan12 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 393 ERROR: FAMILY : US13 : SIBLINGS  jordan12 /j/ /j/: AND  jordan13 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 400 ERROR: FAMILY : US13 : SIBLINGS  jordan13 /j/ /j/: AND  jordan14 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 407 ERROR: FAMILY : US13 : SIBLINGS  jordan14 /j/ /j/: AND  jordan15 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 414 ERROR: FAMILY : US13 : SIBLINGS  jordan15 /j/ /j/: AND  jordan16 /j/ /j/ HAVE SPACING LESS THAN 1 YEAR
+ LINE -----> 441 ERROR: FAMILY : US13 : SIBLINGS  John John: AND  Dorethe Dorethe HAVE SPACING LESS THAN 1 YEAR
+ERROR: FAMILY : US14 : MULTIPLE BIRTHS  AND  GAVE MULTIPLE BIRTHS. THE COUNT IS 16
+ LINE -----> 321 ANOMALY : FAMILY : US15 F1US15 CANNOT HAVE MORE THAN 15 CHILDREN
+ LINE -----> 230 ANOMALY: FAMILY: US16 F1US16 MALE /Dam/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Mad/
+ LINE -----> 278 ANOMALY: FAMILY: US16 F1US17 MALE Mark/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Smith/
+ LINE -----> 286 ANOMALY: FAMILY: US16 F2US17 MALE Gerry LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
+ LINE -----> 286 ANOMALY: FAMILY: US16 F2US17 MALE Joseph LAST NAME IS DIFFERENT FROM FAMILY LASTNAME Mark/
+ LINE -----> 109 ANOMALY: FAMILY: US16 F1US13 MALE /Warren/ LAST NAME IS DIFFERENT FROM FAMILY LASTNAME /Darren/
+ LINE -----> 444 ANOMALY: FAMILY: US16 F1US20 MALE Jr LAST NAME IS DIFFERENT FROM FAMILY LASTNAME John
+ LINE -----> 286 ERROR : FAMILY : US17 F2US17 PARENT SHOULD NOT BE MARRIED TO A DESCENDANT Juan/ Gerry,  Sue /I2US17
+ LINE -----> 254 ANOMALY : FAMILY : US18 F1US18 SIBLINGS  Sribha /Bhat/,  Bharsri /Dam/ ARE MARRIED TO EACH OTHER
+ LINE -----> 286 ANOMALY : FAMILY : US19 F2US17 FIRST COUSINS SHOULD NOT BE MARRIED Joseph,  Lilly
+ LINE -----> 300 ANOMALY : FAMILY : US19 F1US19 FIRST COUSINS SHOULD NOT BE MARRIED Lilly,  Joseph
+ANOMALY : FAMILY : US20 F2US20 AUNT/UNCLE SHOULD NOT BE MARRIED TO NEICE/NEWPHEW : I2US20, I3US20
+ LINE -----> 51 ANOMALY : FAMILY : US21 F1US21 Husband's Gender is Female Instead of Male
+ LINE -----> 51 ANOMALY : FAMILY : US21 F1US21 Wife's Gender is Male Instead of Female
+ LINE -----> 60 ERROR : INDIVIDUAL : US22 I1US22 already exists and used by other individual
+ LINE -----> 65 ERROR : FAMILY : US22 F1US22 already exists and used by other individual
+
+ERROR : US23: List of all the individuals with Duplicated Names and BirthDates :  LINE -----> 60 I1US22,  LINE -----> 60 I1US22, 
+
+ERROR : US24: List of all the Families with duplicated Spouses :  LINE -----> 158 F3,  LINE -----> 65 F1US22,  LINE -----> 291 F3US17,  LINE -----> 435 F2US11,  LINE -----> 451 F2US20, 
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US13 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: White
+ANOMALY : FAMILY : US25: F1US25 THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: AditiUS25
+ERROR : FAMILY : US26: NO CORRESPONDING ENTRY WAS FOUND FOR THESE IDS : [I4US20, I2US26, F2US26, I1US26, I1, I6US20, I5US20, I2US22]
+ LINE -----> 206 ANOMALY : FAMILY : US34  Large age difference in this couple F1US02. Age of husband on marriage day: 188 Age of wife on marriage day: 0
+
+---- GEDCOM LISTS ----
+US:27 : Individual List with Name and Age:
++--------------------+------------+
+|    NAME            |    AGE     |
++--------------------+------------+
+                                 0
+     AditiUS25 /US25/            0
+     AditiUS25 /US25/            0
+          Alex /US12/          119
+         Debra /US12/           99
+          HIHI /US12/           98
+         Debora /Deb/           99
+          John /Mill/           99
+          John /Mill/           99
+          John /Mill/           99
+      Al-DEBRA /US12/           30
+     Al-DEBRA2 /US12/           69
+        White /Smith/           40
+       White /Darren/           40
+        White /Walty/           39
+       White /Warren/           17
+       White /Sarren/           17
+        Black /Smith/           40
+         Gray /Smith/           15
+        Henry /Smith/          -19
+       Mary /Poppins/            0
+         Lexy /Smith/           29
+        John /Downey/           59
+       Emily /Downey/           12
+      Joseph /Downey/           10
+          Joe /Smith/            5
+        Niles /Smith/          219
+         Alex /Smith/           30
+      Frasier /Smith/          219
+       Martin /Smith/           -2
+        Maris /Smith/           30
+       Lilith /Smith/           30
+            Sri /Mad/           30
+            Meg /Mad/           30
+            Nid /Mad/            4
+           Bhar /Dam/            7
+       Bharath /Bhat/           66
+      Srinidhi /Bhat/           65
+        Sribha /Bhat/           49
+        Bharsri /Dam/           47
+      Micheal /Smith/            0
+          Sue /I2US17            0
+                Mark/            0
+          Juan/ Gerry            0
+                Merry            0
+              Gerardo            0
+      Catherin/Albert            0
+                Lilly            0
+               Joseph            0
+          jordan1 /j/           66
+          jordan2 /j/           66
+          jordan3 /j/           66
+          jordan4 /j/           66
+          jordan5 /j/           66
+          jordan6 /j/           66
+          jordan7 /j/           66
+          jordan8 /j/           66
+          jordan9 /j/           66
+         jordan10 /j/           66
+         jordan11 /j/           66
+         jordan12 /j/           66
+         jordan13 /j/           66
+         jordan14 /j/           66
+         jordan15 /j/           66
+         jordan16 /j/           66
+                  Joe            0
+                Maria            0
+                Irina            0
+                 John            0
+              John Jr            0
+              Dorethe            0
+         Jack /Hello/            0
+        Mary /Popper/            0
++--------------------+------------+
+US28 : Siblings List with their name and age
+ LINE -----> 8 FAMILY IDF1
+                       Name    :    Age       : DOB 
+                   Joe /Smith/       5    24 Jun 2014
+ LINE -----> 158 FAMILY IDF3
+                       Name    :    Age       : DOB 
+                Emily /Downey/      12    12 Jan 2007
+               Joseph /Downey/      10    7 Nov 2009
+ LINE -----> 101 FAMILY IDF1US09
+                       Name    :    Age       : DOB 
+                  Gray /Smith/      15    2 Oct 2004
+ LINE -----> 230 FAMILY IDF1US16
+                       Name    :    Age       : DOB 
+                    Bhar /Dam/       7    10 Feb 2012
+                     Nid /Mad/       4    10 Feb 2015
+ LINE -----> 254 FAMILY IDF1US18
+                       Name    :    Age       : DOB 
+                 Sribha /Bhat/      49    10 Feb 1970
+                 Bharsri /Dam/      47    10 Feb 1972
+ LINE -----> 30 FAMILY IDF1US12
+                       Name    :    Age       : DOB 
+              Al-DEBRA2 /US12/      69    10 Feb 1950
+               Al-DEBRA /US12/      30    10 Feb 1989
+ LINE -----> 278 FAMILY IDF1US17
+                       Name    :    Age       : DOB 
+                         Mark/       0      -NA-
+               Catherin/Albert       0      -NA-
+ LINE -----> 286 FAMILY IDF2US17
+                       Name    :    Age       : DOB 
+                   Juan/ Gerry       0      -NA-
+                        Joseph       0      -NA-
+ LINE -----> 300 FAMILY IDF1US19
+                       Name    :    Age       : DOB 
+                         Lilly       0      -NA-
+ LINE -----> 109 FAMILY IDF1US13
+                       Name    :    Age       : DOB 
+                White /Warren/      17    2 Oct 2002
+                White /Sarren/      17    3 Oct 2002
+ LINE -----> 321 FAMILY IDF1US15
+                       Name    :    Age       : DOB 
+                   jordan1 /j/      66    10 Feb 1953
+                   jordan2 /j/      66    10 Feb 1953
+                   jordan3 /j/      66    10 Feb 1953
+                   jordan4 /j/      66    10 Feb 1953
+                   jordan5 /j/      66    10 Feb 1953
+                   jordan6 /j/      66    10 Feb 1953
+                   jordan7 /j/      66    10 Feb 1953
+                   jordan8 /j/      66    10 Feb 1953
+                   jordan9 /j/      66    10 Feb 1953
+                  jordan10 /j/      66    10 Feb 1953
+                  jordan11 /j/      66    10 Feb 1953
+                  jordan12 /j/      66    10 Feb 1953
+                  jordan13 /j/      66    10 Feb 1953
+                  jordan14 /j/      66    10 Feb 1953
+                  jordan15 /j/      66    10 Feb 1953
+                  jordan16 /j/      66    10 Feb 1953
+ LINE -----> 444 FAMILY IDF1US20
+                       Name    :    Age       : DOB 
+                       John Jr       0      -NA-
+ LINE -----> 445 FAMILY IDF3US20
+                       Name    :    Age       : DOB 
+                          John       0      -NA-
+                       Dorethe       0      -NA-
+US29: List of all deceased individuals:
+
+ LINE -----> 94 I2US09
+ LINE -----> 102 I1US13
+ LINE -----> 110 I2US13
+ LINE -----> 130 I1US09
+ LINE -----> 19 I2
+
+US30: List of all living married individuals: 
+
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+ LINE -----> 11 I3US26
+ LINE -----> 14 I1US25
+ LINE -----> 19 I2US25
+ LINE -----> 25 I1US12
+ LINE -----> 32 I2US12
+ LINE -----> 39 I1US38
+ LINE -----> 46 I2US21
+ LINE -----> 53 I1US21
+ LINE -----> 60 I1US22
+ LINE -----> 60 I1US22
+ LINE -----> 74 I3US12
+ LINE -----> 81 I4US12
+ LINE -----> 118 I3US13
+ LINE -----> 124 I4US13
+ LINE -----> 138 I3US09
+ LINE -----> 11 I3
+ LINE -----> 81 I4
+ LINE -----> 165 I5
+ LINE -----> 171 I6
+ LINE -----> 177 I7
+ LINE -----> 183 I8
+ LINE -----> 189 I1US07
+ LINE -----> 195 I1US10
+ LINE -----> 201 I1US02
+ LINE -----> 207 I1US01
+ LINE -----> 213 I2US02
+ LINE -----> 219 I2US10
+ LINE -----> 225 I1US16
+ LINE -----> 231 I2US16
+ LINE -----> 237 I3US16
+ LINE -----> 243 I4US16
+ LINE -----> 249 I1US18
+ LINE -----> 255 I2US18
+ LINE -----> 261 I3US18
+ LINE -----> 268 I4US18
+ LINE -----> 275 I1US17
+ LINE -----> 279 I2US17
+ LINE -----> 283 I3US17
+ LINE -----> 288 I4US17
+ LINE -----> 293 I5US17
+ LINE -----> 297 I1US19
+ LINE -----> 301 I2US19
+ LINE -----> 306 I3US19
+ LINE -----> 310 I4US19
+ LINE -----> 316 I1US15
+ LINE -----> 323 I2US15
+ LINE -----> 330 I3US15
+ LINE -----> 337 I4US15
+ LINE -----> 344 I5US15
+ LINE -----> 351 I6US15
+ LINE -----> 358 I7US15
+ LINE -----> 365 I8US15
+ LINE -----> 372 I9US15
+ LINE -----> 379 I10US15
+ LINE -----> 386 I11US15
+ LINE -----> 393 I12US15
+ LINE -----> 400 I13US15
+ LINE -----> 407 I14US15
+ LINE -----> 414 I15US15
+ LINE -----> 421 I16US15
+ LINE -----> 428 I1US11
+ LINE -----> 432 I2US11
+ LINE -----> 436 I3US11
+ LINE -----> 441 I1US20
+ LINE -----> 447 I2US20
+ LINE -----> 453 I3US20
+ LINE -----> 615 I1US39
+ LINE -----> 622 I2US39
+
+ US31 : List of living singles
+ LINE -----> 25 INDIVIDUAL : I1US12 Name :   Alex /US12/  Age :119
+ LINE -----> 32 INDIVIDUAL : I2US12 Name :   Debra /US12/  Age :99
+ LINE -----> 39 INDIVIDUAL : I1US38 Name :   HIHI /US12/  Age :98
+ LINE -----> 46 INDIVIDUAL : I2US21 Name :   Debora /Deb/  Age :99
+ LINE -----> 53 INDIVIDUAL : I1US21 Name :   John /Mill/  Age :99
+ LINE -----> 60 INDIVIDUAL : I1US22 Name :   John /Mill/  Age :99
+ LINE -----> 60 INDIVIDUAL : I1US22 Name :   John /Mill/  Age :99
+ LINE -----> 81 INDIVIDUAL : I4US12 Name :   Al-DEBRA2 /US12/  Age :69
+ LINE -----> 165 INDIVIDUAL : I5 Name :   John /Downey/  Age :59
+ LINE -----> 189 INDIVIDUAL : I1US07 Name :   Niles /Smith/  Age :219
+ LINE -----> 201 INDIVIDUAL : I1US02 Name :   Frasier /Smith/  Age :219
+ LINE -----> 249 INDIVIDUAL : I1US18 Name :   Bharath /Bhat/  Age :66
+ LINE -----> 255 INDIVIDUAL : I2US18 Name :   Srinidhi /Bhat/  Age :65
+ LINE -----> 261 INDIVIDUAL : I3US18 Name :   Sribha /Bhat/  Age :49
+ LINE -----> 268 INDIVIDUAL : I4US18 Name :   Bharsri /Dam/  Age :47
+ LINE -----> 316 INDIVIDUAL : I1US15 Name :   jordan1 /j/  Age :66
+ LINE -----> 323 INDIVIDUAL : I2US15 Name :   jordan2 /j/  Age :66
+ LINE -----> 330 INDIVIDUAL : I3US15 Name :   jordan3 /j/  Age :66
+ LINE -----> 337 INDIVIDUAL : I4US15 Name :   jordan4 /j/  Age :66
+ LINE -----> 344 INDIVIDUAL : I5US15 Name :   jordan5 /j/  Age :66
+ LINE -----> 351 INDIVIDUAL : I6US15 Name :   jordan6 /j/  Age :66
+ LINE -----> 358 INDIVIDUAL : I7US15 Name :   jordan7 /j/  Age :66
+ LINE -----> 365 INDIVIDUAL : I8US15 Name :   jordan8 /j/  Age :66
+ LINE -----> 372 INDIVIDUAL : I9US15 Name :   jordan9 /j/  Age :66
+ LINE -----> 379 INDIVIDUAL : I10US15 Name :   jordan10 /j/  Age :66
+ LINE -----> 386 INDIVIDUAL : I11US15 Name :   jordan11 /j/  Age :66
+ LINE -----> 393 INDIVIDUAL : I12US15 Name :   jordan12 /j/  Age :66
+ LINE -----> 400 INDIVIDUAL : I13US15 Name :   jordan13 /j/  Age :66
+ LINE -----> 407 INDIVIDUAL : I14US15 Name :   jordan14 /j/  Age :66
+ LINE -----> 414 INDIVIDUAL : I15US15 Name :   jordan15 /j/  Age :66
+ LINE -----> 421 INDIVIDUAL : I16US15 Name :   jordan16 /j/  Age :66
+US33 : List of Orphan chidlren
+ LINE -----> 101 Individual : I3US09 Name :  Gray /Smith/AGE : 15  Family Id :F1US09
+ LINE -----> 109 Individual : I3US13 Name :  White /Warren/AGE : 17  Family Id :F1US13
+ LINE -----> 109 Individual : I4US13 Name :  White /Sarren/AGE : 17  Family Id :F1US13
+US36 : List of deaths in the last 30 days 
+
+
+US38: List of all individuals with upcoming birthday:
+ LINE -----> 39 I1US38
+US39: List of all couples with upcoming anniversary: Wife: Mary /Popper/ LINE 622 and Husband: Jack /Hello/ LINE 615
+US32 : List of MULTIPLE BIRTHS  AND  GAVE MULTIPLE BIRTHS. THE LIST OF INDIVIDUALS IS AS BELOW: 
+LINE 316 ---> I1US15, LINE 323 ---> I2US15, LINE 330 ---> I3US15, LINE 337 ---> I4US15, LINE 344 ---> I5US15, LINE 351 ---> I6US15, LINE 358 ---> I7US15, LINE 365 ---> I8US15, LINE 372 ---> I9US15, LINE 379 ---> I10US15, LINE 386 ---> I11US15, LINE 393 ---> I12US15, LINE 400 ---> I13US15, LINE 407 ---> I14US15, LINE 414 ---> I15US15, LINE 421 ---> I16US15, 
