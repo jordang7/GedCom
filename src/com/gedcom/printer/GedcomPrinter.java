@@ -608,5 +608,43 @@ public class GedcomPrinter {
             System.out.print(individual.getId() + "| ");
         }
     }
+    public void printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+		List<String> upcoming= new ArrayList<>();
+		LocalDate dateBefore;
+		LocalDate dateAfter;
+        for(Individual indi : individualArrayList)
+        {
+            if(indi.getBdate().isPresent())
+            {
+            	dateBefore=indi.getBdate().get();
+            	LocalDate currentDate = LocalDate.of(indi.getBdate().get().getYear(),LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth());
+            	dateAfter=currentDate.plusDays(30);
+            	if(30 > ChronoUnit.DAYS.between(dateBefore, dateAfter)) {
+            		upcoming.add(indi.getId());
+            	}
+            }
+    }
+     
+        System.out.println("US38: List of all individuals with upcoming birthday:" + upcoming);
+}
+    public void printListOfUpcAnniversary( List<Family> FamilyArrayList) throws ParseException, java.text.ParseException {
+    	System.out.print("US39: List of all couples with upcoming anniversary:");
+		LocalDate dateBefore;
+		LocalDate dateAfter;
+        for(Family fam : FamilyArrayList)
+        {
+            if(fam.getMarried().isPresent())
+            {
+            	dateBefore=fam.getMarried().get();
+            	LocalDate currentDate = LocalDate.of(fam.getMarried().get().getYear(),LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth());
+            	dateAfter=currentDate.plusDays(30);
+            	if(30 > ChronoUnit.DAYS.between(dateBefore, dateAfter)) {
+            		System.out.print(" Wife:"+ fam.getWifeName() + " and Husband:" + fam.getHusbandName());
+            	}
+            }
+    }
+     
+        
+}
 
 }
