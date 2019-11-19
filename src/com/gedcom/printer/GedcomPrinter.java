@@ -648,7 +648,7 @@ public class GedcomPrinter {
         }
         System.out.println();
     }
-    public void printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+    public List<String> printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
 		List<String> upcoming= new ArrayList<>();
 		LocalDate dateBefore;
 		LocalDate dateAfter;
@@ -667,12 +667,18 @@ public class GedcomPrinter {
             		//" LINE " + getLineNumber()
             	}
             }
-    }
+
+  
+  }
         System.out.println();
-     
+  
+  }
+        System.out.println("US38: List of all individuals with upcoming birthday:" + upcoming);
+        return upcoming;
 }
-    public void printListOfUpcAnniversary( List<Family> FamilyArrayList) throws ParseException, java.text.ParseException {
+    public List<String> printListOfUpcAnniversary( List<Family> FamilyArrayList) throws ParseException, java.text.ParseException {
     	System.out.print("US39: List of all couples with upcoming anniversary:");
+    	List<String> upcoming = new ArrayList<>();
 		LocalDate dateBefore;
 		LocalDate dateAfter;
         for(Family fam : FamilyArrayList)
@@ -683,11 +689,15 @@ public class GedcomPrinter {
             	LocalDate currentDate = LocalDate.of(fam.getMarried().get().getYear(),LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth());
             	dateAfter=currentDate.plusDays(30);
             	if(30 > ChronoUnit.DAYS.between(dateBefore, dateAfter)) {
-            		System.out.print(" Wife:"+ fam.getWifeName() + " LINE " + getLineNumber(fam.getWifeId()) + " and Husband:" + fam.getHusbandName() + " LINE " + getLineNumber(fam.getHusbandId()));
+                System.out.print(" Wife:"+ fam.getWifeName() + " LINE " + getLineNumber(fam.getWifeId()) + " and Husband:" + fam.getHusbandName() + " LINE " + getLineNumber(fam.getHusbandId()));
+
+
+  upcoming.add(fam.getId());
+            		System.out.print(" Wife:"+ fam.getWifeName() + " and Husband:" + fam.getHusbandName());
             	}
             }
     }
-     
+     return upcoming;
         
     }
     
