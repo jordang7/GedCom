@@ -29,6 +29,8 @@ public class Application {
         GedcomResponse response= gdp.parser(gedcomLines,tagSet);
         IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
         GedcomPrinter gedcomPrinter = new GedcomPrinter();
+        gedcomPrinter.setGedcomLines(gedcomLines);
+        
 
         gedcomPrinter.printIndividuals(indiFamilyResponse.getIndividualList());
         gedcomPrinter.printFamily(indiFamilyResponse.getFamilyList());
@@ -74,7 +76,10 @@ public class Application {
         gedcomPrinter.printLivingSingle(indiFamilyResponse);
         gedcomPrinter.printOrphanChildren(indiFamilyResponse);
         gedcomPrinter.printPeopleWhoDiedInLast30Days(indiFamilyResponse); //US36
+        gedcomPrinter.printListOfUpcBday(indiFamilyResponse.getIndividualList()); //US38
+        gedcomPrinter.printListOfUpcAnniversary(indiFamilyResponse.getFamilyList()); //US39
         
+        gedcomPrinter.printMultipleBirthsList(indiFamilyResponse.getFamilyList());
 
     	}
 
