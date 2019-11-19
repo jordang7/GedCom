@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -609,7 +608,7 @@ public class GedcomPrinter {
             System.out.print(individual.getId() + "| ");
         }
     }
-    public void printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
+    public List<String> printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
 		List<String> upcoming= new ArrayList<>();
 		LocalDate dateBefore;
 		LocalDate dateAfter;
@@ -624,12 +623,13 @@ public class GedcomPrinter {
             		upcoming.add(indi.getId());
             	}
             }
-    }
-     
+        }
         System.out.println("US38: List of all individuals with upcoming birthday:" + upcoming);
+        return upcoming;
 }
-    public void printListOfUpcAnniversary( List<Family> FamilyArrayList) throws ParseException, java.text.ParseException {
+    public List<String> printListOfUpcAnniversary( List<Family> FamilyArrayList) throws ParseException, java.text.ParseException {
     	System.out.print("US39: List of all couples with upcoming anniversary:");
+    	List<String> upcoming = new ArrayList<>();
 		LocalDate dateBefore;
 		LocalDate dateAfter;
         for(Family fam : FamilyArrayList)
@@ -640,11 +640,12 @@ public class GedcomPrinter {
             	LocalDate currentDate = LocalDate.of(fam.getMarried().get().getYear(),LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth());
             	dateAfter=currentDate.plusDays(30);
             	if(30 > ChronoUnit.DAYS.between(dateBefore, dateAfter)) {
+            		upcoming.add(fam.getId());
             		System.out.print(" Wife:"+ fam.getWifeName() + " and Husband:" + fam.getHusbandName());
             	}
             }
     }
-     
+     return upcoming;
         
 }
 
