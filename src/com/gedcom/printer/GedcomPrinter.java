@@ -2,15 +2,22 @@ package com.gedcom.printer;
 
 import com.gedcom.models.*;
 
+
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+
 import java.util.stream.Collectors;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 /**
  * Created by Sri on 10/17/2019.
@@ -312,7 +319,23 @@ public class GedcomPrinter {
         }
     }
 
+    //US28 - Meghana
+    public void printSiblingsByAge(List<Family> familyList){
+        System.out.println("US28 : Siblings List with their name and age");
+        for(Family family : familyList){
+            List<Individual> childrenIndi = family.getChildrenIndis();
+            Collections.sort(childrenIndi,new IndividualAgeComparator());
+            if(!childrenIndi.isEmpty()) {
+                System.out.println("FAMILY ID" + family.getId());
+                System.out.println("                       Name    :    Age       : DOB ");
+                for (Individual siblings : childrenIndi) {
+                    System.out.format("%30s   %5s    %6s", siblings.getName(), siblings.getAge(), formatDate(siblings.getBdate()));
+                    System.out.println();
+                }
+            }
+        }
 
+    }
     public void printambiguousIndividualId(IndiFamilyResponse indiFamilyResponse){
         for(Individual individual : indiFamilyResponse.getAmbiguousIndividualIDList()){
 
@@ -332,7 +355,21 @@ public class GedcomPrinter {
             }
         }
     }
-
+    //US31 Meghana
+    public void printLivingSingle(IndiFamilyResponse indiFamilyResponse){
+        System.out.println(" US31 : List of living singles");
+        for(Individual indi: indiFamilyResponse.getLivingSingleList()){
+            System.out.println("INDIVIDUAL : " + indi.getId() +" Name :  "+ indi.getName() + "  Age :"+indi.getAge());
+        }
+    }
+    //US33 Meghana
+    public void printOrphanChildren(IndiFamilyResponse indiFamilyResponse){
+        System.out.println("US33 : List of Orphan chidlren");
+        for(Individual indi : indiFamilyResponse.getOrphanChildrenList()){
+            System.out.println("Individual : " + indi.getId() + " Name : " + indi.getName() + "AGE : "+
+                    indi.getAge() +"  Family Id :" + indi.getChild() );
+        }
+    }
     public void printAmbiguosSiblingMarriageList(IndiFamilyResponse indiFamilyResponse){
         for(FamilyWithChildrenMarriedToEachOther familyWithChildrenMarriedToEachOther : indiFamilyResponse.getAmbiguousSblingsMarriageList()){
             System.out.println("ANOMALY : FAMILY : US18 "+ familyWithChildrenMarriedToEachOther.getFamily().getId() + " SIBLINGS " + familyWithChildrenMarriedToEachOther.getHusband().getName() + ", "+familyWithChildrenMarriedToEachOther.getWife().getName()+ " ARE MARRIED TO EACH OTHER");
@@ -452,6 +489,11 @@ public class GedcomPrinter {
             System.out.println("ANOMALY : FAMILY : US25: "+duplicateNamesList.getFamily().getId() +" THIS FAMILY CONTAINS DUPLICATE FIRST NAMES: "+ " ".join(" ", duplicateNamesList.getDuplicateNamesInFamily()));
         }
     }
+    public void printMissingCorrespondingEntries(IndiFamilyResponse indiFamResp){
+        for(FamilyWithAnomaly noCorrespondingEntries : indiFamResp.getMissingCorrespondingEntries()){
+            System.out.println("ERROR : FAMILY : US26: NO CORRESPONDING ENTRY WAS FOUND FOR THESE IDS : "+noCorrespondingEntries.getNocorrespondingEntry());
+        }
+    }
     public void printListOfDeceased( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
     		List<String> deceased= new ArrayList<>();
             for(Individual indi : individualArrayList)
@@ -479,10 +521,9 @@ public class GedcomPrinter {
 	        }
 		  System.out.println("US30: List of all living married individuals: " + livingMarried);
     }
-
     //US27 Parth
     public void printIndividualswithAge(List<Individual> individualArrayList){
-        System.out.println("Individual Names with Age:");
+        System.out.println("US:27 : Individual List with Name and Age:");
         System.out.println("+--------------------+------------+");
         System.out.println("|    NAME            |    AGE     |");
         System.out.println("+--------------------+------------+");
@@ -494,5 +535,78 @@ public class GedcomPrinter {
         System.out.println("+--------------------+------------+");
 
     }
-}
+    
+    public void printCasesForUniqueNameAndBirthDate(List<Individual> individualArrayList)
+    {
+    	HashMap<String, Integer> uniqueNameAndBirthDateHashMap = new HashMap<String, Integer>();
+    	ArrayList<String> DuplicatedNamesAndBDate = new ArrayList<String>();
+    	
+    	for(Individual indi : individualArrayList)
+    	{
+    		
+    		if(!indi.getBdate().toString().trim().equals("Optional.empty"))
+    		{
+    			String key = indi.getName() + indi.getBdate().toString().trim();
+    			if(!uniqueNameAndBirthDateHashMap.containsKey(key))
+    			{
+    				uniqueNameAndBirthDateHashMap.put(key, 1);
+    			}
+    			else
+    			{
+    				DuplicatedNamesAndBDate.add(indi.getId());
+    			}
+    		}
+    	}
+    	
+    	System.out.print("ERROR : US23: List of all the individuals with Duplicated Names and BirthDates : ");
+    	for(String dupNamesAndBDate : DuplicatedNamesAndBDate)
+    	{
+    		System.out.print(dupNamesAndBDate + ", ");
+    	}
+    	System.out.println();
+    }
+    
+    
+    public void printCasesForUniqueFamilyWithSpouses(List<Family> familyArrayList)
+    {
+    	HashMap<String, Integer> uniqueFamily = new HashMap<String, Integer>();
+    	ArrayList<String> DuplicatedFamilyWithSpouses = new ArrayList<String>();
+    	
+    	for(Family fam : familyArrayList)
+    	{
+    		if(fam.getHusbandId().trim() != "" && fam.getWifeId().trim() != "")
+    		{
+    			if(!uniqueFamily.containsKey(fam.getHusbandId().trim()) && !uniqueFamily.containsKey(fam.getWifeId().trim()))
+    			{
+    				uniqueFamily.put(fam.getHusbandId().trim(), 1);
+    				uniqueFamily.put(fam.getWifeId().trim(), 1);
+    			}
+    			else
+    			{
+    				DuplicatedFamilyWithSpouses.add(fam.getId());
+    			}
+    		}
+    		
 
+    	}
+    	
+    	System.out.print("ERROR : US24: List of all the Families with duplicated Spouses : ");
+    	for(String dupSpouses : DuplicatedFamilyWithSpouses)
+    	{
+    		System.out.print(dupSpouses + ", ");
+    	}
+    	System.out.println();
+    }
+    public void printLargreAgeDifferences(IndiFamilyResponse indiFamilyResponse) {
+        for(FamilyWithAnomaly fam : indiFamilyResponse.getAmbiguousFamiliesWithLargeAgeDifference()){
+            System.out.println("ANOMALY : FAMILY : US34 "+ " Large age difference in this couple " + fam.getFamily().getId() +". Age of husband on marriage day: " +Period.between( fam.getHusband().getBdate().get(),fam.getFamily().getMarried().get()).getYears()+" Age of wife on marriage day: "+Period.between( fam.getWife().getBdate().get(),fam.getFamily().getMarried().get()).getYears());
+        }
+    }
+    public void printPeopleWhoDiedInLast30Days(IndiFamilyResponse indifamilyResponse){
+        System.out.println("US36 : List of deaths in the last 30 days ");
+        for(Individual individual : indifamilyResponse.getPeopleDiedInLast30Days()){
+            System.out.print(individual.getId() + "| ");
+        }
+    }
+
+}

@@ -1,11 +1,15 @@
 package com.gedcom.processor;
 import com.gedcom.models.*;
 
+import java.io.PrintStream;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -138,6 +142,58 @@ public class GedcomValidator {
         }
         return ambiguousIndividualIDList;
     }
+    //US31
+    public List<Individual> livingSingle(List<Individual> individualList){
+        List<Individual> livingSingleList = new ArrayList<>();
+
+            for(Individual indi : individualList) {
+
+                if (indi.getAge() > 30 && !indi.getDeathDate().isPresent()){
+                    if( indi.getSpouse().isEmpty()){
+                        livingSingleList.add(indi);
+                    }
+
+                }
+            }
+
+        return livingSingleList;
+    }
+    //US33
+    public List<Individual> orphanChildren(List<Individual> individualList, List<Family> familyList){
+        List<Individual> orphanChildrenList = new ArrayList<>();
+
+        for (Family family : familyList) {
+            String husbandId = family.getHusbandId();
+            String wifeId = family.getWifeId();
+
+
+            Optional<Individual> husbandOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(husbandId);
+            }).findFirst();
+
+            Optional<Individual> wifeOpt = individualList.stream().filter(individual -> {
+                return individual.getId().equals(wifeId);
+            }).findFirst();
+
+            if (husbandOpt.isPresent() && wifeOpt.isPresent() ) {
+                Individual husband = husbandOpt.get();
+                Individual wife = wifeOpt.get();
+
+                Optional<LocalDate> husbandDeathDate = husband.getDeathDate();
+                Optional<LocalDate> wifeDeathDate = wife.getDeathDate();
+
+                if(husbandDeathDate.isPresent() && wifeDeathDate.isPresent()){
+                    for(Individual indi : family.getChildrenIndis()){
+                        if(indi.getAge() < 18 && !indi.getDeathDate().isPresent()){
+                            orphanChildrenList.add(indi);
+                        }
+                    }
+                }
+
+            }
+        }
+        return orphanChildrenList;
+    }
 
     public List<Family> uniqueFamilyID(List<Family> familyList) {
         List<Family> ambiguousFamilyIDList = new ArrayList<>();
@@ -227,6 +283,8 @@ public class GedcomValidator {
 
         return ambiguosbirthBeforeMarriageList;
     }
+
+
 
     //Birth before death
     public List<Individual> birthBeforeDeath(List<Individual> individualList) {
@@ -570,14 +628,21 @@ public class GedcomValidator {
         for (Family family : familyArrayList) {
             String husbandId = family.getHusbandId();
             String wifeId = family.getWifeId();
-            Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
-            Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
-            if (anotherFamilyOfThisMan.isPresent()) {
-                loadFamilyWithBigamy(anotherFamilyOfThisMan.get(), family, familyWithBigamy);
+            if(!husbandId.isEmpty()) {
+                Optional<Family> anotherFamilyOfThisMan = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((husbandId)) && !famitr.getId().equals(family.getId())).findFirst();
+                if (anotherFamilyOfThisMan.isPresent()) {
+                    loadFamilyWithBigamy(anotherFamilyOfThisMan.get(), family, familyWithBigamy);
+                }
             }
-            if (anotherFamilyOfThisWoman.isPresent()) {
-                loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(), family, familyWithBigamy);
+            if(!wifeId.isEmpty())
+            {
+                Optional<Family> anotherFamilyOfThisWoman = familyArrayList.stream().filter(famitr -> famitr.getHusbandId().equals((wifeId)) && !famitr.getId().equals(family.getId())).findFirst();
+
+                if (anotherFamilyOfThisWoman.isPresent()) {
+                    loadFamilyWithBigamy(anotherFamilyOfThisWoman.get(), family, familyWithBigamy);
+                }
             }
+
         }
         return familyWithBigamy;
     }
@@ -597,19 +662,10 @@ public class GedcomValidator {
         List<FamilyWithAnomaly> familiesWithDuplicateNames = new ArrayList<FamilyWithAnomaly>();
         for (Family fam : familyArrayList) {
             Set<String> familyFirstNames = new HashSet<String>();
-            List<Individual> individualsInTheFam = new ArrayList<Individual>();
-            if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
-                individualsInTheFam.add(fam.getHusbandIndi().get());
-            }
-            if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
-                individualsInTheFam.add(fam.getWifeIndi().get());
-            }
-            if (fam.getChildrenIndis() != null) {
-                individualsInTheFam.addAll(fam.getChildrenIndis());
-            }
+            FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
+            List<Individual>  individualsInTheFam = loadIndividualsInTheFamily(fam);
             for (Individual indInFam : individualsInTheFam) {
                 if (familyFirstNames.contains((indInFam.getName().split("/")[0]).trim())) {
-                    FamilyWithAnomaly anomaly = new FamilyWithAnomaly();
                     anomaly.getDuplicateNamesInFamily().add(indInFam.getName().split("/")[0].trim());
                     anomaly.setFamily(fam);
                     familiesWithDuplicateNames.add(anomaly);
@@ -619,7 +675,96 @@ public class GedcomValidator {
             }
         }
         return familiesWithDuplicateNames;
+    }
+    public List<Individual> loadIndividualsInTheFamily(Family fam){
+        List<Individual>  individualsInTheFam = new ArrayList<Individual>();
+        if (fam.getHusbandIndi() != null && fam.getHusbandIndi().isPresent()) {
+            individualsInTheFam.add(fam.getHusbandIndi().get());
+        }
+        if (fam.getWifeIndi() != null && fam.getWifeIndi().isPresent()) {
+            individualsInTheFam.add(fam.getWifeIndi().get());
+        }
+        if (fam.getChildrenIndis() != null) {
+            individualsInTheFam.addAll(fam.getChildrenIndis());
+        }
+        return individualsInTheFam;
+    }
+    public List<FamilyWithAnomaly> validateCorrespondingEntry(List<Individual> individualList, List<Family> familyArrayList){
+        List<FamilyWithAnomaly> invalidEntries = new ArrayList<FamilyWithAnomaly>();
+        Set<String> individualsIdSet = new HashSet<String>();
+        Set<String> familyIdSet =  new HashSet<String>();
+        FamilyWithAnomaly invalidFamEntry = new FamilyWithAnomaly();
 
+        for (Individual ind : individualList) {
+            if (ind.getId() != null && !ind.getId().isEmpty()) {
+                individualsIdSet.add(ind.getId());
+            }
+        }
+        for (Family fam : familyArrayList) {
+            if(fam.getId().equals("F1US26")){
+                System.out.println("MONITOR");
+            }
+            //    invalidFamEntry.setFamily(fam);
+
+            if (fam.getId() != null && !fam.getId().isEmpty()) {
+                familyIdSet.add(fam.getId());
+            }
+            if (fam.getHusbandId() != null && !fam.getHusbandId().isEmpty() && !individualsIdSet.contains(fam.getHusbandId())) {
+                invalidFamEntry.getNocorrespondingEntry().add(fam.getHusbandId());
+                //           invalidEntries.add(invalidFamEntry);
+            }
+            if (fam.getWifeId() != null && !fam.getWifeId().isEmpty() && !individualsIdSet.contains(fam.getWifeId())) {
+                invalidFamEntry.getNocorrespondingEntry().add(fam.getWifeId());
+                //            invalidEntries.add(invalidFamEntry);
+            }
+            for(Individual child : fam.getChildrenIndis()) {
+                if (!individualsIdSet.contains(child.getId())) {
+                    invalidFamEntry.getNocorrespondingEntry().add(child.getId());
+                    //                invalidEntries.add(invalidFamEntry);
+                }
+            }
+        }
+        for(Individual individual : individualList){
+            //          FamilyWithAnomaly invalidIndiEntry = new FamilyWithAnomaly();
+            if(individual.getSpouse()!=null && !individual.getSpouse().isEmpty() && !familyIdSet.contains(individual.getSpouse())){
+                invalidFamEntry.getNocorrespondingEntry().add(individual.getSpouse());
+                //          invalidEntries.add(invalidFamEntry);
+            }
+            if(individual.getChild()!=null && !individual.getChild().isEmpty() && !familyIdSet.contains(individual.getChild())){
+                invalidFamEntry.getNocorrespondingEntry().add(individual.getChild());
+                //          invalidEntries.add(invalidFamEntry);
+            }
+
+        }
+        invalidEntries.add(invalidFamEntry);
+        return invalidEntries;
+    }
+
+    public List<FamilyWithAnomaly>  loadCouplesWithLargeAgeDifference(List<Family> familyList){
+        List<FamilyWithAnomaly> familyWithAnomalyList = new ArrayList<FamilyWithAnomaly>();
+        for(Family fam:familyList){
+           if(fam.getHusbandIndi().isPresent() && fam.getWifeIndi().isPresent()) {
+            Individual husband = fam.getHusbandIndi().get();
+            Individual wife = fam.getWifeIndi().get();
+
+            if(husband.getBdate().isPresent() && wife.getBdate().isPresent() && fam.getMarried().isPresent() ){
+                long husbandAgeAtMarriageTime = Period.between( husband.getBdate().get(),fam.getMarried().get()).getYears();
+                long wifeAgeAtMarriageTime = Period.between(wife.getBdate().get(), fam.getMarried().get()).getYears();
+                if(husbandAgeAtMarriageTime > wifeAgeAtMarriageTime *2 || wifeAgeAtMarriageTime > husbandAgeAtMarriageTime*2 ){
+                    familyWithAnomalyList.add(new FamilyWithAnomaly(fam, husband, wife));
+                }
+            }}
+        }
+        return familyWithAnomalyList;
+    }
+    public List<Individual> listPeopleWhoDiedWithin30Days(List<Individual> individualList){
+        List<Individual> deathsInLast30Days = new ArrayList<>();
+        for(Individual individual : individualList){
+            if(individual.getDeathDate().isPresent() &&  30 > ChronoUnit.DAYS.between(individual.getDeathDate().get(), LocalDate.now())){
+                deathsInLast30Days.add(individual);
+            }
+        }
+        return deathsInLast30Days;
     }
 
 }

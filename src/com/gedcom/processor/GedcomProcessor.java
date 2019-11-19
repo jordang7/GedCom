@@ -140,6 +140,18 @@ public class GedcomProcessor {
             response.setAuntUncleMarriedNN(ambiguousFamilyWithUncleAunt);
             List<FamilyWithAnomaly> ambiguousFamilyWithDuplicateFirstNames = gvalidator.firstNamesShouldBeUniqueInTheFamily(individualList, familyArrayList);
             response.setAmbiguousDuplicateFirstNameFamilies(ambiguousFamilyWithDuplicateFirstNames);
+            List<FamilyWithAnomaly> listIndiFamWithMissingCorrespondingEntries = gvalidator.validateCorrespondingEntry(individualList, familyArrayList);
+            response.setMissingCorrespondingEntries(listIndiFamWithMissingCorrespondingEntries);
+            //US31
+            List<Individual> livingSingleList =gvalidator.livingSingle(individualList);
+            response.setLivingSingleList(livingSingleList);
+
+            List<Individual> orphanChildrenList =gvalidator.orphanChildren(individualList,familyArrayList);
+            response.setOrphanChildrenList(orphanChildrenList);
+            List<FamilyWithAnomaly> listLargeAgeDifference = gvalidator.loadCouplesWithLargeAgeDifference(familyArrayList);
+            response.setAmbiguousFamiliesWithLargeAgeDifference(listLargeAgeDifference);
+            List<Individual> peopleDiedInLast30Days = gvalidator.listPeopleWhoDiedWithin30Days(individualList);
+            response.setPeopleDiedInLast30Days(peopleDiedInLast30Days);
 
         } catch (Exception e) {
             e.printStackTrace();

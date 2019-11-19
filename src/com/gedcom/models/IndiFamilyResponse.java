@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class IndiFamilyResponse {
     List<Family> familyList;
-    
+
     List<Individual> ambiguousIndividuals;
 
     List<Individual> individualList;
@@ -15,10 +15,10 @@ public class IndiFamilyResponse {
     List<Family> ambiguosFamilyMarrDeathList;
 
     List<Family> ambiguousFamilyMarrDivList;
-    
+
     List<Family> ambiguosbirthBeforeMarriageList;
-    
-    
+
+
 
     List<Family> ambiguousFamilyMarrBefore14;
 
@@ -27,15 +27,16 @@ public class IndiFamilyResponse {
     List<Family> ambiguousMaleLastNames;
 
     List<FamilyWithChildrenMarriedToEachOther> ambiguousSblingsMarriageList;
-    
+
     List<FamilyWithAnomaly> ambiguousAuntUncleMarriedNNList;
-    
+
     List<Family> ambiguousMoreThan15Children;
 
     List<FamilyWithOlderParents> familyWithOlderParents;
 
 
     private List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies;
+    private List<FamilyWithAnomaly> missingCorrespondingEntries;
 
     public List<Family> getAmbiguousGenderForRoles() {
         return ambiguousGenderForRoles;
@@ -67,6 +68,26 @@ public class IndiFamilyResponse {
 
     List<Family> ambiguousFamilyIDList;
 
+    public List<Individual> getLivingSingleList() {
+        return livingSingleList;
+    }
+
+    public void setLivingSingleList(List<Individual> livingSingleList) {
+        this.livingSingleList = livingSingleList;
+    }
+
+    List<Individual> livingSingleList;
+
+    public List<Individual> getOrphanChildrenList() {
+        return orphanChildrenList;
+    }
+
+    public void setOrphanChildrenList(List<Individual> orphanChildrenList) {
+        this.orphanChildrenList = orphanChildrenList;
+    }
+
+    List<Individual> orphanChildrenList;
+
 
     public List<FamilyWithOlderParents> getFamilyWithOlderParents() {
         return familyWithOlderParents;
@@ -83,7 +104,7 @@ public class IndiFamilyResponse {
     public void setAmbiguousFirstCousinsMarriageList(List<FamilyWithChildrenMarriedToEachOther> ambiguousFirstCousinsMarriageList) {
         this.ambiguousFirstCousinsMarriageList = ambiguousFirstCousinsMarriageList;
     }
-    
+
     public List<FamilyWithAnomaly> getAmbiguousAuntUncleMarriedNN() {
         return ambiguousAuntUncleMarriedNNList;
     }
@@ -158,7 +179,7 @@ public class IndiFamilyResponse {
     public void setAmbiguosFamilyMarrDeathList(List<Family> ambiguosFamilyMarrDeathList) {
         this.ambiguosFamilyMarrDeathList = ambiguosFamilyMarrDeathList;
     }
-    
+
     public List<Individual> getAmbiguousIndividuals() {
         return ambiguousIndividuals;
     }
@@ -166,7 +187,7 @@ public class IndiFamilyResponse {
     public void setAmbiguousIndividuals(List<Individual> ambiguousIndividuals) {
         this.ambiguousIndividuals = ambiguousIndividuals;
     }
-    
+
     public List<Family> getAmbiguosbirthBeforeMarriage() {
         return ambiguosbirthBeforeMarriageList;
     }
@@ -174,7 +195,7 @@ public class IndiFamilyResponse {
     public void setAmbiguosbirthBeforeMarriage(List<Family> ambiguosbirthBeforeMarriageList) {
         this.ambiguosbirthBeforeMarriageList = ambiguosbirthBeforeMarriageList;
     }
-    
+
     public List<Family> getFamilyList() {
         return familyList;
     }
@@ -220,5 +241,32 @@ public class IndiFamilyResponse {
     public void setAmbiguousDuplicateFirstNameFamilies(List<FamilyWithAnomaly> ambiguousDuplicateFirstNameFamilies) {
         this.ambiguousDuplicateFirstNameFamilies = ambiguousDuplicateFirstNameFamilies;
     }
+    public List<FamilyWithAnomaly> getMissingCorrespondingEntries() {
+        return missingCorrespondingEntries;
+    }
+
+    public void setMissingCorrespondingEntries(List<FamilyWithAnomaly> missingCorrespondingEntries) {
+        this.missingCorrespondingEntries = missingCorrespondingEntries;
+    }
+
+    public List<FamilyWithAnomaly> getAmbiguousFamiliesWithLargeAgeDifference() {
+        return ambiguousFamiliesWithLargeAgeDifference;
+    }
+
+    public void setAmbiguousFamiliesWithLargeAgeDifference(List<FamilyWithAnomaly> ambiguousFamiliesWithLargeAgeDifference) {
+        this.ambiguousFamiliesWithLargeAgeDifference = ambiguousFamiliesWithLargeAgeDifference;
+    }
+
+    List<FamilyWithAnomaly> ambiguousFamiliesWithLargeAgeDifference;
+
+    public List<Individual> getPeopleDiedInLast30Days() {
+        return peopleDiedInLast30Days;
+    }
+
+    public void setPeopleDiedInLast30Days(List<Individual> peopleDiedInLast30Days) {
+        this.peopleDiedInLast30Days = peopleDiedInLast30Days;
+    }
+
+    List<Individual> peopleDiedInLast30Days;
 
 }

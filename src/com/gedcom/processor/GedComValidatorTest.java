@@ -5,6 +5,7 @@ import com.gedcom.models.Family;
 import com.gedcom.models.FamilyWithAnomaly;
 import com.gedcom.models.FamilyWithChildrenMarriedToEachOther;
 import com.gedcom.models.Individual;
+
 //import com.sun.org.apache.bcel.internal.generic.LUSHR;
 
 import java.time.LocalDate;
@@ -336,8 +337,6 @@ class GedComValidatorTest {
     void testUniqueFirstNameInFamily(){
         List<FamilyWithAnomaly> familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(new ArrayList<Individual>(),new ArrayList<Family>());
         assertEquals(0,familyWithAnomalyList.size());
-
-        List<Individual> individualList = new ArrayList<>();
         Individual husband = new Individual("I1US25");
         husband.setName("I1/ US25 ");
         Individual wife = new Individual("I2US25");
@@ -347,5 +346,181 @@ class GedComValidatorTest {
         family.setWifeIndi(Optional.of(wife));
         familyWithAnomalyList = validator.firstNamesShouldBeUniqueInTheFamily(Arrays.asList(husband, wife),Arrays.asList(family));
         assertEquals(1,familyWithAnomalyList.size());
+    }
+    @org.junit.jupiter.api.Test
+    void testBigami(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US11");
+        person1.setName("I1/ US11");
+        person1.setGender("M");
+        person1.setSpouse("F1US11");
+
+        Individual person2 = new Individual("I2US11");
+        person2.setName("I2/US25");
+        person2.setGender("F");
+        person2.setSpouse("F1US11");
+        Individual person3 = new Individual("I3US11");
+        person3.setName("I3/US25");
+        person3.setGender("F");
+        person3.setSpouse("F2US11");
+        Family family1 = new Family("F1US11");
+        family1.setHusbandIndi(Optional.of(person1));
+        family1.setWifeIndi(Optional.of(person2));
+
+        Family family2 = new Family("F2US11");
+        family2.setHusbandIndi(Optional.of(person1));
+        family2.setWifeIndi(Optional.of(person3));
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(0,familyWithAnomalyList.size());
+        family1.setHusbandId(person1.getId());
+        family1.setWifeId(person2.getId());
+        family2.setHusbandId(person1.getId());
+        family2.setWifeId(person3.getId());
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person1,person3),Arrays.asList(family1,family2));
+        assertEquals(2,familyWithAnomalyList.size());
+    }
+
+    @org.junit.jupiter.api.Test
+    void testOrphanChildren(){
+        List<Individual> orphanList = validator.orphanChildren(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,orphanList.size());
+
+        Individual indi1 = new Individual("I1");
+        Individual indi2 = new Individual("I2");
+        Individual indi3 = new Individual("I3");
+        Individual indi4 = new Individual("I4");
+
+        indi1.setDeathDate(LocalDate.parse("02 MAY 2018 ", GedcomValidator.formatter));
+        indi2.setDeathDate(LocalDate.parse("02 MAY 2018 ", GedcomValidator.formatter));
+        indi3.setAge(15);
+        indi4.setAge(15);
+
+        List<Individual> allIndividual = new ArrayList<>();
+        allIndividual.add(indi1);
+        allIndividual.add(indi2);
+        allIndividual.add(indi3);
+        allIndividual.add(indi4);
+
+        List<Family> fam = new ArrayList<>();
+        Family f = new Family("F1");
+        f.setHusbandId("I1");
+        f.setWifeId("I2");
+        List<Individual> children = new ArrayList<>();
+        children.add(indi3);
+        children.add(indi4);
+        f.setChildrenIndis(children);
+        fam.add(f);
+        List<Individual> orphanList1 = validator.orphanChildren(new ArrayList<Individual>(allIndividual),new ArrayList<Family>(fam));
+        assertEquals(2,orphanList1.size());
+
+    }
+    @org.junit.jupiter.api.Test
+    void testLivingSingle(){
+        List<Individual> livingSingleList = validator.livingSingle(new ArrayList<Individual>());
+        assertEquals(0, livingSingleList.size());
+
+        Individual indi1 = new Individual("I1US31");
+        indi1.setAge(35);
+        List<Individual> singles = new ArrayList<>();
+        singles.add(indi1);
+        List<Individual> livingSingleList1 = validator.livingSingle(new ArrayList<Individual>(singles));
+        assertEquals(1,livingSingleList1.size());
+
+        Individual indi2 = new Individual("I1US31");
+        indi2.setAge(35);
+        indi2.setSpouse("F1US31");
+
+        List<Individual> notSingles = new ArrayList<>();
+        notSingles.add(indi2);
+        List<Individual> livingSingleList2 = validator.livingSingle(new ArrayList<Individual>(notSingles));
+        assertEquals(0,livingSingleList2.size());
+
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void testAncestorsChildMarriage(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US11");
+        person1.setName("I1/ US11");
+        person1.setGender("M");
+        person1.setSpouse("F1US11");
+
+        Individual person2 = new Individual("I2US11");
+        person2.setName("I2/US25");
+        person2.setGender("F");
+        person2.setSpouse("F1US11");
+        Individual person3 = new Individual("I3US11");
+        person3.setName("I3/US25");
+        person3.setGender("F");
+        person3.setSpouse("F2US11");
+        Family family1 = new Family("F1US11");
+        family1.setHusbandIndi(Optional.of(person1));
+        family1.setWifeIndi(Optional.of(person2));
+
+        Family family2 = new Family("F2US11");
+        family2.setHusbandIndi(Optional.of(person1));
+        family2.setWifeIndi(Optional.of(person3));
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person2,person3),Arrays.asList(family1,family2));
+        assertEquals(0,familyWithAnomalyList.size());
+        family1.setHusbandId(person1.getId());
+        family1.setWifeId(person2.getId());
+        family2.setHusbandId(person1.getId());
+        family2.setWifeId(person3.getId());
+        familyWithAnomalyList = validator.noBigamyIsAllowed(Arrays.asList(person1, person2,person3),Arrays.asList(family1,family2));
+        assertEquals(2,familyWithAnomalyList.size());
+    }
+
+    @org.junit.jupiter.api.Test
+    void testNoCorrespoindingEntries(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.noBigamyIsAllowed(new ArrayList<Individual>(),new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual person1 = new Individual("I1US26");
+        person1.setName("I1/ US26");
+        person1.setGender("M");
+        person1.setSpouse("F1US26");
+        Family family1 = new Family("F2US26");
+        family1.setHusbandIndi(Optional.of(new Individual("I2US26")));
+        familyWithAnomalyList = validator.validateCorrespondingEntry(Arrays.asList(person1), Arrays.asList(family1));
+        assertEquals(1,familyWithAnomalyList.size());
+    }
+    @org.junit.jupiter.api.Test
+    void testAgeDifference(){
+        List<FamilyWithAnomaly> familyWithAnomalyList = validator.loadCouplesWithLargeAgeDifference(new ArrayList<Family>());
+        assertEquals(0,familyWithAnomalyList.size());
+        Individual husband = new Individual("I1US34");
+        husband.setName("I1/ US34");
+        husband.setGender("M");
+        husband.setSpouse("F1US34");
+    //   husband.setBdate(LocalDate.parse("5 OCT 1975", GedcomValidator.formatter));
+
+        Individual wife = new Individual("I2US34");
+        wife.setName("I2/ US34");
+        wife.setGender("F");
+        wife.setSpouse("F1US34");
+     //   wife.setBdate(LocalDate.parse("05 OCT 1999", GedcomValidator.formatter));
+
+
+        Family family1 = new Family("F1US34");
+        family1.setHusbandIndi(Optional.of(husband));
+        family1.setWifeIndi(Optional.of(wife));
+    //    family1.setMarried(LocalDate.parse("05 May 2019", GedcomValidator.formatter));
+        familyWithAnomalyList = validator.loadCouplesWithLargeAgeDifference( Arrays.asList(family1));
+        assertEquals(1,familyWithAnomalyList.size());
+
+    }
+    @org.junit.jupiter.api.Test
+    void testListOfDeathsInLast30Days(){
+        List<Individual> deaths = validator.listPeopleWhoDiedWithin30Days(new ArrayList<Individual>());
+        assertEquals(0,deaths.size());
+        Individual person1 = new Individual("I1US36");
+        person1.setName("I1/ US36");
+        person1.setGender("M");
+        person1.setDeathDate(LocalDate.now());
+    //    person1.setDeathDate(LocalDate.parse("5 Nov 2019",GedcomValidator.formatter));
+        deaths = validator.listPeopleWhoDiedWithin30Days(Arrays.asList(person1));
+        assertEquals(1,deaths.size());
     }
 }
