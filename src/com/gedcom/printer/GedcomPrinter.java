@@ -670,9 +670,6 @@ public class GedcomPrinter {
 
   
   }
-        System.out.println();
-  
-  }
         System.out.println("US38: List of all individuals with upcoming birthday:" + upcoming);
         return upcoming;
 }
