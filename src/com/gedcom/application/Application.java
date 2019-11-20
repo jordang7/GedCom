@@ -82,7 +82,7 @@ public class Application {
         gedcomPrinter.printListOfUpcBday(indiFamilyResponse.getIndividualList()); //US38
         gedcomPrinter.printListOfUpcAnniversary(indiFamilyResponse.getFamilyList()); //US39
         
-
+        gedcomPrinter.listRecentSurvivors(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
 
     	}
 

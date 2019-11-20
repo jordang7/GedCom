@@ -171,5 +171,24 @@ public class Sprint_1_Test_Cases_Shrikant {
    		fail("Not yet implemented");
    	}
     
+    @Test
+   	public void listRecentSurvivors() throws ParseException, java.text.ParseException {
+   		
+   		GedcomFileReader gfr = new GedcomFileReader();
+           List<String> gedcomLines = gfr.gedcomReader("./gedcomfiles/Test.ged");
+           HashSet<String> tagSet = new HashSet<String>();
+           List<String> tagNames = gfr.gedcomReader("./gedcomfiles/TagSet.txt");
+
+           for (String tagName: tagNames ) {
+               tagSet.add(tagName);
+           }
+           GedcomProcessor gdp = new GedcomProcessor();
+           GedcomResponse response= gdp.parser(gedcomLines,tagSet);
+           IndiFamilyResponse indiFamilyResponse= gdp.createIndiAndFamilyList(response.getValidLines());
+        GedcomPrinter gedcomPrinter = new GedcomPrinter();
+        gedcomPrinter.listRecentSurvivors(indiFamilyResponse.getFamilyList(), indiFamilyResponse.getIndividualList());
+   		fail("Not yet implemented");
+   	}
+        
     
 }

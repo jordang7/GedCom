@@ -1490,3 +1490,7 @@ US38: List of all individuals with upcoming birthday:
  LINE -----> 39 I1US38US38: List of all individuals with upcoming birthday:[I1US38]
 US39: List of all couples with upcoming anniversary: Wife: Mary /Popper/ LINE 677 and Husband: Jack /Hello/ LINE 670 Wife: Mary /Popper/ and Husband: Jack /Hello/
 Process finished with exit code 0
+US37 : List of people died within last 30 days along with list of all the dependants.
+Person Died less than 30 days ago. I2US09
+He / She had souuse : I1US09
+He / She had children : I3US09
