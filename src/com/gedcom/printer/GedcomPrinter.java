@@ -4,6 +4,7 @@ import com.gedcom.models.*;
 
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -719,6 +720,50 @@ public class GedcomPrinter {
     			for(int j=0; j<totalChildren.split(",").length; j++)
     			{
     				System.out.print("LINE " + getLineNumber(totalChildren.split(",")[j]) + " ---> " + totalChildren.split(",")[j] + ", ");
+    			}
+    		}
+    	}
+    	System.out.println();
+    }
+    
+    public void listRecentSurvivors(List<Family> familyArrayList, List<Individual> individualArrayList)
+    {
+    	System.out.println();
+    	SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	
+    	System.out.println("US37 : List of people died within last 30 days along with list of all the dependants."); 
+    	for(Individual indi : individualArrayList)
+    	{
+    		
+    		if(indi.getDeathDate().isPresent())
+    		{
+    			
+    			LocalDate ld = LocalDate.parse(simpleFormat.format(new Date()), dtf);
+    			
+    			long DaysBetween = Math.abs(ChronoUnit.DAYS.between(ld, indi.getDeathDate().get()));
+    			
+    			if(DaysBetween <= 30)
+    			{
+    				
+    				
+    				for(Family fam : familyArrayList)
+    				{
+    					if(indi.getId().equals(fam.getHusbandId()))
+    					{
+    						
+    						System.out.println("LINE " + getLineNumber(indi.getId()) + " " + "Person Died less than 30 days ago. " + indi.getId());
+    						System.out.println("LINE " + getLineNumber(fam.getWifeId()) + " " + "He / She had souuse : " + fam.getWifeId());
+    						System.out.println("LINE " + getLineNumber(fam.getWifeId()) + " " + "He / She had children : " + fam.getChildren());
+    					}
+    					
+    					if(indi.getId().equals(fam.getWifeId()))
+    					{
+    						System.out.println("LINE " + getLineNumber(indi.getId()) + " " + "Person Died less than 30 days ago. " + indi.getId());
+    						System.out.println("LINE " + getLineNumber(fam.getHusbandId()) + " " + "He / She had souuse : " + fam.getHusbandId());
+    						System.out.println("LINE " + getLineNumber(fam.getHusbandId()) + " " + "He / She had children : " + fam.getChildren());
+    					}
+    				}
     			}
     		}
     	}
