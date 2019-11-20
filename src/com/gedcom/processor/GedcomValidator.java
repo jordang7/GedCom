@@ -766,5 +766,13 @@ public class GedcomValidator {
         }
         return deathsInLast30Days;
     }
-
+    public List<Individual> listPeopleWhoBornWithin30Days(List<Individual> individualList){
+        List<Individual> birthsInLast30Days = new ArrayList<>();
+        for(Individual individual : individualList){
+            if(individual.getBdate().isPresent() &&ChronoUnit.DAYS.between(individual.getBdate().get(), LocalDate.now() )< 30){
+                birthsInLast30Days.add(individual);
+            }
+        }
+        return birthsInLast30Days;
+    }
 }

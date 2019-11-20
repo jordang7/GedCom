@@ -269,4 +269,13 @@ public class IndiFamilyResponse {
 
     List<Individual> peopleDiedInLast30Days;
 
+    public List<Individual> getPeopleBornInLast30Days() {
+        return peopleBornInLast30Days;
+    }
+
+    public void setPeopleBornInLast30Days(List<Individual> peopleBornInLast30Days) {
+        this.peopleBornInLast30Days = peopleBornInLast30Days;
+    }
+
+    List<Individual> peopleBornInLast30Days;
 }

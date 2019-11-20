@@ -608,5 +608,10 @@ public class GedcomPrinter {
             System.out.print(individual.getId() + "| ");
         }
     }
-
+    public void printPeopleWhoBornInLast30Days(IndiFamilyResponse indifamilyResponse){
+        System.out.println("US35 : List of births in the last 30 days ");
+        for(Individual individual : indifamilyResponse.getPeopleBornInLast30Days()){
+            System.out.print(individual.getId() + "| ");
+        }
+    }
 }

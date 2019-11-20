@@ -153,6 +153,9 @@ public class GedcomProcessor {
             List<Individual> peopleDiedInLast30Days = gvalidator.listPeopleWhoDiedWithin30Days(individualList);
             response.setPeopleDiedInLast30Days(peopleDiedInLast30Days);
 
+            List<Individual> peopleBornInLast30Days = gvalidator.listPeopleWhoBornWithin30Days(individualList);
+            response.setPeopleBornInLast30Days(peopleBornInLast30Days);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

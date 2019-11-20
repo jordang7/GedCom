@@ -74,6 +74,7 @@ public class Application {
         gedcomPrinter.printLivingSingle(indiFamilyResponse);
         gedcomPrinter.printOrphanChildren(indiFamilyResponse);
         gedcomPrinter.printPeopleWhoDiedInLast30Days(indiFamilyResponse); //US36
+        gedcomPrinter.printPeopleWhoBornInLast30Days(indiFamilyResponse); //USS35
         
 
     	}
