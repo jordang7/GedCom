@@ -648,6 +648,13 @@ public class GedcomPrinter {
         }
         System.out.println();
     }
+    public void printPeopleWhoAreBornInLast30Days(IndiFamilyResponse indifamilyResponse){
+        System.out.println("US35 : List of Born in the last 30 days ");
+        for(Individual individual : indifamilyResponse.getPeopleBornInLast30Days()){
+            System.out.print(" LINE -----> " + getLineNumber(individual.getId()) + " " + individual.getId() + "| ");
+        }
+        System.out.println();
+    }
     public List<String> printListOfUpcBday( List<Individual> individualArrayList) throws ParseException, java.text.ParseException {
 		List<String> upcoming= new ArrayList<>();
 		LocalDate dateBefore;

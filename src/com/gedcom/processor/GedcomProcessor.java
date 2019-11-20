@@ -152,6 +152,8 @@ public class GedcomProcessor {
             response.setAmbiguousFamiliesWithLargeAgeDifference(listLargeAgeDifference);
             List<Individual> peopleDiedInLast30Days = gvalidator.listPeopleWhoDiedWithin30Days(individualList);
             response.setPeopleDiedInLast30Days(peopleDiedInLast30Days);
+            List<Individual> peopleBornInLast30Days = gvalidator.listPeopleWhoAreBornWithin30Days(individualList);
+            response.setPeopleBornInLast30Days(peopleBornInLast30Days);
 
         } catch (Exception e) {
             e.printStackTrace();

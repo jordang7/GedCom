@@ -519,8 +519,18 @@ class GedComValidatorTest {
         person1.setName("I1/ US36");
         person1.setGender("M");
         person1.setDeathDate(LocalDate.now());
-    //    person1.setDeathDate(LocalDate.parse("5 Nov 2019",GedcomValidator.formatter));
         deaths = validator.listPeopleWhoDiedWithin30Days(Arrays.asList(person1));
         assertEquals(1,deaths.size());
+    }
+    @org.junit.jupiter.api.Test
+    void testListOfBirthsInLast30Days(){
+        List<Individual> births = validator.listPeopleWhoAreBornWithin30Days(new ArrayList<Individual>());
+        assertEquals(0,births.size());
+        Individual person1 = new Individual("I1US35");
+        person1.setName("I1/ US35");
+        person1.setGender("M");
+        person1.setBdate(LocalDate.now());
+        births = validator.listPeopleWhoAreBornWithin30Days(Arrays.asList(person1));
+        assertEquals(1,births.size());
     }
 }
