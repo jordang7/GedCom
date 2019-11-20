@@ -156,6 +156,9 @@ public class GedcomProcessor {
             List<Individual> peopleBornInLast30Days = gvalidator.listPeopleWhoBornWithin30Days(individualList);
             response.setPeopleBornInLast30Days(peopleBornInLast30Days);
 
+            List<Individual> spouseAndChildOfPeopleDeadIn30Days = gvalidator.listSpouseAndChildOfPeopleDeadIn30Days(individualList,familyArrayList);
+            response.setSpouseAndChildOfPeopleDeadIn30Days(spouseAndChildOfPeopleDeadIn30Days);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,6 +7,8 @@ import com.gedcom.file.GedcomFileReader;
 import com.gedcom.models.Individual;
 import com.gedcom.printer.GedcomPrinter;
 import com.gedcom.processor.GedcomProcessor;
+import com.gedcom.processor.GedcomValidator;
+
 import java.text.ParseException;
 
 import java.util.*;
@@ -81,7 +83,7 @@ public class Application {
         gedcomPrinter.printListOfUpcAnniversary(indiFamilyResponse.getFamilyList()); //US39
 
         gedcomPrinter.printMultipleBirthsList(indiFamilyResponse.getFamilyList());
-
+        gedcomPrinter.printAliveSpouseAndChildOfPeopleDeadIn30Days(indiFamilyResponse); //US37
     	}
 
 

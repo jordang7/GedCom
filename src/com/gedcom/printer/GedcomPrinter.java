@@ -720,7 +720,14 @@ public class GedcomPrinter {
     public void printPeopleWhoBornInLast30Days(IndiFamilyResponse indifamilyResponse){
         System.out.println("US35 : List of births in the last 30 days ");
         for(Individual individual : indifamilyResponse.getPeopleBornInLast30Days()){
-            System.out.print(individual.getId() + "| ");
+            System.out.print(" LINE -----> " + getLineNumber(individual.getId()) + " " + individual.getId() + "| ");
+        }
+    }
+// US 37
+    public void printAliveSpouseAndChildOfPeopleDeadIn30Days(IndiFamilyResponse indifamilyResponse){
+        System.out.println("US37 : List of Alive Spouses and Children of People Died in Last 30 days ");
+        for(Individual individual : indifamilyResponse.getSpouseAndChildOfPeopleDeadIn30Days()){
+            System.out.print(" LINE -----> " + getLineNumber(individual.getId()) + " " + individual.getId() + "| ");
         }
     }
 }

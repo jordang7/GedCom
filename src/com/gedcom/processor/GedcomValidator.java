@@ -775,4 +775,31 @@ public class GedcomValidator {
         }
         return birthsInLast30Days;
     }
+    //US 37
+    public  List<Individual> listSpouseAndChildOfPeopleDeadIn30Days(List<Individual> deathsInLast30Days, List<Family> familyList) {
+        List<Individual> SpouseAndChildOfPeopleDeadIn30Days = new ArrayList<>();
+        List<Individual> AliveSpouseAndChildOfPeopleDeadIn30Days = new ArrayList<>();
+        for (Individual individual : deathsInLast30Days) {
+            for (Family family : familyList) {
+                if (individual.getId() == family.getHusbandId()) {
+                    SpouseAndChildOfPeopleDeadIn30Days.add(family.getWifeIndi().get());
+                    SpouseAndChildOfPeopleDeadIn30Days.add(family.getChildrenIndis().get(5));
+
+                } else if (individual.getId() == family.getWifeId()) {
+                    SpouseAndChildOfPeopleDeadIn30Days.add(family.getHusbandIndi().get());
+                    SpouseAndChildOfPeopleDeadIn30Days.add(family.getChildrenIndis().get(5));
+                }
+                for (Individual individual1 : SpouseAndChildOfPeopleDeadIn30Days) {
+                    if (individual1.getDeathDate()== null) {
+                        AliveSpouseAndChildOfPeopleDeadIn30Days.add(individual1);
+                    }
+                }
+            }
+
+
+        }
+        return AliveSpouseAndChildOfPeopleDeadIn30Days;
+    }
+
+
 }

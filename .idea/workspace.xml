@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="197e66bd-9dff-4aca-8584-8c13f0834727" name="Default" comment="">
+    <list default="true" id="197e66bd-9dff-4aca-8584-8c13f0834727" name="Default" comment="Gedccom processor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GedCom.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GedCom.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/Sprint_1_Test_Cases_Shrikant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/Sprint_1_Test_Cases_Shrikant.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/application/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/models/FamilyWithAnomaly.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/models/FamilyWithAnomaly.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/models/IndiFamilyResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/models/IndiFamilyResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/printer/GedcomPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/printer/GedcomPrinter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedComValidatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedComValidatorTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedcomProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedcomProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedcomValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/GedcomValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/Sprint4Evidence.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GedCom/com/gedcom/processor/Sprint4Evidence.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gedcom/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/application/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gedcom/models/IndiFamilyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/models/IndiFamilyResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gedcom/printer/GedcomPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/printer/GedcomPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java" afterDir="false" />
     </list>
@@ -204,7 +202,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GedComValidatorTest.testGenderForRoles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GedComValidatorTest.testListOfAliveSpouseAndChildOfPeopleDeadIn30ays" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GedCom" />
       <extension name="coverage">
         <pattern>
@@ -214,7 +212,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.gedcom.processor" />
       <option name="MAIN_CLASS_NAME" value="com.gedcom.processor.GedComValidatorTest" />
-      <option name="METHOD_NAME" value="testGenderForRoles" />
+      <option name="METHOD_NAME" value="testListOfAliveSpouseAndChildOfPeopleDeadIn30ays" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GedComValidatorTest.testListOfBirthsInLast30Days" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GedCom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gedcom.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gedcom.processor" />
+      <option name="MAIN_CLASS_NAME" value="com.gedcom.processor.GedComValidatorTest" />
+      <option name="METHOD_NAME" value="testListOfBirthsInLast30Days" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -249,23 +264,6 @@
       <option name="PACKAGE_NAME" value="com.gedcom.processor" />
       <option name="MAIN_CLASS_NAME" value="com.gedcom.processor.GedComValidatorTest" />
       <option name="METHOD_NAME" value="testUniqueIndividualFamilyID" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GedComValidatorTest.testUniqueIndividualID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GedCom" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gedcom.processor.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gedcom.processor" />
-      <option name="MAIN_CLASS_NAME" value="com.gedcom.processor.GedComValidatorTest" />
-      <option name="METHOD_NAME" value="testUniqueIndividualID" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -334,18 +332,18 @@
     <list>
       <item itemvalue="Application.GedcomParser" />
       <item itemvalue="JUnit.GedComValidatorTest" />
-      <item itemvalue="JUnit.GedComValidatorTest.testGenderForRoles" />
-      <item itemvalue="JUnit.GedComValidatorTest.testUniqueIndividualID" />
       <item itemvalue="JUnit.GedComValidatorTest.testUniqueIndividualFamilyID" />
       <item itemvalue="JUnit.GedComValidatorTest.testLivingSingle" />
+      <item itemvalue="JUnit.GedComValidatorTest.testListOfBirthsInLast30Days" />
+      <item itemvalue="JUnit.GedComValidatorTest.testListOfAliveSpouseAndChildOfPeopleDeadIn30ays" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GedComValidatorTest.testListOfBirthsInLast30Days" />
+        <item itemvalue="JUnit.GedComValidatorTest.testListOfAliveSpouseAndChildOfPeopleDeadIn30ays" />
         <item itemvalue="JUnit.GedComValidatorTest" />
         <item itemvalue="JUnit.GedComValidatorTest.testLivingSingle" />
         <item itemvalue="JUnit.GedComValidatorTest.testUniqueIndividualFamilyID" />
-        <item itemvalue="JUnit.GedComValidatorTest.testGenderForRoles" />
-        <item itemvalue="JUnit.GedComValidatorTest.testUniqueIndividualID" />
       </list>
     </recent_temporary>
   </component>
@@ -387,8 +385,26 @@
       <option name="project" value="LOCAL" />
       <updated>1569292797223</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Gedccom processor">
+      <created>1574225060988</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574225060989</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gedccom processor" />
@@ -401,11 +417,6 @@
           <url>file://$PROJECT_DIR$/src/com/gedcom/processor/GedComValidatorTest.java</url>
           <line>44</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/gedcom/processor/GedcomValidator.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -523,4 +523,31 @@ class GedComValidatorTest {
         deaths = validator.listPeopleWhoDiedWithin30Days(Arrays.asList(person1));
         assertEquals(1,deaths.size());
     }
+
+    @org.junit.jupiter.api.Test
+    void testListOfBirthsInLast30Days(){
+        List<Individual> births = validator.listPeopleWhoBornWithin30Days(new ArrayList<Individual>());
+        assertEquals(1,births.size());
+        Individual person1 = new Individual("I1US36");
+        person1.setName("I1/ US36");
+        person1.setGender("M");
+        person1.setBdate(LocalDate.now());
+        //    person1.setDeathDate(LocalDate.parse("5 Nov 2019",GedcomValidator.formatter));
+        births = validator.listPeopleWhoBornWithin30Days(Arrays.asList(person1));
+        assertEquals(2,births.size());
+    }
+
+    @org.junit.jupiter.api.Test
+    void testListOfAliveSpouseAndChildOfPeopleDeadIn30ays(){
+        List<Individual> people = validator.listSpouseAndChildOfPeopleDeadIn30Days(new ArrayList<Individual>(), new ArrayList<Family>());
+        assertEquals(0,people.size());
+        Individual person1 = new Individual("I1US36");
+        Family family1= new Family("I9896");
+        person1.setName("I1/ US36");
+        person1.setGender("M");
+        person1.setBdate(LocalDate.now());
+        //    person1.setDeathDate(LocalDate.parse("5 Nov 2019",GedcomValidator.formatter));
+        people = validator.listSpouseAndChildOfPeopleDeadIn30Days(Arrays.asList(person1),Arrays.asList(family1));
+        assertEquals(0,people.size());
+    }
 }
