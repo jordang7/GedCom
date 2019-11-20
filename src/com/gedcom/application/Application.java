@@ -67,19 +67,22 @@ public class Application {
         gedcomPrinter.printCasesForUniqueFamilyWithSpouses(indiFamilyResponse.getFamilyList()); //US24
         gedcomPrinter.printDuplicateFirstNameList(indiFamilyResponse); //US25
         gedcomPrinter.printMissingCorrespondingEntries(indiFamilyResponse); //US26
-        gedcomPrinter.printLargreAgeDifferences(indiFamilyResponse); //US34
+
         System.out.println("---- GEDCOM LISTS ----");
         gedcomPrinter.printIndividualswithAge(indiFamilyResponse.getIndividualList()); //US27
         gedcomPrinter.printSiblingsByAge(indiFamilyResponse.getFamilyList()); //US28
         gedcomPrinter.printListOfDeceased(indiFamilyResponse.getIndividualList()); //US29
         gedcomPrinter.printListOfLivingMarried(indiFamilyResponse.getIndividualList(),indiFamilyResponse.getFamilyList()); //US30
-        gedcomPrinter.printLivingSingle(indiFamilyResponse);
-        gedcomPrinter.printOrphanChildren(indiFamilyResponse);
+        gedcomPrinter.printLivingSingle(indiFamilyResponse);//US31
+        gedcomPrinter.printMultipleBirthsList(indiFamilyResponse.getFamilyList());//US32
+        gedcomPrinter.printOrphanChildren(indiFamilyResponse);//US33
+        gedcomPrinter.printLargreAgeDifferences(indiFamilyResponse); //US34
+        gedcomPrinter.printPeopleWhoAreBornInLast30Days(indiFamilyResponse);//US35
         gedcomPrinter.printPeopleWhoDiedInLast30Days(indiFamilyResponse); //US36
         gedcomPrinter.printListOfUpcBday(indiFamilyResponse.getIndividualList()); //US38
         gedcomPrinter.printListOfUpcAnniversary(indiFamilyResponse.getFamilyList()); //US39
         
-        gedcomPrinter.printMultipleBirthsList(indiFamilyResponse.getFamilyList());
+
 
     	}
 
